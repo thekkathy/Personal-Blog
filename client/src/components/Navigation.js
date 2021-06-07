@@ -6,11 +6,11 @@ import {
     Link
 } from "react-router-dom";
 
-import Home from './Home';
+import Home from './Home/Home'
 import About from './About';
-import Blog from './Blog';
-import Shop from './Shop';
-import UserPage from './UserPage';
+import Blog from './Blog/Blog'
+import Shop from './Shop/Shop'
+import UserPage from './UserPage/UserPage';
 
 
 const Navigation = () => {
