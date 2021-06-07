@@ -14,6 +14,8 @@ import Blog from './Blog/Blog'
 import Shop from './Shop/Shop'
 import UserPage from './UserPage/UserPage';
 
+import Card from './Card';
+
 
 const Navigation = () => {
 
@@ -23,7 +25,7 @@ const Navigation = () => {
                 {/* NAVBAR */}
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <Link className="navbar-brand" to="/">
-                        WEBSITE
+                        Camille's Corner
                     </Link>
                     <button
                         className="navbar-toggler"
@@ -81,9 +83,10 @@ const Navigation = () => {
                     <Route path="/shop" exact component={Shop}>
                     </Route>
                     <Route path="/user/:id" exact component={UserPage}>
-
                     </Route>
-                     <Route path="/" exact component={Home}>
+                    <Route path="/" exact component={Home}>
+                    </Route>
+                    <Route path="/card" exact component={Card}>
                     </Route>
                 </Switch>
             </Router>
