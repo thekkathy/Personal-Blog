@@ -66,7 +66,6 @@ const Navigation = () => {
 
                 {/* ROUTING */}
                 <Switch>
-                    </Route>
                     <Route path="/SignUp">
                         {
                             SignUp

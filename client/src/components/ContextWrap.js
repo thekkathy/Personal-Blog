@@ -4,6 +4,8 @@ import CommentsProvider from "../context/commentsContext";
 import ForumProvider from "../context/forumContext";
 import StoreProvider from "../context/storeContext";
 import UsersProvider from "../context/usersContext";
+import UserProvider from "../context/UserProvider";
+
 
 
 const ContextWrap = ({children}) => {
@@ -14,7 +16,9 @@ const ContextWrap = ({children}) => {
                     <ForumProvider>
                         <StoreProvider>
                             <UsersProvider>
+                                <UserProvider>
                                 {children}
+                                </UserProvider>
                             </UsersProvider>
                         </StoreProvider>
                     </ForumProvider>
