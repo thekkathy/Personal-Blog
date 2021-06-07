@@ -1,9 +1,12 @@
 import Navigation from './components/Navigation';
+import ContextWrap from './components/ContextWrap';
 
 function App() {
   return (
     <div>
-      <Navigation />
+      <ContextWrap>
+        <Navigation />
+      </ContextWrap>
     </div>
   );
 }
