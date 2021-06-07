@@ -6,6 +6,10 @@ import {
     Link,
     Redirect
 } from "react-router-dom";
+import SignIn from "./auth/SignIn";
+import SignUp from "./auth/SignUp";
+import ProfilePage from "./auth/ProfilePage";
+import PasswordReset from "./auth/PasswordReset.js";
 
 const Navigation = () => {
 
@@ -55,11 +59,6 @@ const Navigation = () => {
                 </nav>
                 {/* ROUTING */}
                 <Switch>
-                    <Route path="/">
-                        {
-                            //Change to component, student page
-                        }
-                    </Route>
                     <Route path="/about">
                         {
                             //Change to component, student page
@@ -71,6 +70,31 @@ const Navigation = () => {
                         }
                     </Route>
                     <Route path="/shop">
+                        {
+                            //Change to component, student page
+                        }
+                    </Route>
+                    <Route path="/SignUp">
+                        {
+                            SignUp
+                        }
+                    </Route>
+                    <Route path="/SignIn">
+                        {
+                            SignIn
+                        }
+                    </Route>
+                    <Route path="/PasswordReset">
+                        {
+                            PasswordReset
+                        }
+                    </Route>
+                    <Route path="/ProfilePage">
+                        {
+                            ProfilePage
+                        }
+                    </Route>
+                    <Route path="/">
                         {
                             //Change to component, student page
                         }
