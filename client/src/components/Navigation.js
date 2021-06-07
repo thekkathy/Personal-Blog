@@ -3,9 +3,15 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    Redirect
+    Link
 } from "react-router-dom";
+
+import Home from './Home';
+import About from './About';
+import Blog from './Blog';
+import Shop from './Shop';
+import UserPage from './UserPage';
+
 
 const Navigation = () => {
 
@@ -53,27 +59,18 @@ const Navigation = () => {
                         </ul>
                     </div>
                 </nav>
+
                 {/* ROUTING */}
                 <Switch>
-                    <Route path="/">
-                        {
-                            //Change to component, student page
-                        }
+                    <Route path="/" exact component={Home}>
                     </Route>
-                    <Route path="/about">
-                        {
-                            //Change to component, student page
-                        }
+                    <Route path="/about" exact component={About}>
                     </Route>
-                    <Route path="/blog">
-                        {
-                            //Change to component, student page
-                        }
+                    <Route path="/blog" exact component={Blog}>
                     </Route>
-                    <Route path="/shop">
-                        {
-                            //Change to component, student page
-                        }
+                    <Route path="/shop" exact component={Shop}>
+                    </Route>
+                    <Route path="/user/:id" exact component={UserPage}>
                     </Route>
                 </Switch>
             </Router>
