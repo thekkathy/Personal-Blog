@@ -23,6 +23,9 @@ yarn-debug.log*
 yarn-error.log*
 
 
+
 /server/node_modules
 /server/serviceAccountKey.json
 /client/src/firebase.js
+
+
