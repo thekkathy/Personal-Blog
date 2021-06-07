@@ -1,3 +1,7 @@
-:root{
-    /*put the colors that we're gonna use for the site here*/
+:root {
+    --dark-teal: #094B5C;
+    --navy: #002A79;
+    --teal: #74BAC4;
+    --olive: #679771;
+    --wash: #F4F4F3;
 }
