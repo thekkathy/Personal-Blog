@@ -5,3 +5,17 @@
     --olive: #679771;
     --wash: #F4F4F3;
 }
+
+body{
+    background: var(--wash);
+    color: var(--dark-teal);
+}
+
+.navbar-dark{
+    background: var(--teal) !important;
+    color: white !important;
+}
+
+.nav-link{
+    color: white !important;
+}
