@@ -5,6 +5,10 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import SignIn from "./auth/SignIn";
+import SignUp from "./auth/SignUp";
+import ProfilePage from "./auth/ProfilePage";
+import PasswordReset from "./auth/PasswordReset.js";
 
 import Home from './Home/Home'
 import About from './About';
@@ -62,7 +66,26 @@ const Navigation = () => {
 
                 {/* ROUTING */}
                 <Switch>
-                    <Route path="/" exact component={Home}>
+                    </Route>
+                    <Route path="/SignUp">
+                        {
+                            SignUp
+                        }
+                    </Route>
+                    <Route path="/SignIn">
+                        {
+                            SignIn
+                        }
+                    </Route>
+                    <Route path="/PasswordReset">
+                        {
+                            PasswordReset
+                        }
+                    </Route>
+                    <Route path="/ProfilePage">
+                        {
+                            ProfilePage
+                        }
                     </Route>
                     <Route path="/about" exact component={About}>
                     </Route>
@@ -71,6 +94,9 @@ const Navigation = () => {
                     <Route path="/shop" exact component={Shop}>
                     </Route>
                     <Route path="/user/:id" exact component={UserPage}>
+
+                    </Route>
+                     <Route path="/" exact component={Home}>
                     </Route>
                 </Switch>
             </Router>
