@@ -20,4 +20,13 @@ app.get("/blog_posts/get", async (req, res) => {
   res.json(blogPosts);
 });
 
+app.get("/blog_posts/retrieve", async (req, res) => {
+  const blogPosts = [];
+  const doc = await db.collection("blog_posts").doc(req.query.doc_id).get();
+  console.log({...doc.data()})
+  if({...doc.data()}==={})
+    res.sendStatus(200)
+  res.send({...doc.data()});
+});
+
 module.exports = app;
