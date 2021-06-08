@@ -5,7 +5,7 @@ import {useContext } from "react";
 import {
     Link
 } from "react-router-dom";
-import UserPage from './UserPage'
+import UserPage from '../UserPage/UserPage'
 
 export default function PasswordReset(){
 

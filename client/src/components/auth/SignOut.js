@@ -2,6 +2,7 @@ import {useState,useEffect,useContext } from "react";
 import { Button } from 'react-bootstrap';
 import { signInWithGoogle,auth } from "../../firebase";
 import {UsersContext} from '../../context/usersContext'
+import {Link} from "react-router-dom";
 
 export default function SignOut(){
 
@@ -22,15 +23,6 @@ export default function SignOut(){
   }
 
   return (
-    <div>
-        <Button
-          variant="danger"
-          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
-          onClick={() => {
-            handleSignOut();
-          }}>
-          Sign Out
-        </Button>
-    </div>
+        <button type="button" class="btn btn-danger" onClick={() => {handleSignOut()}}>Sign Out</button>
   );
 };
