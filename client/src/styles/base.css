@@ -23,3 +23,11 @@ body{
 .outer-card{
     background: var(--teal) !important;
 }
+
+.white-text{
+    color: white;
+}
+
+.small-text{
+    font-size: 0.5rem;
+}
