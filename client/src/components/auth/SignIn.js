@@ -1,9 +1,22 @@
-import React, {useState} from "react";
+import React, {useState,useEffect,useContext } from "react";
 import { Button } from 'react-bootstrap';
-import { signInWithGoogle } from "../../firebase";
+import { signInWithGoogle,auth } from "../../firebase";
+import usersContext from '../../context/usersContext'
 
-const SignIn = () => {
+export default function SignIn(){
 
+  // const { users, setUsers } = usersContext(usersContext)
+
+  // useEffect(()=>{
+  //   auth.onAuthStateChanged(userAuth => {
+  //     setUser({ user: userAuth});
+  //    });
+  // },[user])
+
+  function handleSignIn(){
+    //var userData = signInWithGoogle();
+   signInWithGoogle();
+  }
 
   return (
     <div className="mt-8">
@@ -12,11 +25,10 @@ const SignIn = () => {
           variant="danger"
           className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
           onClick={() => {
-            signInWithGoogle();
+            handleSignIn();
           }}>
           Sign in or Sign Up with Google
         </Button>
     </div>
   );
 };
-export default SignIn;
