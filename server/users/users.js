@@ -3,7 +3,6 @@ const cors = require("cors");
 const axios = require("axios");
 const db = require("./../firebase").firestore();
 const firestore = require("./../firebase").firestore;
-const firebaseConfig = require('../firebaseConfig')
 const PORT = 8000;
 
 const app = express();
@@ -19,7 +18,6 @@ app.get("/users/get", async (req, res) => {
   });
   res.json(users);
 });
-
 //If there is a user with matching id get their info, if there isn't one create one
 app.get("/users/signin", async (req, res) => {
   const data = {
