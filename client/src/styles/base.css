@@ -33,6 +33,10 @@ h1, h2, h3, h4, h5, h6{
     color: white;
 }
 
+.dark-teal-text{
+    color: var(--dark-teal);
+}
+
 .small-text{
     font-size: 0.5rem;
 }
@@ -48,12 +52,20 @@ a.link-light:hover{
     color: var(--dark-teal);
 }
 
-i.icon-light{
+.icon-light{
     color: white;
 }
 
-i.icon-light:hover{
+.icon-light:hover{
     color: var(--dark-teal);
+}
+
+.icon-dark{
+    color: var(--dark-teal);
+}
+
+.icon-dark:hover{
+    color: var(--teal);
 }
 
 a.thumbnail-img:hover{
