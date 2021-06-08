@@ -1,34 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 import { UsersContext } from '../../context/usersContext';
 import '../../styles/base.css';
 import '../../styles/comments.css';
+import addComment from '../../utils/addComment';
+import Comments from './Comments';
 
 const CommentMaker = ({post_id, isBlog}) => {
     
-    const { user } = useContext(UsersContext);
+    const { users } = useContext(UsersContext);
     const [temp, setTemp] = useState("");
+    const [changed, setChanged] = useState(true);
 
-    const addComment = () => {
-        let url = "";
-        if(isBlog){
-            url = "http://localhost:8000/comments/blog/add";
-        }
-        else{
-            url = "http://localhost:8000/comments/forum/add";
-        }
-        const c = {
-            num_likes: 0,
-            text: temp,
-            author: user.uid,
-            post_id: post_id,
-        }
-        axios.post(url, c).then(res => console.log(res));
-    }
-    
     return (
         <div>
-            { user && (
+            { users && (
                 <div>
                     <div class="container">
                     <h1 style={{color: '#094B5C', marginBottom: 20}}>Comments</h1>
@@ -43,12 +28,20 @@ const CommentMaker = ({post_id, isBlog}) => {
                                     }  
                                 }/>
                                     <div class="input-group-prepend">
-                                    <input type="submit" value="Post Comment" class="btn btn-primary btn-sm rounded-0" id="inputGroupPrepend2" onClick={addComment}/>
+                                    <input type="submit" value="Post Comment" class="btn btn-primary btn-sm rounded-0" id="inputGroupPrepend2" 
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            if(temp !== ''){
+                                            addComment(isBlog, temp, users.uid, post_id);
+                                            setChanged(!changed);
+                                            }
+                                        }}/>
                                     </div>
                                 </div>
                             </div>
                         </form>
                         </div>
+                        <Comments isBlog={isBlog} post_id={post_id} changed={changed}/>
                     </div>
                 </div>
             )}

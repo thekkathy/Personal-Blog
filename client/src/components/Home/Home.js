@@ -2,6 +2,7 @@ import React from 'react';
 import NavigateButton from '../NavigateButton';
 
 const Home = () => {
+    
     return (
         <div>
             Home
