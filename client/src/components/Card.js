@@ -7,28 +7,33 @@ import '../styles/base.css';
 //sideColClassName = for any extra bootstrap or css classes you want to add to the side column formatting (e.g. margins, padding positioning)
 
 //noOuterCard = boolean, if true there is no outer blue card
+//noInnerCard = boolean, if true there is no ineer white card
 //sideCol = boolean, if true there is a side column
 
 //cardBottom = the content to put in the bottom of the card
 //cardContent = the content to put in the middle of the card
 //cardSide = the content to put in the side col
 
-//noSetWidth = boolean, if true then the card's width is not automatically set to 18rem
-const Card = ({ 
-    outerCardClassName, 
+//noSetWidthHeight = boolean, if true then the card's width is not automatically set to 18rem
+const Card = ({
+    outerCardClassName,
     innerCardClassName,
-    bottomRowClassName, 
-    sideColClassName, 
-    noOuterCard, 
-    sideCol, 
-    cardBottom, 
-    cardSide, 
+    bottomRowClassName,
+    sideColClassName,
+    noOuterCard,
+    noInnerCard,
+    sideCol,
+    cardBottom,
+    cardSide,
     cardContent,
-    noSetWidth }) => {
-    
+    noSetWidthHeight }) => {
+
     return (
         <div>
-            <div className={`${noOuterCard ? null : "card outer-card"} p-4 ${outerCardClassName && outerCardClassName}`} style={noSetWidth ? { width: "auto" } : { width: "18rem" }}>
+            <div
+                className={`${noOuterCard ? null : "card outer-card"} p-4 ${outerCardClassName && outerCardClassName}`}
+                style={noSetWidthHeight ? { width: "auto" } : { width: "18rem", height:"26rem" }}
+            >
                 <div className="row">
                     {sideCol ?
                         <Fragment>
@@ -42,16 +47,16 @@ const Card = ({
                                 </div>*/}
                                 {cardSide && cardSide}
                             </div>
-                            <div className={`col card p-4 ${innerCardClassName && innerCardClassName}`}>
+                            <div className={`col ${noInnerCard ? "" : "card p-4"} ${innerCardClassName && innerCardClassName}`}>
                                 {/* The actual post/image that's on the card; below is an example of how to style it */}
                                 {/*<div className="card p-4 w-100">
                                     Example Post
                     </div>*/}
-                                {cardContent}
+                                {cardContent && cardContent}
                             </div>
                         </Fragment>
                         :
-                        <div className={`card p-4 w-100 ${innerCardClassName && innerCardClassName}`}>
+                        <div className={`${noInnerCard ? "" : "card p-4"} w-100 ${innerCardClassName && innerCardClassName}`}>
                             {/* The actual post/image that's on the card; below is an example of how to style it */}
                             {/*<div className="card p-4 w-100">
                                     Example Post
@@ -60,7 +65,7 @@ const Card = ({
                         </div>
                     }
                 </div>
-                <div className={`row ${bottomRowClassName && bottomRowClassName}`}>
+                <div className={`row my-auto ${bottomRowClassName && bottomRowClassName}`}>
                     {/* The icons or text at the bottom blue border; below is an example of how to style it */}
                     {/*<div className="container d-flex justify-content-end">
                         <i class="far fa-heart mt-4 mx-2"></i>

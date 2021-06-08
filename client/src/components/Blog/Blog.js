@@ -26,9 +26,9 @@ const Blog = () => {
   }, []);
 
   return (
-    <div class="container">
-      <h1>{"The Blog"}</h1>
-      <div class="row">
+    <div class="container-fluid p-4">
+      <h1>The Blog</h1>
+      <div class="row mt-4">
         {blogPosts.map((post) => {
           return (
             <div class="col">

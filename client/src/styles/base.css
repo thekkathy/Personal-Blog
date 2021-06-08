@@ -36,3 +36,27 @@ h1, h2, h3, h4, h5, h6{
 .small-text{
     font-size: 0.5rem;
 }
+
+.btn-icon{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+a.link-light:hover{
+    text-decoration: none;
+    color: var(--dark-teal);
+}
+
+i.icon-light{
+    color: white;
+}
+
+i.icon-light:hover{
+    color: var(--dark-teal);
+}
+
+a.thumbnail-img:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}

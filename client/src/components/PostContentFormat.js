@@ -74,7 +74,7 @@ const PostContentFormat = ({ numLikes, numComments, text, imageLink, outerBlueWr
                 outerCardClassName="pr-4"
                 innerCardClassName="mr-4"
                 cardContent={cardContent}
-                noSetWidth={true}
+                noSetWidthHeight={true}
             />
         </div>
     )
