@@ -11,10 +11,12 @@ import ProfilePage from "./auth/ProfilePage";
 import Home from './Home/Home'
 import About from './About';
 import Blog from './Blog/Blog'
+import BlogPost from './Blog/BlogPost';
 import Shop from './Shop/Shop'
 import UserPage from './UserPage/UserPage';
 
 import Card from './Card';
+import Post from './Post';
 
 
 const Navigation = () => {
@@ -80,6 +82,8 @@ const Navigation = () => {
                     </Route>
                     <Route path="/blog" exact component={Blog}>
                     </Route>
+                    <Route path="/blog/:id" exact component={BlogPost}>
+                    </Route>
                     <Route path="/shop" exact component={Shop}>
                     </Route>
                     <Route path="/user/:id" exact component={UserPage}>
@@ -87,6 +91,8 @@ const Navigation = () => {
                     <Route path="/" exact component={Home}>
                     </Route>
                     <Route path="/card" exact component={Card}>
+                    </Route>
+                    <Route path="/post" exact component={Post}>
                     </Route>
                 </Switch>
             </Router>
