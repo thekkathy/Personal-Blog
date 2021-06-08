@@ -1,9 +1,16 @@
-import React, {useState} from "react";
+import React, {useState,useEffect,useContext } from "react";
 import { Button } from 'react-bootstrap';
-import { signInWithGoogle } from "../../firebase";
+import { signInWithGoogle,auth } from "../../firebase";
 
 const SignIn = () => {
 
+  // const {user,setUser} = useContext(UserProvider);
+
+  // useEffect(()=>{
+  //   auth.onAuthStateChanged(userAuth => {
+  //     setUser({ user: userAuth});
+  //    });
+  // },[user])
 
   return (
     <div className="mt-8">
