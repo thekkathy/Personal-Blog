@@ -48,19 +48,19 @@ const Card = ({
                         :
                         <div className="card p-4 w-100">
                             {/* The actual post/image that's on the card; below is an example of how to style it */}
-                            <div className="card p-4 w-100">
+                            {/*<div className="card p-4 w-100">
                                     Example Post
-                    </div>
+                </div>*/}
                             {cardContent}
                         </div>
                     }
                 </div>
                 <div className={`row ${bottomRowClassName && bottomRowClassName}`}>
                     {/* The icons or text at the bottom blue border; below is an example of how to style it */}
-                    <div className="container d-flex justify-content-end">
+                    {/*<div className="container d-flex justify-content-end">
                         <i class="far fa-heart mt-4 mx-2"></i>
                         <i class="far fa-comment mt-4 mx-2"></i>
-                </div>
+                </div>*/}
                     {cardBottom && cardBottom}
                 </div>
             </div>
