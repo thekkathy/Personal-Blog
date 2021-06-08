@@ -11,6 +11,8 @@ import '../styles/base.css';
 //cardBottom = the content to put in the bottom of the card
 //cardContent = the content to put in the middle of the card
 //cardSide = the content to put in the side col
+
+//noSetWidth = boolean, if true then the card's width is not automatically set to 18rem
 const Card = ({ 
     outerCardClassName, 
     bottomRowClassName, 
@@ -19,25 +21,26 @@ const Card = ({
     sideCol, 
     cardBottom, 
     cardSide, 
-    cardContent }) => {
+    cardContent,
+    noSetWidth }) => {
     
     return (
         <div>
-            <div className={`${noOuterCard ? null : "card outer-card"} p-4 ${outerCardClassName && outerCardClassName}`} style={{ width: "18rem" }}>
+            <div className={`${noOuterCard ? null : "card outer-card"} p-4 ${outerCardClassName && outerCardClassName}`} style={noSetWidth ? { width: "auto" } : { width: "18rem" }}>
                 <div className="row">
                     {sideCol ?
                         <Fragment>
-                            <div className={`col-1 mr-4 ${sideColClassName && sideColClassName}`}>
+                            <div className={`col-1 mr-4 pl-1 ${sideColClassName && sideColClassName}`}>
                                 {/* The heart and likes on the side of the forum card; below is an example of how to style it */}
                                 {/*<div className="row mx-auto">
                                     128
                                 </div>
                                 <div className="row mx-auto">
                                     <i class="far fa-heart m-2"></i>
-                    </div>*/}
+                                </div>*/}
                                 {cardSide && cardSide}
                             </div>
-                            <div className="col">
+                            <div className="col card p-4">
                                 {/* The actual post/image that's on the card; below is an example of how to style it */}
                                 {/*<div className="card p-4 w-100">
                                     Example Post

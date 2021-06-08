@@ -9,7 +9,7 @@ import PostContentFormat from './PostContentFormat';
 const Post = ({ heading, text }) => {
     return (
         <div>
-            <div className="container-fluid m-4">
+            <div className="container-fluid p-4">
                 <div className="row">
                     <div className="container-fluid">
                         <h1>Title</h1>
