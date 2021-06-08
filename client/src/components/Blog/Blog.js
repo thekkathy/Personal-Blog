@@ -1,19 +1,28 @@
-import React, {useContext} from 'react'
-import BlogCard from './BlogCard';
-import {BlogPostsContext} from "./../../context/blogPostsContext"
-
+import React, { useContext, useEffect } from "react";
+import BlogCard from "./BlogCard";
+import { BlogPostsContext } from "./../../context/blogPostsContext";
+import "../../styles/base.css";
 
 const Blog = () => {
-    const {blogPosts} = useContext(BlogPostsContext);
 
-    return (
-        <div>
-            <h1>{JSON.stringify(blogPosts)}</h1>
-            <img src={blogPosts.pic_url} alt='Nothing Found' style={{width:'300px', height:"200px"}}></img>
-            Blog
-            contains a bunch of blog cards
-        </div>
-    )
-}
+  const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
 
-export default Blog
+   //This function gets the blog posts from the database and updates state
+  const getBlogPosts = async () => {
+    console.log("fetching blog posts ");
+    const url = new URL("http://localhost:8000/blog_posts/get");
+    let res = await fetch(url).then((resp) => resp.json());
+    setBlogPosts(res);
+  };
+
+  useEffect(() => {getBlogPosts()}, []);
+
+  return (
+    <div>
+      <h1>{JSON.stringify(blogPosts)}</h1>
+      <BlogCard />
+    </div>
+  );
+};
+
+export default Blog;
