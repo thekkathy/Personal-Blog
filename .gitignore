@@ -26,6 +26,6 @@ yarn-error.log*
 
 /server/node_modules
 /server/serviceAccountKey.json
-/client/src/firebase.js
+/server/firebaseConfig.json
 client/node_modules/.cache/.eslintcache
 
