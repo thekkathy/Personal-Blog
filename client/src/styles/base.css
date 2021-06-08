@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, h6{
     font-weight: 200;
 }
 
+/*NAVBAR*/
 .navbar-dark{
     background: var(--teal) !important;
     color: white !important;
@@ -25,14 +26,73 @@ h1, h2, h3, h4, h5, h6{
     color: white !important;
 }
 
+/*CARDS*/
 .outer-card{
     background: var(--teal) !important;
 }
 
+/*TEXT*/
 .white-text{
     color: white;
 }
 
+.dark-teal-text{
+    color: var(--dark-teal);
+}
+
 .small-text{
     font-size: 0.5rem;
+}
+
+/*BUTTON AND HOVER*/
+.btn-light{
+    background: var(--teal);
+    color: white;
+}
+
+.btn-light:hover{
+    background: var(--dark-teal);
+    color: white;
+}
+
+.btn-dark{
+    background: var(--dark-teal);
+    color: white;
+}
+
+.btn-dark:hover{
+    background: var(--teal);
+    color: white;
+}
+
+.btn-icon{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+a.link-light:hover{
+    text-decoration: none;
+    color: var(--dark-teal);
+}
+
+.icon-light{
+    color: white;
+}
+
+.icon-light:hover{
+    color: var(--dark-teal);
+}
+
+.icon-dark{
+    color: var(--dark-teal);
+}
+
+.icon-dark:hover{
+    color: var(--teal);
+}
+
+a.thumbnail-img:hover{
+    cursor: pointer;
+    opacity: 0.6;
 }

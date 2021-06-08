@@ -21,6 +21,7 @@ const Post = ({ post, author, postType }) => {
                     <PostContentFormat 
                     numLikes={post.num_likes}
                     numComments={post.num_comments}
+                    imageLink={post.pic_url}
                     text={post.text}
                     outerBlueWrap={postType === 'blog' ? false : true} 
                     />

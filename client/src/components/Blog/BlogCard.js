@@ -12,48 +12,84 @@ const BlogCard = ({ post, auth }) => {
   const handleClick = () => {
     history.push(`/blog/${post.doc_id}`);
   };
-  return (
-    <Card
-      cardContent={
-        <button
-          style={{
-            background: "none",
-            color: "inherit",
-            border: "none",
-            padding: "0",
-            font: "inherit",
-            cursor: "pointer",
-            outline: "inherit",
-          }}
-          onClick={handleClick}
-        >
-          <img src={post.pic_url} alt="nothing found" style={{height:'100%', width:'100%'}} />
-        </button>
+
+  
+  //this function handles edit of a blog post, redirecting to an edit page
+  const handleEdit = () => {
+      history.push(`/blog/edit/${post.doc_id}`)
+  }
+
+  //this function deletes a blog post by using the doc_id
+  const handleDelete = async ()  => {
+    fetch("http://localhost:8000/blog_posts/delete", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({doc_id: post.doc_id}),
+      }).then((resp) => {
+        resp.json();
+        //TODO: need to rerender here
+      });
+    }
+
+
+
+  const cardContent = (
+    <div>
+      {post.pic_url &&
+        <a onClick={() => { handleClick() }} className="thumbnail-img">
+          <img src={post.pic_url} alt="nothing found" className="w-100 h-100" />
+        </a>
       }
-      cardBottom={
-        <div>
-          <b>{post.title}</b>
-          <div
-            className="container d-flex justify-content-end"
-            style={{ float: "right" }}
-          >
-            <i class="far fa-heart mt-4 mx-2"> {post.num_likes}</i>
-            <i class="far fa-comment mt-4 mx-2"> {post.num_comments}</i>
-          </div>
-          <div>
+    </div>
+  );
+
+  const cardBottom = (
+    <div>
+      <div className="container-fluid white-text">
+        <div className="row mx-auto d-flex justify-content-center my-4">
+          <h2 className="h4 font-weight-light text-center">
+            <a href={`/blog/${post.doc_id}`} className="white-text link-light">{post.title}</a>
+          </h2>
+        </div>
+      </div>
+      <div className="row d-flex">
+        <div className="container-fluid d-flex">
+          <div className="mr-auto">
             <button
-              class="btn btn-outline-dark"
+              class="btn-icon"
               onClick={() => {
                 console.log("edit was pressed");
                 history.push("/home");
               }}
             >
-              Edit
+              <i class="fas fa-edit white-text icon-light"></i>
             </button>
-            <button class="btn btn-outline-danger">Delete</button>
+            <button class="btn-icon">
+              <i class="fas fa-trash-alt white-text icon-light"></i>
+            </button>
+          </div>
+          <div className="white-text">
+            <span className="mr-3 ">
+              <i class="far fa-heart"></i> {post.num_likes}
+            </span>
+            <span>
+              <i class="far fa-comment"></i> {post.num_comments}
+            </span>
           </div>
         </div>
-      }
+      </div>
+    </div>
+  );
+
+  return (
+    <Card
+      cardContent={cardContent}
+      cardBottom={cardBottom}
+      outerCardClassName="my-4 mx-1"
+      bottomRowClassName="mx-auto"
+      noInnerCard={!post.pic_url && true}
     ></Card>
   );
 
