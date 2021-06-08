@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import '../styles/base.css';
-import '../styles/card.css';
 
 //sideCol = boolean, if true there is a side solumn
 //cardSide = the content to put in the side col
