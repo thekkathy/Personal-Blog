@@ -6,7 +6,7 @@ import "../../styles/base.css";
 import {UsersContext} from '../../context/usersContext'
 
 const Blog = () => {
-  
+
   const { users, setUsers } = useContext(UsersContext);
   useEffect(()=>{console.log(users)},[users])
 
@@ -17,6 +17,7 @@ const Blog = () => {
     console.log("fetching blog posts ");
     const url = new URL("http://localhost:8000/blog_posts/get");
     let res = await fetch(url).then((resp) => resp.json());
+    console.log(res);
     setBlogPosts(res);
   };
 

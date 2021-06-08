@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Access from "./auth/Access";
 import ProfilePage from "./auth/ProfilePage";
+import UserLikes from './UserPage/UserLikes'
 
 import Home from './Home/Home'
 import About from './About';
@@ -78,6 +79,8 @@ const Navigation = () => {
                     <Route path="/Access" exact component={Access}>
                     </Route>
                     <Route path="/ProfilePage" exact component={ProfilePage}>
+                    </Route>
+                    <Route path="/user-likes" exact component={UserLikes}>
                     </Route>
                     <Route path="/about" exact component={About}>
                     </Route>

@@ -24,7 +24,7 @@ export default function SignIn(){
       <div class="d-flex justify-content-center">
           <Button
             variant="danger"
-            class="bg-red-500 hover:bg-red-600 w-full py-2 text-white mx-auto my-auto"
+            className="bg-red-500 hover:bg-red-600 w-full py-2 text-white mx-auto my-auto"
             onClick={() => {
               handleSignIn();
             }}>
