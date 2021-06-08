@@ -13,6 +13,27 @@ const BlogCard = ({ post, auth }) => {
     history.push(`/blog/${post.doc_id}`);
   };
 
+  
+  //this function handles edit of a blog post, redirecting to an edit page
+  const handleEdit = () => {
+      history.push(`/blog/edit/${post.doc_id}`)
+  }
+
+  //this function deletes a blog post by using the doc_id
+  const handleDelete = async ()  => {
+    fetch("http://localhost:8000/blog_posts/delete", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({doc_id: post.doc_id}),
+      }).then((resp) => {
+        resp.json();
+        //TODO: need to rerender here
+      });
+    }
+
+
 
   const cardContent = (
     <div>
