@@ -19,3 +19,7 @@ body{
 .nav-link{
     color: white !important;
 }
+
+.outer-card{
+    background: var(--teal) !important;
+}
