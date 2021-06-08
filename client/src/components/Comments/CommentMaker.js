@@ -21,7 +21,7 @@ const CommentMaker = ({post_id, isBlog}) => {
             num_likes: 0,
             text: temp,
             author: user.uid,
-            post_id: post.id,
+            post_id: post_id,
         }
         axios.post(url, c).then(res => console.log(res));
     }
