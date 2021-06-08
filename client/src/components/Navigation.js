@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Access from "./auth/Access";
 import ProfilePage from "./auth/ProfilePage";
+import UserLikes from "./UserPage/UserLikes";
 
 import Home from "./Home/Home";
 import About from "./About";
