@@ -13,11 +13,32 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/comments/blog", async (req, res) => {
-    
+    const id = req.query.id;
+    const ref = db.collection('blog_posts').doc(id).collection('comments');
+    const snapshot = await ref.get();
+    const comments = [];
+    snapshot.forEach(doc => {
+        comments.push(
+            {author: doc._fieldsProto.author?.stringValue, 
+            text: doc._fieldsProto.text?.stringValue,
+            num_likes: doc._fieldsProto?.num_likes.integerValue,
+            doc_id: doc.id,});
+    })
+    res.send(comments);
 })
 
 app.get("/comments/forum", async (req, res) => {
-    
+    const id = req.query.id;
+    const snapshot = await db.collection('forum_posts').doc(id).collection('comments').get();
+    const comments = [];
+    snapshot.forEach(doc => {
+        comments.push(
+            {author: doc._fieldsProto.author?.stringValue, 
+            text: doc._fieldsProto.text?.stringValue,
+            num_likes: doc._fieldsProto?.num_likes.integerValue,
+            doc_id: doc.id,});
+    })
+    res.send(comments);
 })
 
 app.post("/comments/blog/add", async (req, res) => {
