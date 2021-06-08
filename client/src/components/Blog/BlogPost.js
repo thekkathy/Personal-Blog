@@ -1,25 +1,27 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Post from '../Post';
-
-import { BlogPostsContext } from "../../context/blogPostsContext";
 
 import getBlogPosts from "../../utils/getBlogPosts";
 
 const BlogPost = ({ match: { params: { id } } }) => {
-    const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
+    const [post, setPost] = useState({});
 
+    //get all blog posts
     useEffect(() => {
-        const blogs = getBlogPosts()
+        getBlogPosts()
             .then((posts) => {
-                setBlogPosts(posts);
+                posts.forEach(element => {
+                    if(element.doc_id === id){
+                        setPost(element);
+                        console.log(element);
+                    }
+                });
             });
     }, []);
 
     return (
         <div>
-            {console.log("blog posts", blogPosts)}
-            {id}
-            BlogPost - Uses the design from post
+            <Post post={post} author="Camille Cooper" postType="blog" />
         </div>
     )
 }
