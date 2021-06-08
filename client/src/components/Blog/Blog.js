@@ -3,8 +3,12 @@ import BlogCard from "./BlogCard";
 import NewPostCard from "./NewPostCard";
 import { BlogPostsContext } from "./../../context/blogPostsContext";
 import "../../styles/base.css";
+import {UsersContext} from '../../context/usersContext'
 
 const Blog = () => {
+  
+  const { users, setUsers } = useContext(UsersContext);
+  useEffect(()=>{console.log(users)},[users])
 
   const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
     let isAuth = true;
