@@ -20,7 +20,7 @@ const Blog = () => {
   return (
     <div>
       <h1>{JSON.stringify(blogPosts)}</h1>
-      <BlogCard />
+      {blogPosts.map((post) => {return <BlogCard post={post}/>})};
     </div>
   );
 };
