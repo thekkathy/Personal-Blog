@@ -1,12 +1,29 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import '../styles/base.css';
 
-//sideCol = boolean, if true there is a side solumn
+//outerCardClassName = for any extra bootstrap or css classes you want to add to the outer blue card
+//bottomRowClassName = for any extra bootstrap or css classes you want to add to the bottom row formatting (e.g. margins, padding positioning)
+//sideColClassName = for any extra bootstrap or css classes you want to add to the side column formatting (e.g. margins, padding positioning)
+
+//noOuterCard = boolean, if true there is no outer blue card
+//sideCol = boolean, if true there is a side column
+
+//cardBottom = the content to put in the bottom of the card
+//cardContent = the content to put in the middle of the card
 //cardSide = the content to put in the side col
-const Card = ({ outerCardClassName, bottomRowClassName, sideColClassName, sideCol, cardBottom, cardSide, cardContent }) => {
+const Card = ({ 
+    outerCardClassName, 
+    bottomRowClassName, 
+    sideColClassName, 
+    noOuterCard, 
+    sideCol, 
+    cardBottom, 
+    cardSide, 
+    cardContent }) => {
+    
     return (
         <div>
-            <div className={`card outer-card p-4 ${outerCardClassName && outerCardClassName}`} style={{ width: "18rem" }}>
+            <div className={`${noOuterCard ? null : "card outer-card"} p-4 ${outerCardClassName && outerCardClassName}`} style={{ width: "18rem" }}>
                 <div className="row">
                     {sideCol ?
                         <Fragment>
@@ -31,19 +48,19 @@ const Card = ({ outerCardClassName, bottomRowClassName, sideColClassName, sideCo
                         :
                         <div className="card p-4 w-100">
                             {/* The actual post/image that's on the card; below is an example of how to style it */}
-                            {/*<div className="card p-4 w-100">
+                            <div className="card p-4 w-100">
                                     Example Post
-                    </div>*/}
+                    </div>
                             {cardContent}
                         </div>
                     }
                 </div>
                 <div className={`row ${bottomRowClassName && bottomRowClassName}`}>
                     {/* The icons or text at the bottom blue border; below is an example of how to style it */}
-                    {/*<div className="container d-flex justify-content-end">
+                    <div className="container d-flex justify-content-end">
                         <i class="far fa-heart mt-4 mx-2"></i>
                         <i class="far fa-comment mt-4 mx-2"></i>
-                </div>*/}
+                </div>
                     {cardBottom && cardBottom}
                 </div>
             </div>
