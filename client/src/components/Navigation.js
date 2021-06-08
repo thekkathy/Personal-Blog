@@ -73,7 +73,7 @@ const Navigation = () => {
         <Switch>
           <Route path="/Access" exact component={Access}></Route>
           <Route path="/ProfilePage" exact component={ProfilePage}></Route>
-          <Route path="/user-likes" exact component={UserLikes}>
+          <Route path="/user-likes" exact component={UserLikes}></Route>
           <Route path="/about" exact component={About}></Route>
           <Route path="/blog" exact component={Blog}></Route>
           <Route path="/blog/:id" exact component={BlogPost}></Route>
