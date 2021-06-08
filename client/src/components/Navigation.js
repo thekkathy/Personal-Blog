@@ -5,17 +5,23 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import SignIn from "./auth/SignIn";
+import Access from "./auth/Access";
 import ProfilePage from "./auth/ProfilePage";
 
 import Home from './Home/Home'
 import About from './About';
 import Blog from './Blog/Blog'
+import BlogPost from './Blog/BlogPost';
 import Shop from './Shop/Shop'
-import UserPage from './UserPage/UserPage';
 
+import Card from './Card';
+import Post from './Post';
+
+import {UsersContext} from '../context/usersContext'
+import {useContext } from "react";
 
 const Navigation = () => {
+    const { users, setUsers } = useContext(UsersContext);
 
     return (
         <div>
@@ -23,7 +29,7 @@ const Navigation = () => {
                 {/* NAVBAR */}
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <Link className="navbar-brand" to="/">
-                        WEBSITE
+                        Camille's Corner
                     </Link>
                     <button
                         className="navbar-toggler"
@@ -58,32 +64,34 @@ const Navigation = () => {
                                     Shop
                                 </Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/Access">
+                                    {users === null ? 'Sign In' : 'Profile'} 
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </nav>
 
                 {/* ROUTING */}
                 <Switch>
-                    <Route path="/SignIn">
-                        {
-                            SignIn
-                        }
+                    <Route path="/Access" exact component={Access}>
                     </Route>
-                    <Route path="/ProfilePage">
-                        {
-                            ProfilePage
-                        }
+                    <Route path="/ProfilePage" exact component={ProfilePage}>
                     </Route>
                     <Route path="/about" exact component={About}>
                     </Route>
                     <Route path="/blog" exact component={Blog}>
                     </Route>
+                    <Route path="/blog/:id" exact component={BlogPost}>
+                    </Route>
                     <Route path="/shop" exact component={Shop}>
                     </Route>
-                    <Route path="/user/:id" exact component={UserPage}>
-
+                    <Route path="/" exact component={Home}>
                     </Route>
-                     <Route path="/" exact component={Home}>
+                    <Route path="/card" exact component={Card}>
+                    </Route>
+                    <Route path="/post" exact component={Post}>
                     </Route>
                 </Switch>
             </Router>

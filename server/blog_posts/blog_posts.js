@@ -20,4 +20,31 @@ app.get("/blog_posts/get", async (req, res) => {
   res.json(blogPosts);
 });
 
+app.post("/blog_posts/add", async (req, res) => {
+  const { title, text, pic_url, ...rest } = req.body;
+  const resp = await db.collection("blog_posts").add({
+    title,
+    text,
+    pic_url,
+    num_comments: 0,
+    num_likes: 0,
+  });
+  console.log("Created new blog post with ID: ", resp.id);
+  
+  //this is the code for adding a comment to a post, reuse this when getting to comments
+  
+  // const resp2 = await db
+  //   .collection("blog_posts")
+  //   .doc(resp.id)
+  //   .collection("comments")
+  //   .add({
+  //     title: "test",
+  //     text: "This is a comment",
+  //     num_likes: 0,
+  //     author: "this should be an id",
+  //   });
+  // console.log("added comment collection to new blog post");
+  res.sendStatus(200);
+});
+
 module.exports = app;

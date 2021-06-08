@@ -5,3 +5,34 @@
     --olive: #679771;
     --wash: #F4F4F3;
 }
+
+body{
+    background: var(--wash);
+    color: var(--dark-teal);
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: 200;
+}
+
+.navbar-dark{
+    background: var(--teal) !important;
+    color: white !important;
+}
+
+.nav-link{
+    color: white !important;
+}
+
+.outer-card{
+    background: var(--teal) !important;
+}
+
+.white-text{
+    color: white;
+}
+
+.small-text{
+    font-size: 0.5rem;
+}

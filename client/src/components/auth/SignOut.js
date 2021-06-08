@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { signInWithGoogle,auth } from "../../firebase";
 import {UsersContext} from '../../context/usersContext'
 
-export default function SignIn(){
+export default function SignOut(){
 
   const { users, setUsers } = useContext(UsersContext);
 
@@ -11,8 +11,14 @@ export default function SignIn(){
     console.log(users);
   },[users])
 
-  function handleSignIn(){
-    signInWithGoogle(users,setUsers);
+  function handleSignOut(){
+      auth.signOut().then(() => {
+        console.log('logout success')
+        setUsers(null).then(window.location.replace("http://localhost:3000/"));
+      }).catch((error) => {
+        console.log('error with logout')
+        setUsers(null);
+      })
   }
 
   return (
@@ -21,9 +27,9 @@ export default function SignIn(){
           variant="danger"
           className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
           onClick={() => {
-            handleSignIn();
+            handleSignOut();
           }}>
-          Sign in or Sign Up with Google
+          Sign Out
         </Button>
     </div>
   );
