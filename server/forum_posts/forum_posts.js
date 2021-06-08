@@ -20,5 +20,4 @@ app.get("/forum_posts/get", async (req, res) => {
   res.json(forumPosts);
 });
 
-
 module.exports = app;
