@@ -11,7 +11,7 @@ import '../styles/base.css';
 //numComments = the number of comments the post has
 //text = the main text that should be displayed in the post
 // outerBlueWrap = boolean, if true there will be an outer blue card wrapping the post
-const PostContentFormat = ({ numLikes, numComments, text, outerBlueWrap }) => {
+const PostContentFormat = ({ numLikes, numComments, text, imageLink, outerBlueWrap }) => {
     const cardSide = (
         <div className={`${outerBlueWrap && "white-text"}`}>
             <div className="row mx-auto">
@@ -53,6 +53,17 @@ const PostContentFormat = ({ numLikes, numComments, text, outerBlueWrap }) => {
         </div>
     );
 
+    const cardContent = (
+        <div>
+            <div className="row">
+                <img src={`${imageLink}`} className="w-75 mx-auto my-4"></img>
+            </div>
+            <div className="row p-4">
+                {text}
+            </div>
+        </div>
+    );
+
     return (
         <div className="container-fluid">
             <Card
@@ -62,7 +73,7 @@ const PostContentFormat = ({ numLikes, numComments, text, outerBlueWrap }) => {
                 noOuterCard={!outerBlueWrap}
                 outerCardClassName="pr-4"
                 innerCardClassName="mr-4"
-                cardContent={text}
+                cardContent={cardContent}
                 noSetWidth={true}
             />
         </div>
