@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Button } from 'react-bootstrap';
-import { signInWithGoogle } from "../../firebase";
+//import { signInWithGoogle } from "../../firebase";
 
 const SignIn = () => {
 
@@ -12,7 +12,7 @@ const SignIn = () => {
           variant="danger"
           className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
           onClick={() => {
-            signInWithGoogle();
+            //signInWithGoogle();
           }}>
           Sign in or Sign Up with Google
         </Button>
