@@ -7,16 +7,18 @@ import Card from './Card';
 
 import '../styles/base.css';
 
+//numLikes = the number of likes the post has
+//numComments = the number of comments the post has
 //text = the main text that should be displayed in the post
 // outerBlueWrap = boolean, if true there will be an outer blue card wrapping the post
-const PostContentFormat = ({ text, outerBlueWrap }) => {
+const PostContentFormat = ({ numLikes, numComments, text, outerBlueWrap }) => {
     const cardSide = (
         <div className={`${outerBlueWrap && "white-text"}`}>
             <div className="row mx-auto">
                 <div className="container mx-auto">
                     <div className="row">
                         <div className="mx-auto">
-                            128
+                            {numLikes}
                 </div>
                     </div>
                     <div className="row">
@@ -31,7 +33,7 @@ const PostContentFormat = ({ text, outerBlueWrap }) => {
                     </div>
                     <div className="row">
                         <div className="small-text text-center mx-auto">
-                            60 Comments
+                            {numComments} Comments
                         </div>
                     </div>
                 </div>
