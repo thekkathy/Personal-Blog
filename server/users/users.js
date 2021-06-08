@@ -33,8 +33,11 @@ app.get("/users/signin", async (req, res) => {
   const userCheck = await db.collection("users").doc(req.query.uid).get();
   if (!userCheck.exists) {
     const userInsert = await db.collection('users').doc(req.query.uid).set(data);
+    // console.log(data)
+    res.send(data)
   } else {
-    console.log('Document data:', userCheck.data());
+    // console.log(userCheck.data())
+    res.send(userCheck.data());
   }
 })
 
