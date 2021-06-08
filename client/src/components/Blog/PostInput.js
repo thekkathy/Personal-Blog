@@ -13,6 +13,8 @@ function PostInput({
   const [text, setText] = useState("");
   const [pic, setPic] = useState("");
 
+  const history = useHistory();
+
   useEffect(() => {
     if (isEdit === true) {
       getBlogPosts().then((posts) => {
@@ -43,6 +45,7 @@ function PostInput({
         }),
       }).then((resp) => {
         resp.json();
+        history.push("/blog");
       });
     } else {
       fetch("http://localhost:8000/blog_posts/add", {
@@ -57,6 +60,7 @@ function PostInput({
         }),
       }).then((resp) => {
         resp.json();
+        history.push("/blog");
       });
     }
   };

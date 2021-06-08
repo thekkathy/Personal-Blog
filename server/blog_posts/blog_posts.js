@@ -30,9 +30,9 @@ app.post("/blog_posts/add", async (req, res) => {
     num_likes: 0,
   });
   console.log("Created new blog post with ID: ", resp.id);
-  
+
   //this is the code for adding a comment to a post, reuse this when getting to comments
-  
+
   // const resp2 = await db
   //   .collection("blog_posts")
   //   .doc(resp.id)
@@ -47,9 +47,8 @@ app.post("/blog_posts/add", async (req, res) => {
   res.sendStatus(200);
 });
 
-
 app.put("/blog_posts/update", async (req, res) => {
-  const {doc_id, title, text, pic_url, ...rest } = req.body;
+  const { doc_id, title, text, pic_url, ...rest } = req.body;
 
   const resp = await db.collection("blog_posts").doc(doc_id).update({
     title,
@@ -57,6 +56,13 @@ app.put("/blog_posts/update", async (req, res) => {
     pic_url,
   });
   res.send("Got a PUT request to update post:" + resp.id);
+});
+
+app.delete("/blog_posts/delete", async (req, res) => {
+  const { doc_id, ...rest } = req.body;
+  const resp = await db.collection("blog_posts").doc(doc_id).delete();
+  console.log("From blog posts, deleted: ", doc_id);
+  res.send("Got a DELETE request");
 });
 
 module.exports = app;
