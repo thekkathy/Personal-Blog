@@ -1,0 +1,25 @@
+.commentForm {
+    border: solid 2px #094B5C;
+    position: relative;
+    width: 500px;
+    height: 50px;
+}
+.commentForm input[type=text] {
+    border: none;
+    width: 100%;
+    padding-right: 123px;
+    color: #094B5C;
+}
+.commentForm input[type=submit] {
+    border: none;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #094B5C;
+}
+.commentForm .input-group-prepend {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;z-index:9;
+}

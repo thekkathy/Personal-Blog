@@ -4,12 +4,12 @@ import NewPostCard from "./NewPostCard";
 import { BlogPostsContext } from "./../../context/blogPostsContext";
 import PostInput from "./PostInput";
 import "../../styles/base.css";
-import {UsersContext} from '../../context/usersContext'
+import { UsersContext } from '../../context/usersContext'
 
 const Blog = () => {
 
   const { users, setUsers } = useContext(UsersContext);
-  useEffect(()=>{console.log(users)},[users])
+  useEffect(() => { console.log(users) }, [users])
 
   const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
   let isAuth = true;
@@ -26,17 +26,22 @@ const Blog = () => {
   }, []);
 
   return (
-    <div class="container">
-      <h1>{"The Blog"}</h1>
-      <div class="row">
+    <div class="container-fluid p-4">
+      <h1>The Blog</h1>
+      <div className="row m-4">
+        {isAuth ? <NewPostCard></NewPostCard> : null}
+      </div>
+      <div className="row m-4">
+        {<PostInput />}
+      </div>
+      <div class="row mt-4">
         {blogPosts.map((post) => {
           return (
-            <div class="col">
-              <BlogCard post={post} auth={true} />
+            <div class="col-4">
+              <BlogCard post={post} auth={false} />
             </div>
           );
         })}
-        {isAuth ? <NewPostCard></NewPostCard> : null}
       </div>
     </div>
   );
