@@ -68,15 +68,9 @@ const Navigation = () => {
 
                 {/* ROUTING */}
                 <Switch>
-                    <Route path="/SignIn">
-                        {
-                            SignIn
-                        }
+                    <Route path="/SignIn" exact component={SignIn}>
                     </Route>
-                    <Route path="/ProfilePage">
-                        {
-                            ProfilePage
-                        }
+                    <Route path="/ProfilePage" exact component={ProfilePage}>
                     </Route>
                     <Route path="/about" exact component={About}>
                     </Route>

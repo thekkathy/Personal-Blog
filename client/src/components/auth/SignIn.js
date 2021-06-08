@@ -1,21 +1,22 @@
-import React, {useState,useEffect,useContext } from "react";
+import {useState,useEffect,useContext } from "react";
 import { Button } from 'react-bootstrap';
 import { signInWithGoogle,auth } from "../../firebase";
-import usersContext from '../../context/usersContext'
+import {UsersContext} from '../../context/usersContext'
 
 export default function SignIn(){
 
-  // const { users, setUsers } = usersContext(usersContext)
+  const { users, setUsers } = useContext(UsersContext);
 
-  // useEffect(()=>{
-  //   auth.onAuthStateChanged(userAuth => {
-  //     setUser({ user: userAuth});
-  //    });
-  // },[user])
+  useEffect(()=>{
+    console.log(users);
+  },[])
+
+  useEffect(()=>{
+    console.log(users);
+  },[users])
 
   function handleSignIn(){
-    //var userData = signInWithGoogle();
-   signInWithGoogle();
+    signInWithGoogle(users,setUsers);
   }
 
   return (
