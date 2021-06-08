@@ -2,13 +2,18 @@ import React, { useContext, useEffect } from "react";
 import BlogCard from "./BlogCard";
 import NewPostCard from "./NewPostCard";
 import { BlogPostsContext } from "./../../context/blogPostsContext";
+import PostInput from "./PostInput";
 import "../../styles/base.css";
+import {UsersContext} from '../../context/usersContext'
 
 const Blog = () => {
 
+  const { users, setUsers } = useContext(UsersContext);
+  useEffect(()=>{console.log(users)},[users])
+
   const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
-    let isAuth = true;
-   //This function gets the blog posts from the database and updates state
+  let isAuth = true;
+  //This function gets the blog posts from the database and updates state
   const getBlogPosts = async () => {
     console.log("fetching blog posts ");
     const url = new URL("http://localhost:8000/blog_posts/get");
@@ -16,13 +21,24 @@ const Blog = () => {
     setBlogPosts(res);
   };
 
-  useEffect(() => {getBlogPosts()}, []);
+  useEffect(() => {
+    getBlogPosts();
+  }, []);
 
   return (
-    <div>
+    <div class="container">
       <h1>{"The Blog"}</h1>
-      {blogPosts.map((post) => {return <BlogCard post={post}/>})};
-      {isAuth ? <NewPostCard></NewPostCard>: null}
+      <div class="row">
+        {blogPosts.map((post) => {
+          return (
+            <div class="col">
+              <BlogCard post={post} auth={false} />
+            </div>
+          );
+        })}
+        {isAuth ? <NewPostCard></NewPostCard> : null}
+        {<PostInput />}
+      </div>
     </div>
   );
 };
