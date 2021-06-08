@@ -32,12 +32,11 @@ const Blog = () => {
         {blogPosts.map((post) => {
           return (
             <div class="col">
-              <BlogCard post={post} auth={false} />
+              <BlogCard post={post} auth={true} />
             </div>
           );
         })}
         {isAuth ? <NewPostCard></NewPostCard> : null}
-        {<PostInput />}
       </div>
     </div>
   );

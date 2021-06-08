@@ -47,4 +47,16 @@ app.post("/blog_posts/add", async (req, res) => {
   res.sendStatus(200);
 });
 
+
+app.put("/blog_posts/update", async (req, res) => {
+  const {doc_id, title, text, pic_url, ...rest } = req.body;
+
+  const resp = await db.collection("blog_posts").doc(doc_id).update({
+    title,
+    text,
+    pic_url,
+  });
+  res.send("Got a PUT request to update post:" + resp.id);
+});
+
 module.exports = app;

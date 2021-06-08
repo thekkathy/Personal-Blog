@@ -12,6 +12,10 @@ const BlogCard = ({ post, auth }) => {
   const handleClick = () => {
     history.push(`/blog/${post.doc_id}`);
   };
+
+  const handleEdit = () => {
+      history.push(`/blog/edit/${post.doc_id}`)
+  }
   return (
     <Card
       cardContent={
@@ -40,13 +44,10 @@ const BlogCard = ({ post, auth }) => {
             <i class="far fa-heart mt-4 mx-2"> {post.num_likes}</i>
             <i class="far fa-comment mt-4 mx-2"> {post.num_comments}</i>
           </div>
-          <div>
+          <div style={auth===false ?  {display: "none"} : null}>
             <button
               class="btn btn-outline-dark"
-              onClick={() => {
-                console.log("edit was pressed");
-                history.push("/home");
-              }}
+              onClick={handleEdit}
             >
               Edit
             </button>
