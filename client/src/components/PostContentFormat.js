@@ -63,7 +63,7 @@ const PostContentFormat = ({
         <img src={`${imageLink}`} className="w-75 mx-auto my-4"></img>
       </div>
       <div className="row p-4">
-        {text}
+      {text.split("\n").map(str => { return <p>{str}</p>})}
       </div>
     </div>
   );

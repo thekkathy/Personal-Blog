@@ -7,10 +7,15 @@ function PostInput({ isEdit }) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [pic, setPic] = useState("");
+  const [formatted, setFormatted] = useState("");
 
   const history = useHistory();
     const {id} = useParams();
 
+
+    const formatText = (text) => {
+        setFormatted()
+    }
 
 
   useEffect(() => {
@@ -21,6 +26,7 @@ function PostInput({ isEdit }) {
             setTitle(element.title);
             setText(element.text);
             setPic(element.pic_url);
+            setFormatted(element.text);
           }
         });
       });
