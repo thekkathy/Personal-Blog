@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import Card from "../Card";
 import { useHistory } from "react-router-dom";
+import {BlogPostsContext} from "../../context/blogPostsContext"
 import "../../styles/base.css";
 
-const BlogCard = ({ post, auth }) => {
-  //const { blogPosts } = useContext(BlogPostsContext);
+const BlogCard = ({ post, auth, getBlogPosts }) => {
+  //const { setBlogPosts } = useContext(BlogPostsContext);
 
   const history = useHistory();
 
@@ -22,16 +23,17 @@ const BlogCard = ({ post, auth }) => {
   //this function deletes a blog post by using the doc_id
   const handleDelete = async () => {
     fetch("http://localhost:8000/blog_posts/delete", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ doc_id: post.doc_id }),
-    }).then((resp) => {
-      resp.json();
-      //TODO: need to rerender here
-    });
-  }
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({doc_id: post.doc_id}),
+      }).then((resp) => {
+        resp.json();
+        getBlogPosts();
+        //TODO: need to rerender here
+      });
+    }
 
 
 
