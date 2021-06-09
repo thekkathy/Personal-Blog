@@ -1,16 +1,19 @@
 /**
  * This file styles the main content of a blog, forum, or any othe rpost we have in the site.
  */
-import React, {useEffect, useState} from "react";
+import React from "react";
+
 import Card from "./Card";
 
+
 import "../styles/base.css";
-import NavigateButton from './NavigateButton';
 
 //numLikes = the number of likes the post has
 //numComments = the number of comments the post has
 //text = the main text that should be displayed in the post
 // outerBlueWrap = boolean, if true there will be an outer blue card wrapping the post
+
+let numLines = 0;
 
 const PostContentFormat = ({
   numLikes,
@@ -46,10 +49,18 @@ const PostContentFormat = ({
       <div className="row mx-auto">
         <div className="container mx-auto">
           <div className="row">
-            <a target="_blank" href={'https://twitter.com/intent/tweet?url='+window.location.href.toString()}>
-              <button class="btn mt-3 mx-auto">
-                <i class="fas fa-share" aria-hidden="true"></i><br></br>
-                Share
+            <a target="_blank" href={'https://twitter.com/intent/tweet?url=' + window.location.href.toString()}>
+              <button class="btn btn-icon icon-dark">
+                <div className="container mx-auto">
+                  <div className="row">
+                    <i class="fas fa-share mt-2 mx-auto"></i>
+                  </div>
+                  <div className="row">
+                    <div className="small-text text-center mx-auto">
+                      Share
+            </div>
+                  </div>
+                </div>
               </button>
             </a>
           </div>
@@ -62,11 +73,8 @@ const PostContentFormat = ({
 
   const cardContent = (
     <div>
-      <div className="row">
-        <img src={`${imageLink}`} className="w-75 mx-auto my-4"></img>
-      </div>
-      <div className="row p-4">
-        {text ? text.split("\n").map(str => { return <p>{str}</p>}) : ""}
+      <div className="row p-4" style={{whiteSpace: 'pre-line'}}>
+      {text}
       </div>
     </div>
   );
@@ -82,6 +90,8 @@ const PostContentFormat = ({
         innerCardClassName="mr-4"
         cardContent={cardContent}
         noSetWidthHeight={true}
+        noCardTop={false}
+        cardTopImage={imageLink}
       />
     </div>
   );

@@ -6,8 +6,10 @@
     justify-content: center;
     align-items: center;
     min-height: 70vh ;
+    border-radius: 0 !important;
 
 }
+
 
 .text {
     color: white;

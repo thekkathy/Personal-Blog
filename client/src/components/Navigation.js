@@ -8,6 +8,7 @@ import About from "./About";
 import Blog from "./Blog/Blog";
 import BlogPost from "./Blog/BlogPost";
 import Shop from "./Shop/Shop";
+import Footer from './Footer';
 
 import Card from "./Card";
 import Post from "./Post";
@@ -78,14 +79,14 @@ const Navigation = () => {
               </li>
               <li className="nav-item">
                 {users === null
-                  ? <Link className="nav-link" to="/ProfilePage"><button onClick={()=>handleSignIn()}>Sign In</button></Link>
+                  ? <Link className="nav-link" to="/ProfilePage"><button style={{all: 'unset',color:'white'}} onClick={()=>handleSignIn()}>Sign In</button></Link>
                   : <Link className="nav-link" to="/ProfilePage">Profile</Link>
                 }
               </li>
               <li className="nav-item">
                 {users === null
                   ? <div></div>
-                  : <Link className="nav-link" to="/"><button onClick={()=>handleSignOut()}>Sign Out</button></Link>
+                  : <Link className="nav-link" to="/"><button style={{all: 'unset',color:'white'}} onClick={()=>handleSignOut()}>Sign Out</button></Link>
                 }
               </li>
             </ul>
@@ -106,6 +107,7 @@ const Navigation = () => {
           <Route path="/card" exact component={Card}></Route>
           <Route path="/post" exact component={Post}></Route>
         </Switch>
+        <Footer />
       </Router>
     </div>
   );

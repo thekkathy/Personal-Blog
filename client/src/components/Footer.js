@@ -1,42 +1,57 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter as Link } from 'react-router-dom';
+
+
+import '../styles/base.css';
+import '../styles/footer.css';
 
 const Footer = () => {
     return (
         <div>
             {/* FOOTER */}
             <footer className="footer p-4">
-                <section className="border-bottom">
-                    <div className="container-fluid">
-                        <div className="row d-flex">
-                            <div className="col-4 my-4">
-                                <h6 className="text-uppercase mb-3 footer-header">
-                                    Blog
-                            </h6>
-                                <div>
-                                    <i className="fas fa-home me-3" />
-                                    <div>
-                                        <div>601 South Oak Street</div>
-                                        <div>Falls Church, Virginia</div>
-                                        <div>22046</div>
-                                    </div>
-                                </div>
+                <section>
+                    <div className="container-fluid border-bottom">
+                        <div className="row">
+                            <div className="container d-flex justify-content-center mt-4">
+                                <Link to="">
+                                    <button className="btn-icon icon-light mx-1">
+                                        <i class="far fa-envelope fa-lg"></i>
+                                    </button>
+                                </Link>
+                                <Link to="">
+                                    <button className="btn-icon icon-light mx-1">
+                                        <i class="fas fa-phone fa-lg"></i>
+                                    </button>
+                                </Link>
+                                <Link to="">
+                                    <button className="btn-icon icon-light mx-1">
+                                        <i class="fab fa-facebook fa-lg"></i>
+                                    </button>
+                                </Link>
+                                <Link to="">
+                                    <button className="btn-icon icon-light mx-1">
+                                        <i class="fab fa-instagram fa-lg"></i>
+                                    </button>
+                                </Link>
+                                <Link to="">
+                                    <button className="btn-icon icon-light mx-1">
+                                        <i class="fab fa-twitter fa-lg"></i>
+                                    </button>
+                                </Link>
                             </div>
-
-                            <div className="col-5 my-4">
-                                <h6 className="text-uppercase mb-4">
-                                    Contact Us
-                            </h6>
-                                <p><i className="fas fa-phone me-3"></i> (703) 248-5661</p>
-                                <p><i className="fas fa-phone me-3"></i> (703) 248-5666</p>
-                                <p><i className="fas fa-envelope me-3"></i> info@tjschool.org</p>
+                        </div>
+                        <div className="row d-flex justify-content-center mb-5 mt-2">
+                            <div className="">
+                                Get in touch!
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <div className="text-center pt-4">
-                    © 2021 Thomas Jefferson Elementary School
-            </div>
+                    © 2021 Camille Cooper
+                </div>
             </footer>
         </div>
     )
