@@ -23,6 +23,7 @@ app.get("/comments/blog", async (req, res) => {
             author_id: doc._fieldsProto.author_id?.stringValue, 
             text: doc._fieldsProto.text?.stringValue,
             num_likes: doc._fieldsProto?.num_likes.integerValue,
+            liked_by: doc._fieldsProto?.liked_by?.arrayValue.values,
             doc_id: doc.id,});
     })
     res.send(comments);
@@ -38,6 +39,7 @@ app.get("/comments/forum", async (req, res) => {
             author_id: doc._fieldsProto.author_id?.stringValue, 
             text: doc._fieldsProto.text?.stringValue,
             num_likes: doc._fieldsProto?.num_likes.integerValue,
+            liked_by: doc._fieldsProto?.liked_by?.arrayValue.values,
             doc_id: doc.id,});
     })
     res.send(comments);
@@ -50,6 +52,7 @@ app.post("/comments/blog/add", async (req, res) => {
             text: req.body.text,
             author_name: req.body.author_name,
             author_id: req.body.author_id,
+            liked_by: [],
         });
     const uRef = db.collection('users').doc(req.body.author_id);
     const u = await uRef.get();
@@ -69,7 +72,60 @@ app.post("/comments/forum/add", async (req, res) => {
             text: req.body.text,
             author_name: req.body.author_name,
             author_id: req.body.author_id,
+            liked_by: [],
         });
+    res.sendStatus(200);
+})
+
+app.post("/comment/blog/add_like", async (req, res) => {
+    const ref = db.collection('blog_posts').doc(req.body.post_id).collection('comments').doc(req.body.comment_id);
+    //increase comment's likes by 1
+    //const r = await ref.get();
+    const u = await ref.update({
+        num_likes: admin.firestore.FieldValue.increment(1),
+    });
+    const l = await ref.update({
+        liked_by: admin.firestore.FieldValue.arrayUnion(req.body.user_id),
+    });
+    res.sendStatus(200);
+})
+
+app.post("/comment/forum/add_like", async (req, res) => {
+    const ref = db.collection('forum_posts').doc(req.body.post_id).collection('comments').doc(req.body.comment_id);
+    //increase comment's likes by 1
+    //const r = await ref.get();
+    const u = await ref.update({
+        num_likes: admin.firestore.FieldValue.increment(1)
+    });
+    const l = await ref.update({
+        liked_by: admin.firestore.FieldValue.arrayUnion(req.body.user_id),
+    });
+    res.sendStatus(200);
+})
+
+app.post("/comment/blog/remove_like", async (req, res) => {
+    const ref = db.collection('blog_posts').doc(req.body.post_id).collection('comments').doc(req.body.comment_id);
+    //increase comment's likes by 1
+    //const r = await ref.get();
+    const u = await ref.update({
+        num_likes: admin.firestore.FieldValue.increment(-1)
+    });
+    const l = await ref.update({
+        liked_by: admin.firestore.FieldValue.arrayRemove(req.body.user_id),
+    });
+    res.sendStatus(200);
+})
+
+app.post("/comment/forum/remove_like", async (req, res) => {
+    const ref = db.collection('forum_posts').doc(req.body.post_id).collection('comments').doc(req.body.comment_id);
+    //increase comment's likes by 1
+    //const r = await ref.get();
+    const u = await ref.update({
+        num_likes: admin.firestore.FieldValue.increment(-1)
+    });
+    const l = await ref.update({
+        liked_by: admin.firestore.FieldValue.arrayRemove(req.body.user_id),
+    });
     res.sendStatus(200);
 })
 
