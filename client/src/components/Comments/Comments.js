@@ -4,24 +4,31 @@ import getComments from '../../utils/getComments';
 import { UsersContext } from '../../context/usersContext';
 import '../../styles/base.css';
 import '../../styles/comments.css';
+import { addCommentLike } from '../../utils/updateLike';
+import LikeButton from './LikeButton';
 
-const Comments = ({isBlog, post_id, changed}) => {
+const Comments = ({isBlog, post_id, comments, changed}) => {
 
-    const [comments, setComments] = useState([]);
     const { user } = useContext(UsersContext);
 
-    useEffect(async ()=>{
-        const c = await getComments(isBlog, post_id);
-        setComments(c);
-    }, [post_id, changed])
-    
     return (
         <div>
-           {comments.map(e => {
-                console.log(e);
+           {comments && comments.map(e => {
                     return <div>
-                        <Card cardContent={
+                        <Card 
+                        sideCol={true}
+                        noSetWidthHeight={true} 
+                        sideColClassName='commentSideCol'
+                        cardSide = {
+                            <div>
+                                <LikeButton isBlog={isBlog} post_id={post_id} comment_id={e.doc_id} liked_by={e?.liked_by} num_likes={e.num_likes}/>
+                            </div>
+                        }
+                        cardContent={
+                            <div>
+                            <p>{e.author_name}</p>
                             <div>{e.text}</div>
+                            </div>
                     }>  </Card>
                 </div>
             })}

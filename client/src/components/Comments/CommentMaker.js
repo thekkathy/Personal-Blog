@@ -3,6 +3,7 @@ import { UsersContext } from '../../context/usersContext';
 import '../../styles/base.css';
 import '../../styles/comments.css';
 import addComment from '../../utils/addComment';
+import getComments from '../../utils/getComments';
 import Comments from './Comments';
 
 const CommentMaker = ({post_id, isBlog}) => {
@@ -10,6 +11,13 @@ const CommentMaker = ({post_id, isBlog}) => {
     const { users } = useContext(UsersContext);
     const [temp, setTemp] = useState("");
     const [changed, setChanged] = useState(true);
+    const [comments, setComments] = useState();
+
+    useEffect(async ()=>{
+        const c = await getComments(isBlog, post_id);
+        console.log(c);
+        setComments(c);
+    }, [post_id, changed])
 
     return (
         <div>
@@ -31,8 +39,9 @@ const CommentMaker = ({post_id, isBlog}) => {
                                     <input type="submit" value="Post Comment" class="btn btn-primary btn-sm rounded-0" id="inputGroupPrepend2" 
                                         onClick={(e) => {
                                             e.preventDefault();
+                                            console.log(changed);
                                             if(temp !== ''){
-                                            addComment(isBlog, temp, users.uid, post_id);
+                                            addComment(isBlog, temp, users.uid, users.displayName, post_id);
                                             setChanged(!changed);
                                             }
                                         }}/>
@@ -41,7 +50,7 @@ const CommentMaker = ({post_id, isBlog}) => {
                             </div>
                         </form>
                         </div>
-                        <Comments isBlog={isBlog} post_id={post_id} changed={changed}/>
+                        <Comments isBlog={isBlog} post_id={post_id} comments={comments} changed={changed}/>
                     </div>
                 </div>
             )}

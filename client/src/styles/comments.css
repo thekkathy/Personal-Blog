@@ -23,3 +23,21 @@
     top: 4px;
     bottom: 4px;z-index:9;
 }
+
+.commentSideCol {
+    justify-content: center;
+    
+}
+
+.commentHeart {
+    background-color: #74BAC4;
+    justify-content: center;
+}
+
+.commentHeart:focus {
+    outline: none;
+}
+
+.commentHeart:hover {
+    background-color: #74BAC4;
+}
