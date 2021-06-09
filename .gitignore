@@ -29,3 +29,4 @@ yarn-error.log*
 /client/src/firebase.js
 /client/node_modules/.cache/.eslintcache
 /server/firebaseConfig.json
+**/node_modules
