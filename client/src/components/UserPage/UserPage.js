@@ -3,7 +3,6 @@ import {useContext} from "react";
 import {UsersContext} from '../../context/usersContext'
 import {Link} from "react-router-dom";
 import UserLikes from './UserLikes'
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function UserPage(){
 
