@@ -9,7 +9,7 @@ import { UsersContext } from '../../context/usersContext'
 const Blog = () => {
 
   const { users, setUsers } = useContext(UsersContext);
-  useEffect(() => { console.log(users) }, [users])
+  
 
   const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
   let isAuth = true;
@@ -22,9 +22,8 @@ const Blog = () => {
     setBlogPosts(res);
   };
 
-  useEffect(() => {
-    getBlogPosts();
-  }, []);
+
+  useEffect(() => { console.log(users); getBlogPosts() }, [users])
 
   return (
     <div class="container-fluid p-4">

@@ -77,6 +77,7 @@ function PostInput({ isEdit }) {
       <h1>{isEdit===true ? "Edit Blog Post": "New Blog Post"}</h1>
       <form onSubmit={submitForm}>
         <div class="form-group">
+          <label>Title</label>
           <input
             defaultValue={title}
             type="text"
@@ -87,9 +88,11 @@ function PostInput({ isEdit }) {
           />
         </div>
         <div class="form-group">
+            <label>Content</label>
           <textarea
             defaultValue={text}
             type="text"
+            rows={12}
             class="form-control item"
             id="email"
             placeholder="Your blog post"
@@ -97,6 +100,7 @@ function PostInput({ isEdit }) {
           />
         </div>
         <div class="form-group">
+            <label>Picture URL</label>
           <input
             defaultValue={pic}
             type="text"
