@@ -2,15 +2,22 @@ import React, { useState, useEffect } from "react";
 //import Card from "../Card";
 import { useHistory, useParams } from "react-router-dom";
 import getBlogPosts from "../../utils/getBlogPosts";
+import "../../styles/base.css";
+import "../../styles/postInput.css";
 
 function PostInput({ isEdit }) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [pic, setPic] = useState("");
+  const [formatted, setFormatted] = useState("");
 
   const history = useHistory();
     const {id} = useParams();
 
+
+    const formatText = (text) => {
+        setFormatted()
+    }
 
 
   useEffect(() => {
@@ -21,6 +28,7 @@ function PostInput({ isEdit }) {
             setTitle(element.title);
             setText(element.text);
             setPic(element.pic_url);
+            setFormatted(element.text);
           }
         });
       });
@@ -65,9 +73,11 @@ function PostInput({ isEdit }) {
   };
 
   return (
-    <div class="card">
+    <div class="container form">
+      <h1>{isEdit===true ? "Edit Blog Post": "New Blog Post"}</h1>
       <form onSubmit={submitForm}>
         <div class="form-group">
+          <label>Title</label>
           <input
             defaultValue={title}
             type="text"
@@ -78,9 +88,11 @@ function PostInput({ isEdit }) {
           />
         </div>
         <div class="form-group">
+            <label>Content</label>
           <textarea
             defaultValue={text}
             type="text"
+            rows={12}
             class="form-control item"
             id="email"
             placeholder="Your blog post"
@@ -88,6 +100,7 @@ function PostInput({ isEdit }) {
           />
         </div>
         <div class="form-group">
+            <label>Picture URL</label>
           <input
             defaultValue={pic}
             type="text"
