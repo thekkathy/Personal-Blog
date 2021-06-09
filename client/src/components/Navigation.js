@@ -78,14 +78,14 @@ const Navigation = () => {
               </li>
               <li className="nav-item">
                 {users === null
-                  ? <Link className="nav-link" to="/ProfilePage"><button onClick={()=>handleSignIn()}>Sign In</button></Link>
+                  ? <Link className="nav-link" to="/ProfilePage"><button style={{all: 'unset',color:'white'}} onClick={()=>handleSignIn()}>Sign In</button></Link>
                   : <Link className="nav-link" to="/ProfilePage">Profile</Link>
                 }
               </li>
               <li className="nav-item">
                 {users === null
                   ? <div></div>
-                  : <Link className="nav-link" to="/"><button onClick={()=>handleSignOut()}>Sign Out</button></Link>
+                  : <Link className="nav-link" to="/"><button style={{all: 'unset',color:'white'}} onClick={()=>handleSignOut()}>Sign Out</button></Link>
                 }
               </li>
             </ul>
