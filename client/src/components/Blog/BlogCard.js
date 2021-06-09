@@ -14,14 +14,14 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
     history.push(`/blog/${post.doc_id}`);
   };
 
-  
+
   //this function handles edit of a blog post, redirecting to an edit page
   const handleEdit = () => {
-      history.push(`/blog/edit/${post.doc_id}`)
+    history.push(`/blog/edit/${post.doc_id}`)
   }
 
   //this function deletes a blog post by using the doc_id
-  const handleDelete = async ()  => {
+  const handleDelete = async () => {
     fetch("http://localhost:8000/blog_posts/delete", {
         method: "DELETE",
         headers: {
@@ -39,24 +39,21 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
 
   const cardContent = (
     <div>
-      {post.pic_url &&
-        <a onClick={() => { handleClick() }} className="thumbnail-img">
-          <img src={post.pic_url} alt="nothing found" className="w-100 h-100" />
-        </a>
-      }
+      <div className="container-fluid white-text">
+        <div className="row mx-auto d-flex justify-content-center my-4">
+          <h2 className="h4 font-weight-normal text-center">
+            <a href={`/blog/${post.doc_id}`} className="white-text link-light">
+              {post.title}
+            </a>
+          </h2>
+        </div>
+      </div>
     </div>
   );
 
   const cardBottom = (
     <div>
-      <div className="container-fluid white-text">
-        <div className="row mx-auto d-flex justify-content-center my-4">
-          <h2 className="h4 font-weight-light text-center">
-            <a href={`/blog/${post.doc_id}`} className="white-text link-light">{post.title}</a>
-          </h2>
-        </div>
-      </div>
-      <div className="row d-flex">
+      <div className="row d-flex border-top">
         <div className="container-fluid d-flex">
           <div className="mr-auto">
             <button
@@ -89,6 +86,8 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
       outerCardClassName="my-4 mx-1"
       bottomRowClassName="mx-auto"
       noInnerCard={!post.pic_url && true}
+      noCardTop={false}
+      cardTopImage={post.pic_url}
     ></Card>
   );
 

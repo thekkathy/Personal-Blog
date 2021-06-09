@@ -5,7 +5,6 @@ import { BlogPostsContext } from "./../../context/blogPostsContext";
 import PostInput from "./PostInput";
 import "../../styles/base.css";
 import { UsersContext } from '../../context/usersContext'
-
 const Blog = () => {
 
   const { users, setUsers } = useContext(UsersContext);
@@ -37,8 +36,8 @@ const Blog = () => {
       <div class="row mt-4">
         {blogPosts.map((post) => {
           return (
-            <div class="col-4">
-              <BlogCard post={post} auth={false} getBlogPosts={getBlogPosts}/>
+            <div class="col-4-sm">
+              <BlogCard post={post} auth={false} />
             </div>
           );
         })}
