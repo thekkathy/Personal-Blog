@@ -1,8 +1,10 @@
 
-import { useContext } from "react";
-import { UsersContext } from '../../context/usersContext'
-import { Link } from "react-router-dom";
+import {useContext} from "react";
+import {UsersContext} from '../../context/usersContext'
+import {Link} from "react-router-dom";
+import UserLikes from './UserLikes'
 import NavigateButton from '../NavigateButton';
+
 
 import "../../styles/base.css";
 

@@ -5,12 +5,15 @@ import React from "react";
 
 import Card from "./Card";
 
+
 import "../styles/base.css";
 
 //numLikes = the number of likes the post has
 //numComments = the number of comments the post has
 //text = the main text that should be displayed in the post
 // outerBlueWrap = boolean, if true there will be an outer blue card wrapping the post
+
+let numLines = 0;
 
 const PostContentFormat = ({
   numLikes,
@@ -70,8 +73,8 @@ const PostContentFormat = ({
 
   const cardContent = (
     <div>
-      <div className="row p-4">
-        {text && text.split("\n").map(str => { return <p>{str}</p> })}
+      <div className="row p-4" style={{whiteSpace: 'pre-line'}}>
+      {text}
       </div>
     </div>
   );

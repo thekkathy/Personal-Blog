@@ -3,10 +3,12 @@ import Card from "../Card";
 import { useHistory } from "react-router-dom";
 import {BlogPostsContext} from "../../context/blogPostsContext"
 import "../../styles/base.css";
+import { UsersContext } from '../../context/usersContext'
 
 const BlogCard = ({ post, auth, getBlogPosts }) => {
   //const { setBlogPosts } = useContext(BlogPostsContext);
 
+  const { users, setUsers } = useContext(UsersContext);
   const history = useHistory();
 
   //This function redirects to the corresponding blog page when a blog card is clicked
@@ -55,7 +57,7 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
     <div>
       <div className="row d-flex border-top">
         <div className="container-fluid d-flex">
-          <div className="mr-auto">
+          <div className="mr-auto" style={users && users.uid === process.env.REACT_APP_ADMIN_UID ? null : {display: 'none'}}>
             <button
               class="btn-icon"
               onClick={handleEdit}
