@@ -59,11 +59,8 @@ const PostContentFormat = ({
 
   const cardContent = (
     <div>
-      <div className="row">
-        <img src={`${imageLink}`} className="w-75 mx-auto my-4"></img>
-      </div>
       <div className="row p-4">
-      {text.split("\n").map(str => { return <p>{str}</p>})}
+      {text && text.split("\n").map(str => { return <p>{str}</p>})}
       </div>
     </div>
   );
@@ -79,6 +76,8 @@ const PostContentFormat = ({
         innerCardClassName="mr-4"
         cardContent={cardContent}
         noSetWidthHeight={true}
+        noCardTop={false}
+        cardTopImage={imageLink}
       />
     </div>
   );

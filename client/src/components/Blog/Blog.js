@@ -38,7 +38,7 @@ const Blog = () => {
       <div class="row mt-4">
         {blogPosts.map((post) => {
           return (
-            <div class="col-4">
+            <div class="col-4-sm">
               <BlogCard post={post} auth={false} />
             </div>
           );
