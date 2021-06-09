@@ -8,6 +8,7 @@ import About from "./About";
 import Blog from "./Blog/Blog";
 import BlogPost from "./Blog/BlogPost";
 import Shop from "./Shop/Shop";
+import Footer from './Footer';
 
 import Card from "./Card";
 import Post from "./Post";
@@ -106,6 +107,7 @@ const Navigation = () => {
           <Route path="/card" exact component={Card}></Route>
           <Route path="/post" exact component={Post}></Route>
         </Switch>
+        <Footer />
       </Router>
     </div>
   );
