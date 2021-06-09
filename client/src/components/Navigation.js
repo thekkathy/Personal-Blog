@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Access from "./auth/Access";
 import UserPage from "./UserPage/UserPage";
 import UserLikes from "./UserPage/UserLikes";
 
@@ -16,9 +15,25 @@ import Post from "./Post";
 import { UsersContext } from "../context/usersContext";
 import { useContext } from "react";
 import PostInput from "./Blog/PostInput";
+import { signInWithGoogle,auth} from "../firebase";
+import { useHistory } from "react-router-dom";
 
 const Navigation = () => {
   const { users, setUsers } = useContext(UsersContext);
+  const history = useHistory();
+  function handleSignIn(){
+    console.log('sign in')
+    signInWithGoogle(users,setUsers);
+  }
+
+  function handleSignOut(){
+    auth.signOut().then(() => {
+      console.log('logout success')
+      setUsers(null).then(window.location.replace("http://localhost:3000/"));
+    }).catch((error) => {
+      setUsers(null);
+    })
+}
 
   return (
     <div>
@@ -62,9 +77,16 @@ const Navigation = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Access">
-                  {users === null ? "Sign In" : "Profile"}
-                </Link>
+                {users === null
+                  ? <Link className="nav-link" to="/ProfilePage"><button onClick={()=>handleSignIn()}>Sign In</button></Link>
+                  : <Link className="nav-link" to="/ProfilePage">Profile</Link>
+                }
+              </li>
+              <li className="nav-item">
+                {users === null
+                  ? <div></div>
+                  : <Link className="nav-link" to="/"><button onClick={()=>handleSignOut()}>Sign Out</button></Link>
+                }
               </li>
             </ul>
           </div>
@@ -72,7 +94,6 @@ const Navigation = () => {
 
         {/* ROUTING */}
         <Switch>
-          <Route path="/Access" exact component={Access}></Route>
           <Route path="/ProfilePage" exact component={UserPage}></Route>
           <Route path="/user-likes" exact component={UserLikes}></Route>
           <Route path="/about" exact component={About}></Route>
