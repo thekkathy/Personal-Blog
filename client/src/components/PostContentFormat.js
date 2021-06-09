@@ -5,6 +5,7 @@ import React, {useEffect, useState} from "react";
 import Card from "./Card";
 
 import "../styles/base.css";
+import NavigateButton from './NavigateButton';
 
 //numLikes = the number of likes the post has
 //numComments = the number of comments the post has
@@ -45,10 +46,12 @@ const PostContentFormat = ({
       <div className="row mx-auto">
         <div className="container mx-auto">
           <div className="row">
-            <i class="fas fa-share mt-3 mx-auto"></i>
-          </div>
-          <div className="row">
-            <div className="small-text text-center mx-auto">Share</div>
+            <a target="_blank" href={'https://twitter.com/intent/tweet?url='+window.location.href.toString()}>
+              <button class="btn mt-3 mx-auto">
+                <i class="fas fa-share" aria-hidden="true"></i><br></br>
+                Share
+              </button>
+            </a>
           </div>
         </div>
       </div>
