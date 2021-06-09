@@ -5,7 +5,6 @@ import { BlogPostsContext } from "./../../context/blogPostsContext";
 import PostInput from "./PostInput";
 import "../../styles/base.css";
 import { UsersContext } from '../../context/usersContext'
-
 const Blog = () => {
 
   const { users, setUsers } = useContext(UsersContext);
