@@ -33,7 +33,7 @@ const Blog = () => {
         {isAuth ? <NewPostCard></NewPostCard> : null}
       </div>
       <div className="row m-4">
-        {<PostInput />}
+        {/* {<PostInput />} */}
       </div>
       <div class="row mt-4">
         {blogPosts.map((post) => {
