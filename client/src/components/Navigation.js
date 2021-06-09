@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Access from "./auth/Access";
 import ProfilePage from "./auth/ProfilePage";
+import UserLikes from "./UserPage/UserLikes";
 
 import Home from "./Home/Home";
 import About from "./About";
@@ -73,10 +74,11 @@ const Navigation = () => {
         <Switch>
           <Route path="/Access" exact component={Access}></Route>
           <Route path="/ProfilePage" exact component={ProfilePage}></Route>
+          <Route path="/user-likes" exact component={UserLikes}></Route>
           <Route path="/about" exact component={About}></Route>
           <Route path="/blog" exact component={Blog}></Route>
           <Route path="/blog/:id" exact component={BlogPost}></Route>
-          <Route path="/blog/add/new_post" exact render={() => <PostInput isEdit={false}/>}></Route>
+          <Route path="/blog/add/new_post" exact render={() => <PostInput isEdit={false} />}></Route>
           <Route path="/blog/edit/:id" exact render={(props) => <PostInput isEdit={true} {...props} />}></Route>
           <Route path="/shop" exact component={Shop}></Route>
           <Route path="/" exact component={Home}></Route>

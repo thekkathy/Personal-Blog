@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 //import Card from "../Card";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import getBlogPosts from "../../utils/getBlogPosts";
 
-function PostInput({
-  isEdit,
-  match: {
-    params: { id },
-  },
-}) {
+function PostInput({ isEdit }) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [pic, setPic] = useState("");
 
   const history = useHistory();
+    const {id} = useParams();
+
+
 
   useEffect(() => {
     if (isEdit === true) {
@@ -27,6 +25,7 @@ function PostInput({
         });
       });
     }
+
   }, []);
 
   const submitForm = async (e) => {

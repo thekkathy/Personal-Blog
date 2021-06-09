@@ -59,14 +59,11 @@ const BlogCard = ({ post, auth }) => {
           <div className="mr-auto">
             <button
               class="btn-icon"
-              onClick={() => {
-                console.log("edit was pressed");
-                history.push("/home");
-              }}
+              onClick={handleEdit}
             >
               <i class="fas fa-edit white-text icon-light"></i>
             </button>
-            <button class="btn-icon">
+            <button class="btn-icon" onClick={handleDelete}>
               <i class="fas fa-trash-alt white-text icon-light"></i>
             </button>
           </div>

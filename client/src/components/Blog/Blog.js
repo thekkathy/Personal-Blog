@@ -18,6 +18,7 @@ const Blog = () => {
     console.log("fetching blog posts ");
     const url = new URL("http://localhost:8000/blog_posts/get");
     let res = await fetch(url).then((resp) => resp.json());
+    console.log(res);
     setBlogPosts(res);
   };
 
@@ -32,7 +33,7 @@ const Blog = () => {
         {isAuth ? <NewPostCard></NewPostCard> : null}
       </div>
       <div className="row m-4">
-        {<PostInput />}
+        {/* {<PostInput />} */}
       </div>
       <div class="row mt-4">
         {blogPosts.map((post) => {
