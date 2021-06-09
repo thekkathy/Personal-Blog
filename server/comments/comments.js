@@ -19,7 +19,8 @@ app.get("/comments/blog", async (req, res) => {
     const comments = [];
     snapshot.forEach(doc => {
         comments.push(
-            {author: doc._fieldsProto.author?.stringValue, 
+            {author_name: doc._fieldsProto.author_name?.stringValue, 
+            author_id: doc._fieldsProto.author_id?.stringValue, 
             text: doc._fieldsProto.text?.stringValue,
             num_likes: doc._fieldsProto?.num_likes.integerValue,
             doc_id: doc.id,});
@@ -33,7 +34,8 @@ app.get("/comments/forum", async (req, res) => {
     const comments = [];
     snapshot.forEach(doc => {
         comments.push(
-            {author: doc._fieldsProto.author?.stringValue, 
+            {author_name: doc._fieldsProto.author_name?.stringValue, 
+            author_id: doc._fieldsProto.author_id?.stringValue, 
             text: doc._fieldsProto.text?.stringValue,
             num_likes: doc._fieldsProto?.num_likes.integerValue,
             doc_id: doc.id,});
@@ -46,9 +48,10 @@ app.post("/comments/blog/add", async (req, res) => {
         {
             num_likes: req.body.num_likes,
             text: req.body.text,
-            author: req.body.author,
+            author_name: req.body.author_name,
+            author_id: req.body.author_id,
         });
-    const uRef = db.collection('users').doc(req.body.author);
+    const uRef = db.collection('users').doc(req.body.author_id);
     const u = await uRef.get();
     //if user hasn't already commented on this post, add to their array
     if(typeof u.commented_posts === 'undefined' || u.commented_posts.indexOf(req.body.post_id) === -1){
@@ -64,7 +67,8 @@ app.post("/comments/forum/add", async (req, res) => {
         {
             num_likes: req.body.num_likes,
             text: req.body.text,
-            author: req.body.author,
+            author_name: req.body.author_name,
+            author_id: req.body.author_id,
         });
     res.sendStatus(200);
 })

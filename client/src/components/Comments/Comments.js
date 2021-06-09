@@ -5,23 +5,19 @@ import { UsersContext } from '../../context/usersContext';
 import '../../styles/base.css';
 import '../../styles/comments.css';
 
-const Comments = ({isBlog, post_id, changed}) => {
+const Comments = ({isBlog, post_id, comments, changed}) => {
 
-    const [comments, setComments] = useState([]);
     const { user } = useContext(UsersContext);
 
-    useEffect(async ()=>{
-        const c = await getComments(isBlog, post_id);
-        setComments(c);
-    }, [post_id, changed])
-    
     return (
         <div>
-           {comments.map(e => {
-                console.log(e);
+           {comments && comments.map(e => {
                     return <div>
                         <Card cardContent={
+                            <div>
+                            <p>{e.author_name}</p>
                             <div>{e.text}</div>
+                            </div>
                     }>  </Card>
                 </div>
             })}
