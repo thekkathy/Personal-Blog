@@ -31,7 +31,6 @@ const Home = () => {
             : ""}
         </div>
       </div>
-      <NavigateButton buttonName="Home" url="/" />
     </div>
   );
 };

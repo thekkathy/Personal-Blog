@@ -9,6 +9,7 @@ const Blog = () => {
 
   const { users, setUsers } = useContext(UsersContext);
   
+  const adminUID = process.env.REACT_APP_ADMIN_UID;
 
   const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
   let isAuth = true;
@@ -28,7 +29,7 @@ const Blog = () => {
     <div class="container-fluid p-4">
       <h1>The Blog</h1>
       <div className="row m-4">
-        {isAuth ? <NewPostCard></NewPostCard> : null}
+        {users && users.uid===adminUID ? <NewPostCard></NewPostCard> : null}
       </div>
       <div className="row m-4">
         {/* {<PostInput />} */}
@@ -37,7 +38,7 @@ const Blog = () => {
         {blogPosts.map((post) => {
           return (
             <div class="col-4-sm">
-              <BlogCard post={post} auth={false} />
+              <BlogCard post={post} auth={false} getBlogPosts={getBlogPosts}/>
             </div>
           );
         })}
