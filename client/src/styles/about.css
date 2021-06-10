@@ -1,6 +1,18 @@
+.bg{
+  background-image: url(../images/camille.png);
+  /* position:absolute; */
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-size:cover;
+  background-position: center;
+}
+
 .about-card {
-    flex-direction: row;
-  }
+  flex-direction: row;
+}
+
 .about-card img {
-width: 40%;
+  width: 100%;
 }

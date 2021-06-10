@@ -7,13 +7,15 @@ import "../styles/about.css";
 const About = () => {
 
     return (
-            <div className="row">
+            <div className="container-fluid bg">
+                <h1 className="">
+                    About Me
+                </h1>
+                <div className="row">
+                
+                <div className="col">
                 <div className="card about-card">
-                    <img src={camille} className="card-img-top"/>
                     <div className="card-body">
-                        <h1 className="card-title">
-                        About Me
-                        </h1>
                         <div className="card-text">
                             History:
 
@@ -33,6 +35,9 @@ const About = () => {
 
                         </div>
                     </div>
+            
+                </div>
+            </div>
                     
                 </div>
             </div>

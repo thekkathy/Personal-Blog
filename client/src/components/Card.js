@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import '../styles/base.css';
 
 //outerCardClassName = for any extra bootstrap or css classes you want to add to the outer blue card
