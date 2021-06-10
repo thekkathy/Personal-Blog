@@ -2,17 +2,15 @@ import React, { useContext, useEffect } from "react";
 import BlogCard from "./BlogCard";
 import NewPostCard from "./NewPostCard";
 import { BlogPostsContext } from "./../../context/blogPostsContext";
-import PostInput from "./PostInput";
 import "../../styles/base.css";
 import { UsersContext } from '../../context/usersContext'
 const Blog = () => {
 
-  const { users, setUsers } = useContext(UsersContext);
+  const { users} = useContext(UsersContext);
   
   const adminUID = process.env.REACT_APP_ADMIN_UID;
 
   const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
-  let isAuth = true;
   //This function gets the blog posts from the database and updates state
   const getBlogPosts = async () => {
     console.log("fetching blog posts ");
