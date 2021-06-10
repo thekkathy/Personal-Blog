@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import Card from "../Card";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import {BlogPostsContext} from "../../context/blogPostsContext"
 import "../../styles/base.css";
 import { UsersContext } from '../../context/usersContext'
@@ -44,9 +44,10 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
       <div className="container-fluid white-text blog-card">
         <div className="row mx-auto d-flex justify-content-center my-4">
           <h2 className="h4 font-weight-normal text-center">
-            <a href={`/blog/${post.doc_id}`} className="white-text link-light">
+            {/* <a href={`/blog/${post.doc_id}`} className="white-text link-light">
               {post.title}
-            </a>
+            </a> */}
+            <button><Link to={`/blog/${post.doc_id}`}>{post.title}</Link></button>
           </h2>
         </div>
       </div>
