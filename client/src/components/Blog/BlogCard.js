@@ -1,8 +1,8 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import Card from "../Card";
 import { useHistory, Link } from "react-router-dom";
-import {BlogPostsContext} from "../../context/blogPostsContext"
 import "../../styles/base.css";
+import "../../styles/blogCard.css";
 import { UsersContext } from '../../context/usersContext'
 
 const BlogCard = ({ post, auth, getBlogPosts }) => {
@@ -25,17 +25,17 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
   //this function deletes a blog post by using the doc_id
   const handleDelete = async () => {
     fetch("http://localhost:8000/blog_posts/delete", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({doc_id: post.doc_id}),
-      }).then((resp) => {
-        resp.json();
-        getBlogPosts();
-        //TODO: need to rerender here
-      });
-    }
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ doc_id: post.doc_id }),
+    }).then((resp) => {
+      resp.json();
+      getBlogPosts();
+      //TODO: need to rerender here
+    });
+  }
 
 
 
@@ -47,7 +47,11 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
             {/* <a href={`/blog/${post.doc_id}`} className="white-text link-light">
               {post.title}
             </a> */}
-            <button><Link to={`/blog/${post.doc_id}`}>{post.title}</Link></button>
+            <button className="card-link">
+              <Link to={`/blog/${post.doc_id}`} className="card-link">
+                {post.title}
+              </Link>
+            </button>
           </h2>
         </div>
       </div>
@@ -58,7 +62,7 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
     <div>
       <div className="row d-flex border-top">
         <div className="container-fluid d-flex">
-          <div className="mr-auto" style={users && users.uid === process.env.REACT_APP_ADMIN_UID ? null : {display: 'none'}}>
+          <div className="mr-auto" style={users && users.uid === process.env.REACT_APP_ADMIN_UID ? null : { display: 'none' }}>
             <button
               class="btn-icon"
               onClick={handleEdit}
