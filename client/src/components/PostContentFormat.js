@@ -91,7 +91,7 @@ const PostContentFormat = ({
     </div>
       <div className="row mx-auto">
         <div className="container mx-auto">
-          <div className="row">
+          <div className="row d-flex justify-content-center">
             <button
               onClick={() => handleLike()}
               class="btn btn-icon icon-dark mt-3 mx-auto"
@@ -100,10 +100,10 @@ const PostContentFormat = ({
                 ? 
                 <div className="container mx-auto">
                   <div className="row">
-                    <i class="fas fa-heart mt-2 mx-auto"></i>
+                    <i class="fas fa-heart mt-2 mx-auto fa-lg"></i>
                   </div>
                   <div className="row">
-                    <div className="small-text text-center mx-auto">
+                    <div className="icon-text-bottom small-text text-center mx-auto">
                       {likeNum}
                     </div>
                   </div>
@@ -111,10 +111,10 @@ const PostContentFormat = ({
                 :
                 <div className="container mx-auto">
                   <div className="row">
-                    <i class="far fa-heart mt-2 mx-auto"></i>
+                    <i class="far fa-heart mt-2 mx-auto fa-lg"></i>
                   </div>
                   <div className="row">
-                    <div className="small-text text-center mx-auto">
+                    <div className="icon-text-bottom small-text text-center mx-auto">
                       {likeNum}
                     </div>
                   </div>
@@ -126,11 +126,11 @@ const PostContentFormat = ({
       <div className="row mx-auto">
         <div className="container mx-auto">
           <div className="row">
-            <i class="far fa-comment mt-3 mx-auto"></i>
+            <i class="far fa-comment mt-3 mx-auto fa-lg"></i>
           </div>
           <div className="row">
-            <div className="small-text text-center mx-auto">
-              {numComments} Comments
+            <div className="icon-text-bottom small-text text-center mx-auto">
+              {numComments}
             </div>
           </div>
         </div>
@@ -142,10 +142,10 @@ const PostContentFormat = ({
               <button class="btn btn-icon icon-dark">
                 <div className="container mx-auto">
                   <div className="row">
-                    <i class="fas fa-share mt-2 mx-auto"></i>
+                    <i class="fas fa-share mt-2 mx-auto fa-lg"></i>
                   </div>
                   <div className="row">
-                    <div className="small-text text-center mx-auto">
+                    <div className="icon-text-bottom small-text text-center mx-auto">
                       Share
                   </div>
                   </div>
