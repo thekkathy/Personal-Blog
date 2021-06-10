@@ -1,99 +1,112 @@
 :root {
-    --dark-teal: #094B5C;
-    --navy: #002A79;
-    --teal: #74BAC4;
-    --olive: #679771;
-    --wash: #F4F4F3;
+  --dark-teal: #094b5c;
+  --navy: #002a79;
+  --teal: #74bac4;
+  --olive: #679771;
+  --wash: #f4f4f3;
 }
 
-body{
-    background: var(--wash);
-    color: var(--dark-teal);
-    font-family: 'Poppins', sans-serif;
+body {
+  background: var(--wash);
+  color: var(--dark-teal);
+  font-family: "Poppins", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6{
-    font-weight: 200;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 200;
 }
 
 /*NAVBAR*/
-.navbar-dark{
-    background: var(--teal) !important;
-    color: white !important;
+.navbar-dark {
+  background: var(--teal) !important;
+  color: white !important;
 }
 
-.nav-link{
-    color: white !important;
+.nav-link {
+  color: white !important;
 }
 
 /*CARDS*/
-.outer-card{
-    background: var(--teal) !important;
-    border-width: 0;
+.outer-card {
+  background: var(--teal) !important;
+  border-width: 0;
 }
 
 /*TEXT*/
-.white-text{
-    color: white;
+.white-text {
+  color: white;
 }
 
-.dark-teal-text{
-    color: var(--dark-teal);
+.dark-teal-text {
+  color: var(--dark-teal);
 }
 
-.small-text{
-    font-size: 0.5rem;
+.small-text {
+  font-size: 0.5rem;
 }
 
 /*BUTTON AND HOVER*/
-.btn-light{
-    background: var(--teal);
-    color: white;
+.btn-light {
+  background: var(--teal);
+  color: white;
 }
 
-.btn-light:hover{
-    background: var(--dark-teal);
-    color: white;
+.btn-light:hover {
+  background: var(--dark-teal);
+  color: white;
 }
 
-.btn-dark{
-    background: var(--dark-teal);
-    color: white;
+.btn-dark {
+  background: var(--dark-teal);
+  color: white;
 }
 
-.btn-dark:hover{
-    background: var(--teal);
-    color: white;
+.btn-dark:hover {
+  background: var(--teal);
+  color: white;
 }
 
-.btn-icon{
-    border: none;
-    background: none;
-    cursor: pointer;
+.btn-icon {
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
-a.link-light:hover{
-    text-decoration: none;
-    color: var(--dark-teal);
+a.link-light:hover {
+  text-decoration: none;
+  color: var(--dark-teal);
 }
 
-.icon-light{
-    color: white;
+.icon-light {
+  color: white;
 }
 
-.icon-light:hover{
-    color: var(--dark-teal);
+.icon-light:hover {
+  color: var(--dark-teal);
 }
 
-.icon-dark{
-    color: var(--dark-teal);
+.icon-dark {
+  color: var(--dark-teal);
 }
 
-.icon-dark:hover{
-    color: var(--teal);
+.icon-dark:hover {
+  color: var(--teal);
 }
 
-a.thumbnail-img:hover{
-    cursor: pointer;
-    opacity: 0.6;
+a.thumbnail-img:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.card-body {
+  overflow: auto;
+}
+
+.card-img-top {
+    max-height: 12rem;
 }

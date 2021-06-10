@@ -41,7 +41,7 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
 
   const cardContent = (
     <div>
-      <div className="container-fluid white-text">
+      <div className="container-fluid white-text blog-card">
         <div className="row mx-auto d-flex justify-content-center my-4">
           <h2 className="h4 font-weight-normal text-center">
             <a href={`/blog/${post.doc_id}`} className="white-text link-light">
