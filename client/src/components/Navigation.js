@@ -56,7 +56,7 @@ const Navigation = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <Link className="nav-link" to="/">
                   Home
@@ -77,7 +77,9 @@ const Navigation = () => {
                   Shop
                 </Link>
               </li>
-              <li className="nav-item">
+            </ul>
+            <div className="collapse navbar-collapse ml-auto">
+              <ul className="navbar-nav ml-auto"><li className="nav-item">
                 {users === null
                   ? <Link className="nav-link" to="/ProfilePage"><button style={{all: 'unset',color:'white'}} onClick={()=>handleSignIn()}>Sign In</button></Link>
                   : <Link className="nav-link" to="/ProfilePage">Profile</Link>
@@ -88,8 +90,8 @@ const Navigation = () => {
                   ? <div></div>
                   : <Link className="nav-link" to="/"><button style={{all: 'unset',color:'white'}} onClick={()=>handleSignOut()}>Sign Out</button></Link>
                 }
-              </li>
-            </ul>
+              </li></ul>
+            </div>
           </div>
         </nav>
 
