@@ -22,7 +22,7 @@ const Home = () => {
       </div>
       <div className="container">
         <h1>Recent Blog Posts</h1>
-        <div className="row">
+        <div className="row cards">
           {/* Conditional added to map to limit number of blog posts displayed on home page */}
           {blogPosts
             ? blogPosts.map((post, index) => {

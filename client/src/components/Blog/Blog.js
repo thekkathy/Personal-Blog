@@ -32,7 +32,7 @@ const Blog = () => {
       <div className="row m-4">
         {/* {<PostInput />} */}
       </div>
-      <div class="row mt-4">
+      <div class="row mt-4 cards">
         {blogPosts.map((post) => {
           return (
             <div class="col-4-sm">

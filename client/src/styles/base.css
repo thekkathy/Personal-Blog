@@ -110,3 +110,8 @@ a.thumbnail-img:hover {
 .card-img-top {
     max-height: 12rem;
 }
+
+.cards {
+    justify-content: space-between;
+    margin:auto;
+}
