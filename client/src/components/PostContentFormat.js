@@ -3,10 +3,11 @@
  */
 import React, {useEffect, useState} from "react";
 import Card from "./Card";
-
-
+import { useContext } from "react";
+import { UsersContext } from '../context/usersContext'
 import "../styles/base.css";
 import NavigateButton from './NavigateButton';
+import axios from "axios";
 
 //numLikes = the number of likes the post has
 //numComments = the number of comments the post has
@@ -22,15 +23,25 @@ const PostContentFormat = ({
   imageLink,
   outerBlueWrap,
 }) => {
+
+  const { users, setUsers } = useContext(UsersContext);
+
+  function handleLike(){
+    axios.post('http://localhost:8000/blog_posts/like',{
+      user: users,
+      blogid: '1oLm2OmIwnYqTBPc0LZ1'
+    })
+  }
+
   const cardSide = (
     <div className={`${outerBlueWrap && "white-text"}`}>
       <div className="row mx-auto">
         <div className="container mx-auto">
           <div className="row">
-            <div className="mx-auto">{numLikes}</div>
-          </div>
-          <div className="row">
-            <i class="far fa-heart mx-auto"></i>
+            <button onClick={()=>handleLike()}class="btn mt-3 mx-auto">
+              <i class="far fa-heart mx-auto" aria-hidden="true"></i><br></br>
+              {numLikes}
+            </button>
           </div>
         </div>
       </div>

@@ -31,6 +31,7 @@ app.post("/blog_posts/add", async (req, res) => {
   });
   console.log("Created new blog post with ID: ", resp.id);
 
+
   //this is the code for adding a comment to a post, reuse this when getting to comments
 
   // const resp2 = await db
@@ -64,6 +65,24 @@ app.delete("/blog_posts/delete", async (req, res) => {
   console.log("From blog posts, deleted: ", doc_id);
   res.send("Got a DELETE request");
 });
+
+app.post("/blog_posts/like", async (req, res) => {
+  //increase number of liked posts for specific blog post
+  const blogLike = await db.collection("blog_posts").doc(req.body.blogid).get();
+  const love= await blogLike.data().num_likes;
+
+  //add liked blog post to user profilePage
+  const person = await db.collection("users").doc(req.body.user.uid).get();
+  const personlikes= await person.data().liked_posts;
+ 
+  //perform action only if not done before
+  if (personlikes.includes(req.body.blogid)){
+    console.log('post already liked');
+  }else{
+    const addLike = await db.collection("blog_posts").doc(req.body.blogid).update({num_likes:love+1});
+    const addLikeUser = await db.collection("users").doc(req.body.user.uid).update({liked_posts:[...personlikes,req.body.blogid]});
+  }
+})
 
 module.exports = app;
 

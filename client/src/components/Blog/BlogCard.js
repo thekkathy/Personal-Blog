@@ -47,6 +47,7 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
             <a href={`/blog/${post.doc_id}`} className="white-text link-light">
               {post.title}
             </a>
+            <button onClick={handleClick}>View Article</button>
           </h2>
         </div>
       </div>
