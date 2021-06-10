@@ -9,10 +9,10 @@ const Footer = () => {
     return (
         <div>
             {/* FOOTER */}
-            <footer className="footer p-4">
+            <footer className="footer">
                 <section>
-                    <div className="container-fluid border-bottom">
-                        <div className="row">
+                    <div className="container-fluid">
+                        <div className="row py-2">
                             <div className="container d-flex justify-content-center mt-4">
                                 <Link to="">
                                     <button className="btn-icon icon-light mx-1">
@@ -41,17 +41,18 @@ const Footer = () => {
                                 </Link>
                             </div>
                         </div>
-                        <div className="row d-flex justify-content-center mb-5 mt-2">
+                        <div className="row d-flex justify-content-center mb-3 mx-2">
                             <div className="">
                                 Get in touch!
                             </div>
                         </div>
                     </div>
                 </section>
-
-                <div className="text-center pt-4">
-                    © 2021 Camille Cooper
-                </div>
+                <section className="bottom-copyright">
+                    <div className="text-center py-3">
+                        © 2021 Camille Cooper
+                    </div>
+                </section>
             </footer>
         </div>
     )

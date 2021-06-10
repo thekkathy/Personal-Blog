@@ -36,8 +36,8 @@ const PostContentFormat = ({
   const { users, setUsers } = useContext(UsersContext);
   const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
   const { blogIdG, setBlogIdG } = useContext(BlogIdContext);
-  const [likeNum,setLikeNum] = useState(0);
-  const [isLiked,setIsLiked] = useState(false)
+  const [likeNum, setLikeNum] = useState(0);
+  const [isLiked, setIsLiked] = useState(false)
 
   const [open, setOpen] = React.useState(false);
 
@@ -91,11 +91,23 @@ const PostContentFormat = ({
       <div className="row mx-auto">
         <div className="container mx-auto">
           <div className="row">
-            <button onClick={()=>handleLike()}class="btn mt-3 mx-auto">
-              {isLiked 
-              ? <i class="fas fa-heart mx-auto" aria-hidden="true"></i>
-              : <i class="far fa-heart mx-auto" aria-hidden="true"></i>}<br></br>
-              {numLikes+likeNum}
+            <button
+              onClick={() => handleLike()}
+              class="btn btn-icon icon-dark mt-3 mx-auto"
+            >
+              {isLiked
+                ? <i class="fas fa-heart mx-auto" aria-hidden="true"></i>
+                :
+                <div className="container mx-auto">
+                  <div className="row">
+                    <i class="far fa-heart mt-2 mx-auto"></i>
+                  </div>
+                  <div className="row">
+                    <div className="small-text text-center mx-auto">
+                      {numLikes + likeNum}
+                  </div>
+                  </div>
+                </div>}
             </button>
           </div>
         </div>
@@ -124,7 +136,7 @@ const PostContentFormat = ({
                   <div className="row">
                     <div className="small-text text-center mx-auto">
                       Share
-            </div>
+                  </div>
                   </div>
                 </div>
               </button>
@@ -139,8 +151,8 @@ const PostContentFormat = ({
 
   const cardContent = (
     <div>
-      <div className="row p-4" style={{whiteSpace: 'pre-line'}}>
-      {text}
+      <div className="row p-4" style={{ whiteSpace: 'pre-line' }}>
+        {text}
       </div>
     </div>
   );
