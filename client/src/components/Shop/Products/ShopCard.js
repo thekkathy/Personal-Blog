@@ -18,7 +18,7 @@ import dompurify from "dompurify";
  * @param {object} product
  * @returns each product as its own card
  */
-const ShopCard = ({ product }) => {
+const ShopCard = ({ product, onHandleAdd }) => {
   const classes = useStyles();
   // using to avoid XSS attacks because of latter use of innerHTML
   const sanitizer = dompurify.sanitize;
@@ -47,7 +47,10 @@ const ShopCard = ({ product }) => {
         />
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
-        <IconButton aria-label="add to cart">
+        <IconButton
+          aria-label="add to cart"
+          onClick={() => onHandleAdd(product.id, 1)}
+        >
           <AddShoppingCart />
         </IconButton>
       </CardActions>
