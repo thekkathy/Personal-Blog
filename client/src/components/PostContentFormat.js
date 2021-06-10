@@ -80,7 +80,8 @@ const PostContentFormat = ({
   );
 
   return (
-    <div className="container-fluid">
+    <div className="container">
+      <img src={imageLink} alt="whoops nothing to see here" style={{maxHeight: '40rem', display:'flex', margin:'auto'}}></img>
       <Card
         sideCol={true}
         cardSide={cardSide}
@@ -91,7 +92,7 @@ const PostContentFormat = ({
         cardContent={cardContent}
         noSetWidthHeight={true}
         noCardTop={false}
-        cardTopImage={imageLink}
+        //cardTopImage={imageLink}
       />
     </div>
   );
