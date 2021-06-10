@@ -4,16 +4,19 @@ import { useHistory, Link } from "react-router-dom";
 import "../../styles/base.css";
 import "../../styles/blogCard.css";
 import { UsersContext } from '../../context/usersContext'
+import { BlogIdContext } from '../../context/blogIdContext'
 
 const BlogCard = ({ post, auth, getBlogPosts }) => {
   //const { setBlogPosts } = useContext(BlogPostsContext);
 
   const { users, setUsers } = useContext(UsersContext);
+  const { setBlogIdG } = useContext(BlogIdContext);
   const history = useHistory();
 
   //This function redirects to the corresponding blog page when a blog card is clicked
   const handleClick = () => {
     history.push(`/blog/${post.doc_id}`);
+    setBlogIdG(post.doc_id);
   };
 
 
