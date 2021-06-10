@@ -4,6 +4,7 @@ import {UsersContext} from '../../context/usersContext'
 import BlogCard from "../Blog/BlogCard";
 import {Link} from "react-router-dom";
 import axios from 'axios';
+import "../../styles/home.css";
 
 export default function UserLikes(){
 
@@ -30,10 +31,10 @@ export default function UserLikes(){
     };
 
     return(
-        <div>
+        <div className='container'>
             <br></br>
             <h1>Liked Posts</h1>
-            {userLikedPosts.map((post) => {return <BlogCard post={post}/>})}
+            <div class="row cards">{userLikedPosts.map((post) => {return <BlogCard post={post}/>})}</div>
         </div>
     )
 }
