@@ -1,0 +1,6 @@
+.about-card {
+    flex-direction: row;
+  }
+.about-card img {
+width: 40%;
+}
