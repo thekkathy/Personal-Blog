@@ -94,9 +94,10 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
     <Card
       cardContent={cardContent}
       cardBottom={cardBottom}
-      outerCardClassName="my-4 mx-1"
-      bottomRowClassName="mx-auto blog-card-bottom"
+      outerCardClassName="my-4 mx-1 d-flex"
+      bottomRowClassName="justify-content-center align-items-end blog-card-bottom"
       noInnerCard={!post.pic_url && true}
+      innerCardClassName="h-75"
       noCardTop={false}
       cardTopImage={post.pic_url}
     ></Card>

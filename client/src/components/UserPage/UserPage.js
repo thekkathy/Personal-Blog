@@ -14,11 +14,11 @@ export default function UserPage() {
 
     return (
         <div>
-            <div className="container">
+            <div className="container p-5" style={{height:"40rem"}}>
                 {users &&
-                    <div className="card outer-card p-3 m-4">
-                        <div className="card">
-                            <div className="container-fluid">
+                    <div className="card outer-card p-3 h-100">
+                        <div className="card h-100">
+                            <div className="container-fluid my-auto">
                                 <div className="row d-flex justify-content-center m-5">
                                     <img src={users.photoURL} />
                                 </div>
@@ -31,7 +31,7 @@ export default function UserPage() {
                                     </h3>
                                 </div>
                                 <div className="row d-flex justify-content-center m-5">
-                                    <NavigateButton buttonName="View Liked Posts" url="/user-likes" />
+                                    <NavigateButton buttonName="View Liked Posts" url="/user-likes" color="dark"/>
                                 </div>
                             </div>
                         </div>
