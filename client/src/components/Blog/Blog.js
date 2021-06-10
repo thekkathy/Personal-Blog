@@ -26,7 +26,7 @@ const Blog = () => {
   useEffect(() => { console.log(users); getBlogPosts() }, [users])
 
   return (
-    <div class="container-fluid p-4">
+    <div className="container-fluid p-4">
       <h1>The Blog</h1>
       <div className="row m-4">
         {users && users.uid===adminUID ? <NewPostCard></NewPostCard> : null}
