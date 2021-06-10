@@ -1,7 +1,8 @@
 /**
  * This file styles the main content of a blog, forum, or any othe rpost we have in the site.
  */
-import React, {useEffect, useState} from "react";
+import React from "react";
+
 import Card from "./Card";
 import { useContext } from "react";
 import { UsersContext } from '../context/usersContext'
@@ -10,6 +11,7 @@ import { BlogPostsContext } from "../context/blogPostsContext";
 import "../styles/base.css";
 import NavigateButton from './NavigateButton';
 import axios from "axios";
+
 
 //numLikes = the number of likes the post has
 //numComments = the number of comments the post has
@@ -77,10 +79,18 @@ const PostContentFormat = ({
       <div className="row mx-auto">
         <div className="container mx-auto">
           <div className="row">
-            <a target="_blank" href={'https://twitter.com/intent/tweet?url='+window.location.href.toString()}>
-              <button class="btn mt-3 mx-auto">
-                <i class="fas fa-share" aria-hidden="true"></i><br></br>
-                Share
+            <a target="_blank" href={'https://twitter.com/intent/tweet?url=' + window.location.href.toString()}>
+              <button class="btn btn-icon icon-dark">
+                <div className="container mx-auto">
+                  <div className="row">
+                    <i class="fas fa-share mt-2 mx-auto"></i>
+                  </div>
+                  <div className="row">
+                    <div className="small-text text-center mx-auto">
+                      Share
+            </div>
+                  </div>
+                </div>
               </button>
             </a>
           </div>

@@ -5,7 +5,6 @@ import BlogCard from "../../components/Blog/BlogCard";
 import getBlogPosts from "../../utils/getBlogPosts";
 import { BlogPostsContext } from "../../context/blogPostsContext";
 
-
 const Home = () => {
   const { blogPosts, setBlogPosts } = React.useContext(BlogPostsContext);
 
@@ -23,10 +22,13 @@ const Home = () => {
       </div>
       <div className="container">
         <h1>Recent Blog Posts</h1>
-        <div className="row">
+        <div className="row cards">
+          {/* Conditional added to map to limit number of blog posts displayed on home page */}
           {blogPosts
-            ? blogPosts.map((post) => {
-                return <BlogCard post={post} />;
+            ? blogPosts.map((post, index) => {
+                if (index <= 2) {
+                  return <BlogCard post={post} />;
+                }
               })
             : ""}
         </div>
