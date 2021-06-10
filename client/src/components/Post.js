@@ -10,11 +10,11 @@ import PostContentFormat from './PostContentFormat';
 const Post = ({ post, author, postType }) => {
     return (
         <div>
-            <div className="container-fluid p-4">
+            <div className="container">
                 <div className="row">
-                    <div className="container-fluid">
-                        <h1>{post.title}</h1>
-                        <h2 className="h5 font-weight-normal">By: {author}</h2>
+                    <div className="container">
+                        <h1 style={{margin:"2%"}}>{post.title}</h1>
+                        {/* <h2 className="h5 font-weight-normal">By: {author}</h2> */}
                     </div>
                 </div>
                 <div className="row my-4">

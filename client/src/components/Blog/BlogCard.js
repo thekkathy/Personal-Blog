@@ -15,8 +15,9 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
 
   //This function redirects to the corresponding blog page when a blog card is clicked
   const handleClick = () => {
-    history.push(`/blog/${post.doc_id}`);
+    //history.push(`/blog/${post.doc_id}`);
     setBlogIdG(post.doc_id);
+    console.log('hi')
   };
 
 
@@ -45,7 +46,7 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
   const cardContent = (
     <div>
       <div className="container-fluid white-text blog-card">
-        <div className="row mx-auto d-flex justify-content-center my-4">
+        <div className="row mx-auto d-flex justify-content-center my-4" onClick={handleClick()}>
           <h2 className="h4 font-weight-normal text-center">
             {/* <a href={`/blog/${post.doc_id}`} className="white-text link-light">
               {post.title}
@@ -94,7 +95,7 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
       cardContent={cardContent}
       cardBottom={cardBottom}
       outerCardClassName="my-4 mx-1"
-      bottomRowClassName="mx-auto"
+      bottomRowClassName="mx-auto blog-card-bottom"
       noInnerCard={!post.pic_url && true}
       noCardTop={false}
       cardTopImage={post.pic_url}

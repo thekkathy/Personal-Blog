@@ -26,12 +26,14 @@
 
 .commentSideCol {
     justify-content: center;
+    display: grid;
     
 }
 
 .commentHeart {
     background-color: #74BAC4;
     justify-content: center;
+    display:table;
 }
 
 .commentHeart:focus {
@@ -40,4 +42,8 @@
 
 .commentHeart:hover {
     background-color: #74BAC4;
+}
+
+.comment {
+    margin-bottom: 1%;
 }

@@ -19,6 +19,7 @@ const Comments = ({isBlog, post_id, comments, changed}) => {
                         sideCol={true}
                         noSetWidthHeight={true} 
                         sideColClassName='commentSideCol'
+                        outerCardClassName="comment"
                         cardSide = {
                             <div>
                                 <LikeButton isBlog={isBlog} post_id={post_id} comment_id={e.doc_id} liked_by={e?.liked_by} num_likes={e.num_likes}/>
@@ -26,7 +27,7 @@ const Comments = ({isBlog, post_id, comments, changed}) => {
                         }
                         cardContent={
                             <div>
-                            <p>{e.author_name}</p>
+                            <p><b>{e.author_name}</b></p>
                             <div>{e.text}</div>
                             </div>
                     }>  </Card>

@@ -24,13 +24,10 @@ const Blog = () => {
   useEffect(() => { console.log(users); getBlogPosts() }, [users])
 
   return (
-    <div className="container-fluid p-4">
+    <div className="container p-4">
       <h1>The Blog</h1>
-      <div className="row m-4">
+      <div className="row m-4" style={users && users.uid ===adminUID? {} : {display: 'none'}}>
         {users && users.uid===adminUID ? <NewPostCard></NewPostCard> : null}
-      </div>
-      <div className="row m-4">
-        {/* {<PostInput />} */}
       </div>
       <div class="row mt-4 cards">
         {blogPosts.map((post) => {
