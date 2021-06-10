@@ -5,6 +5,8 @@ import React, {useEffect, useState} from "react";
 import Card from "./Card";
 import { useContext } from "react";
 import { UsersContext } from '../context/usersContext'
+import { BlogIdContext } from '../context/blogIdContext'
+import { BlogPostsContext } from "../context/blogPostsContext";
 import "../styles/base.css";
 import NavigateButton from './NavigateButton';
 import axios from "axios";
@@ -25,13 +27,26 @@ const PostContentFormat = ({
 }) => {
 
   const { users, setUsers } = useContext(UsersContext);
+  const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
+  const { blogIdG, setBlogIdG } = useContext(BlogIdContext);
+  const [likeNum,setLikeNum] = useState(0);
+  const [isLiked,setIsLiked] = useState(false)
 
   function handleLike(){
     axios.post('http://localhost:8000/blog_posts/like',{
       user: users,
-      blogid: '1oLm2OmIwnYqTBPc0LZ1'
+      blogid: blogIdG,
+      isLiked: isLiked
     })
+    if(!isLiked){
+      setLikeNum(likeNum+1);
+      setIsLiked(true)
+    }else{
+      setLikeNum(likeNum-1);
+      setIsLiked(false)
+    }
   }
+
 
   const cardSide = (
     <div className={`${outerBlueWrap && "white-text"}`}>
@@ -39,8 +54,10 @@ const PostContentFormat = ({
         <div className="container mx-auto">
           <div className="row">
             <button onClick={()=>handleLike()}class="btn mt-3 mx-auto">
-              <i class="far fa-heart mx-auto" aria-hidden="true"></i><br></br>
-              {numLikes}
+              {isLiked 
+              ? <i class="fas fa-heart mx-auto" aria-hidden="true"></i>
+              : <i class="far fa-heart mx-auto" aria-hidden="true"></i>}<br></br>
+              {numLikes+likeNum}
             </button>
           </div>
         </div>
