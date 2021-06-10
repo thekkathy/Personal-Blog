@@ -4,7 +4,7 @@
 import React from "react";
 
 import Card from "./Card";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UsersContext } from '../context/usersContext'
 import { BlogIdContext } from '../context/blogIdContext'
 import { BlogPostsContext } from "../context/blogPostsContext";
