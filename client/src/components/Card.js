@@ -50,7 +50,9 @@ const Card = ({
                         />
                     </div>
                 }
-                <div className="card-body">
+                <div className="card-body" style={noSetWidthHeight ? { height:"auto" } : { height: "14px" }}>
+                    <div className="container-fluid">
+                    </div>
                     <div className="row">
                         {sideCol ?
                             <Fragment>
@@ -68,7 +70,7 @@ const Card = ({
                                     {/* The actual post/image that's on the card; below is an example of how to style it */}
                                     {/*<div className="card p-4 w-100">
                                 Example Post
-                </div>*/}
+                            </div>*/}
                                     {cardContent && cardContent}
                                 </div>
                             </Fragment>
@@ -77,7 +79,7 @@ const Card = ({
                                 {/* The actual post/image that's on the card; below is an example of how to style it */}
                                 {/*<div className="card p-4 w-100">
                                 Example Post
-                        </div>*/}
+                                </div>*/}
                                 {cardContent && cardContent}
                             </div>
                         }

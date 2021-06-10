@@ -9,6 +9,7 @@ import { UsersContext } from '../context/usersContext'
 import { BlogIdContext } from '../context/blogIdContext'
 import { BlogPostsContext } from "../context/blogPostsContext";
 import "../styles/base.css";
+import "../styles/postContent.css";
 import NavigateButton from './NavigateButton';
 import axios from "axios";
 import Button from '@material-ui/core/Button';
@@ -80,11 +81,11 @@ const PostContentFormat = ({
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Please Sign In to Like Posts"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Please sign in to like posts"}</DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <button className="btn-dark" onClick={handleClose} color="primary" autoFocus>
             Okay
-          </Button>
+          </button>
         </DialogActions>
       </Dialog>
     </div>
@@ -96,7 +97,17 @@ const PostContentFormat = ({
               class="btn btn-icon icon-dark mt-3 mx-auto"
             >
               {isLiked
-                ? <i class="fas fa-heart mx-auto" aria-hidden="true"></i>
+                ? 
+                <div className="container mx-auto">
+                  <div className="row">
+                    <i class="fas fa-heart mt-2 mx-auto"></i>
+                  </div>
+                  <div className="row">
+                    <div className="small-text text-center mx-auto">
+                      {likeNum}
+                    </div>
+                  </div>
+                </div>
                 :
                 <div className="container mx-auto">
                   <div className="row">
@@ -104,8 +115,8 @@ const PostContentFormat = ({
                   </div>
                   <div className="row">
                     <div className="small-text text-center mx-auto">
-                      {numLikes + likeNum}
-                  </div>
+                      {likeNum}
+                    </div>
                   </div>
                 </div>}
             </button>
@@ -125,7 +136,7 @@ const PostContentFormat = ({
         </div>
       </div>
       <div className="row mx-auto">
-        <div className="container mx-auto">
+        <div className="container d-flex justify-content-center">
           <div className="row">
             <a target="_blank" href={'https://twitter.com/intent/tweet?url=' + window.location.href.toString()}>
               <button class="btn btn-icon icon-dark">
@@ -151,7 +162,7 @@ const PostContentFormat = ({
 
   const cardContent = (
     <div>
-      <div className="row p-4" style={{ whiteSpace: 'pre-line' }}>
+      <div className="row p-4 post-content" style={{ whiteSpace: 'pre-line' }}>
         {text}
       </div>
     </div>
@@ -159,7 +170,7 @@ const PostContentFormat = ({
 
   return (
     <div className="container">
-      <img src={imageLink} alt="whoops nothing to see here" style={{maxHeight: '40rem', display:'flex', margin:'auto'}}></img>
+      <img className="img-fluid" src={imageLink} alt="whoops nothing to see here" style={{maxHeight: '40rem', display:'flex', margin:'auto'}}></img>
       <Card
         sideCol={true}
         cardSide={cardSide}
