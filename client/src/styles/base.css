@@ -24,7 +24,7 @@ h6 {
 
 /*NAVBAR*/
 .navbar-dark {
-  background: var(--teal) !important;
+  background: var(--dark-teal) !important;
   color: white !important;
 }
 
