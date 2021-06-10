@@ -13,8 +13,8 @@ const Post = ({ post, author, postType }) => {
             <div className="container">
                 <div className="row">
                     <div className="container">
-                        <h1>{post.title}</h1>
-                        <h2 className="h5 font-weight-normal">By: {author}</h2>
+                        <h1 style={{margin:"2%"}}>{post.title}</h1>
+                        {/* <h2 className="h5 font-weight-normal">By: {author}</h2> */}
                     </div>
                 </div>
                 <div className="row my-4">

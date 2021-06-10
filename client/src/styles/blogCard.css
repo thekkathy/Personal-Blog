@@ -8,3 +8,7 @@
 .card-link:hover {
     color: var(--dark-teal);
 }
+
+.blog-card-bottom {
+    padding:3%;
+}

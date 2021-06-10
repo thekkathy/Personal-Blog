@@ -104,9 +104,7 @@ a.thumbnail-img:hover {
   opacity: 0.6;
 }
 
-.card-body {
-  overflow: auto;
-}
+
 
 .card-img-top {
     max-height: 12rem;

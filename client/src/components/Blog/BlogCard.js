@@ -94,7 +94,7 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
       cardContent={cardContent}
       cardBottom={cardBottom}
       outerCardClassName="my-4 mx-1"
-      bottomRowClassName="mx-auto"
+      bottomRowClassName="mx-auto blog-card-bottom"
       noInnerCard={!post.pic_url && true}
       noCardTop={false}
       cardTopImage={post.pic_url}
