@@ -11,7 +11,12 @@ import { BlogPostsContext } from "../context/blogPostsContext";
 import "../styles/base.css";
 import NavigateButton from './NavigateButton';
 import axios from "axios";
-
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 //numLikes = the number of likes the post has
 //numComments = the number of comments the post has
@@ -34,24 +39,55 @@ const PostContentFormat = ({
   const [likeNum,setLikeNum] = useState(0);
   const [isLiked,setIsLiked] = useState(false)
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   function handleLike(){
-    axios.post('http://localhost:8000/blog_posts/like',{
-      user: users,
-      blogid: blogIdG,
-      isLiked: isLiked
-    })
-    if(!isLiked){
-      setLikeNum(likeNum+1);
-      setIsLiked(true)
+    if(users!=null){
+      axios.post('http://localhost:8000/blog_posts/like',{
+        user: users,
+        blogid: blogIdG,
+        isLiked: isLiked
+      })
+      .catch(console.log('error'))
+      if(!isLiked){
+
+        setLikeNum(likeNum+1);
+        setIsLiked(true)
+      }else{
+        setLikeNum(likeNum-1);
+        setIsLiked(false)
+      }
     }else{
-      setLikeNum(likeNum-1);
-      setIsLiked(false)
+      handleClickOpen();
     }
   }
 
 
   const cardSide = (
     <div className={`${outerBlueWrap && "white-text"}`}>
+      <div>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Please Sign In to Like Posts"}</DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary" autoFocus>
+            Okay
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
       <div className="row mx-auto">
         <div className="container mx-auto">
           <div className="row">
