@@ -7,7 +7,7 @@ import { UsersContext } from '../../context/usersContext';
 const LikeButton = ({ isBlog, post_id, comment_id, liked_by, num_likes }) => {
 
     const [isLiked, setIsLiked] = useState(false);
-    const [numLikes, setNumLikes] = useState(num_likes);
+    const [numLikes, setNumLikes] = useState(parseInt(num_likes));
     const { users } = useContext(UsersContext);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const LikeButton = ({ isBlog, post_id, comment_id, liked_by, num_likes }) => {
         <div>
             {isLiked ?
                 <button
-                    className="btn-icon icon-dark"
+                    className="commentHeart"
                     onClick={() => {
                         removeCommentLike(isBlog, post_id, comment_id, users.uid);
                         setIsLiked(false);
@@ -43,7 +43,7 @@ const LikeButton = ({ isBlog, post_id, comment_id, liked_by, num_likes }) => {
                 </button>
                 :
                 <button
-                    className="btn-icon icon-dark"
+                    className="commentHeart"
                     onClick={() => {
                         addCommentLike(isBlog, post_id, comment_id, users.uid);
                         setIsLiked(true);
