@@ -113,4 +113,12 @@ app.get("/blog_posts/user-likes", async (req, res) => {
   res.send(personlikes);
 });
 
+app.get("/blog_posts/user-commented", async (req, res) => {
+  console.log(req.query);
+  const person = await db.collection("users").doc(req.query.userid).get();
+  const personCommented = await person.data().commented_posts;
+  console.log(personCommented);
+  res.send(personCommented);
+});
+
 module.exports = app;

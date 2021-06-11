@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import UserPage from "./UserPage/UserPage";
 import UserLikes from "./UserPage/UserLikes";
-
+import UserCommented from "./UserPage/UserCommented";
 import Home from "./Home/Home";
 import About from "./About";
 import Blog from "./Blog/Blog";
@@ -92,6 +92,15 @@ const Navigation = () => {
                 }
               </li>
               <li className="nav-item">
+                {users &&
+                  <Link
+                    className="nav-link"
+                    to="/user-commented">
+                    Commented Posts
+                    </Link>
+                }
+              </li>
+              <li className="nav-item">
                 {users ?
                   <Link
                     className="nav-link"
@@ -121,6 +130,7 @@ const Navigation = () => {
         <Switch>
           <Route path="/ProfilePage" exact component={UserPage}></Route>
           <Route path="/user-likes" exact component={UserLikes}></Route>
+          <Route path="/user-commented" exact component={UserCommented}></Route>
           <Route path="/about" exact component={About}></Route>
           <Route path="/blog" exact component={Blog}></Route>
           <Route path="/blog/:id" exact component={BlogPost}></Route>
