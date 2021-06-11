@@ -18,17 +18,6 @@ const CommentMaker = ({ post_id, isBlog }) => {
     setComments(c);
   }
 
-  useEffect(() => {
-
-    async function fetchCommentsUE() {
-      const c = await getComments(isBlog, post_id);
-      console.log(c);
-      setComments(c);
-    }
-
-    fetchCommentsUE();
-  }, [post_id, changed, isBlog]);
-
   return (
     <div>
       {users && (
@@ -80,7 +69,6 @@ const CommentMaker = ({ post_id, isBlog }) => {
             <Comments
               isBlog={isBlog}
               post_id={post_id}
-              comments={comments}
               changed={changed}
             />
           </div>

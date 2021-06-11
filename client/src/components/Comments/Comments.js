@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../Card';
 import '../../styles/base.css';
 import '../../styles/comments.css';
 import LikeButton from './LikeButton';
+import getComments from "../../utils/getComments";
 
-const Comments = ({ isBlog, post_id, comments, changed }) => {
+const Comments = ({ isBlog, post_id, changed }) => {
+
+const [comments, setComments] = useState();
+
+  useEffect(() => {
+    async function fetchCommentsUE() {
+      const c = await getComments(isBlog, post_id);
+      console.log(c);
+      setComments(c);
+    }
+
+    fetchCommentsUE();
+  }, [post_id, changed, isBlog]);
 
     return (
         <div>
