@@ -78,36 +78,42 @@ const Navigation = () => {
                 </Link>
               </li>
             </ul>
-            <div className="collapse navbar-collapse ml-auto">
-              <ul className="navbar-nav ml-auto"><li className="nav-item">
-                {!users
-                  ? <Link className="nav-link" to="/ProfilePage"><button style={{ all: 'unset', color: 'white' }} onClick={() => handleSignIn()}>Sign In</button></Link>
-                  : <Link className="nav-link" to="/ProfilePage">Profile</Link>
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                {users && <Link className="nav-link" to="/ProfilePage">Profile</Link>}
+              </li>
+              <li className="nav-item">
+                {users &&
+                  <Link
+                    className="nav-link"
+                    to="/user-likes">
+                    Liked Posts
+                    </Link>
                 }
               </li>
-                <li className="nav-item">
-                  {users &&
-                    <Link
-                      className="nav-link"
-                      to="/user-likes">
-                      Liked Posts
-                    </Link>
-                  }
-                </li>
-                <li className="nav-item">
-                  {users &&
-                    <Link
-                      className="nav-link"
-                      to="/">
-                      <button
-                        style={{ all: 'unset', color: 'white' }}
-                        onClick={() => handleSignOut()}>
-                        Sign Out
+              <li className="nav-item">
+                {users ?
+                  <Link
+                    className="nav-link"
+                    to="/">
+                    <button
+                      style={{ all: 'unset', color: 'white' }}
+                      onClick={() => handleSignOut()}>
+                      Sign Out
                     </button>
-                    </Link>}
-                </li>
-              </ul>
-            </div>
+                  </Link>
+                  :
+                  <Link
+                    className="nav-link"
+                    to="/">
+                    <button
+                      style={{ all: 'unset', color: 'white' }}
+                      onClick={() => handleSignIn()}>
+                      Sign In
+                    </button>
+                  </Link>}
+              </li>
+            </ul>
           </div>
         </nav>
 
