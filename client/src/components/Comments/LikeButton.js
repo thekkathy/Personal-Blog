@@ -11,13 +11,13 @@ const LikeButton = ({ isBlog, post_id, comment_id, liked_by, num_likes }) => {
     const { users } = useContext(UsersContext);
 
     useEffect(() => {
-        if (typeof liked_by !== 'undefined' && !isLiked) {
+        if (typeof liked_by !== 'undefined' ) {
             liked_by.forEach(e => {
                 if (e.stringValue === users.uid)
                     setIsLiked(true);
             });
         }
-    }, [])
+    }, [liked_by, users.uid])
 
     return (
         <div>

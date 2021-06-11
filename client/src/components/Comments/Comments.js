@@ -1,15 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import Card from '../Card';
-import getComments from '../../utils/getComments';
-import { UsersContext } from '../../context/usersContext';
 import '../../styles/base.css';
 import '../../styles/comments.css';
-import { addCommentLike } from '../../utils/updateLike';
 import LikeButton from './LikeButton';
 
 const Comments = ({ isBlog, post_id, comments, changed }) => {
-
-    const { user } = useContext(UsersContext);
 
     return (
         <div>

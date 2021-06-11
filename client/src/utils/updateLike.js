@@ -17,6 +17,7 @@ export function addCommentLike(isBlog, post_id, comment_id, user_id) {
     axios.post(url, c).then(res => console.log(res));
 }
 
+//removes like from a comment
 export function removeCommentLike(isBlog, post_id, comment_id, user_id) {
     let url = "";
     if(isBlog)

@@ -45,7 +45,7 @@ const Card = ({
                         <img
                             class="card-img-top rounded d-flex"
                             src={cardTopImage}
-                            alt="Card image cap"
+                            alt="Card cap"
                             style={{ maxWidth: "40rem" }}
                         />
                     </div>

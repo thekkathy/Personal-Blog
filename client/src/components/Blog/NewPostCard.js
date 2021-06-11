@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "../Card";
 import { useHistory } from "react-router-dom";
 import "../../styles/base.css";
 

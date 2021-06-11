@@ -1,0 +1,76 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch comments
+# Your branch is ahead of 'origin/comments' by 44 commits.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	modified:   server/comments/comments.js
+#
+# Changes not staged for commit:
+#	modified:   client/node_modules/domhandler/LICENSE
+#	modified:   client/node_modules/domhandler/lib/node.js
+#	modified:   client/node_modules/domhandler/package.json
+#	modified:   client/node_modules/domhandler/readme.md
+#	modified:   client/node_modules/htmlparser2/LICENSE
+#	modified:   client/node_modules/htmlparser2/README.md
+#	modified:   client/node_modules/htmlparser2/lib/CollectingHandler.js
+#	modified:   client/node_modules/htmlparser2/lib/FeedHandler.js
+#	modified:   client/node_modules/htmlparser2/lib/Parser.js
+#	modified:   client/node_modules/htmlparser2/lib/Tokenizer.js
+#	modified:   client/node_modules/htmlparser2/lib/WritableStream.js
+#	modified:   client/node_modules/htmlparser2/lib/index.js
+#	modified:   client/node_modules/htmlparser2/package.json
+#	modified:   client/node_modules/renderkid/LICENSE
+#	modified:   client/node_modules/renderkid/README.md
+#	modified:   client/node_modules/renderkid/lib/AnsiPainter.js
+#	modified:   client/node_modules/renderkid/lib/Layout.js
+#	modified:   client/node_modules/renderkid/lib/RenderKid.js
+#	modified:   client/node_modules/renderkid/lib/ansiPainter/styles.js
+#	modified:   client/node_modules/renderkid/lib/ansiPainter/tags.js
+#	modified:   client/node_modules/renderkid/lib/layout/Block.js
+#	modified:   client/node_modules/renderkid/lib/layout/SpecialString.js
+#	modified:   client/node_modules/renderkid/lib/layout/block/blockAppendor/Default.js
+#	modified:   client/node_modules/renderkid/lib/layout/block/blockAppendor/_BlockAppendor.js
+#	modified:   client/node_modules/renderkid/lib/layout/block/blockPrependor/Default.js
+#	modified:   client/node_modules/renderkid/lib/layout/block/blockPrependor/_BlockPrependor.js
+#	modified:   client/node_modules/renderkid/lib/layout/block/lineAppendor/Default.js
+#	modified:   client/node_modules/renderkid/lib/layout/block/lineAppendor/_LineAppendor.js
+#	modified:   client/node_modules/renderkid/lib/layout/block/linePrependor/Default.js
+#	modified:   client/node_modules/renderkid/lib/layout/block/linePrependor/_LinePrependor.js
+#	modified:   client/node_modules/renderkid/lib/layout/block/lineWrapper/Default.js
+#	modified:   client/node_modules/renderkid/lib/layout/block/lineWrapper/_LineWrapper.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/Styles.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styleApplier/_common.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styleApplier/block.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styleApplier/inline.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/Rule.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/StyleSheet.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/DeclarationBlock.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/MixedDeclarationSet.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/Selector.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/Arbitrary.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/Background.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/Bullet.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/Color.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/Display.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/Height.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/Margin.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/MarginBottom.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/MarginLeft.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/MarginRight.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/MarginTop.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/Padding.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/PaddingBottom.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/PaddingLeft.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/PaddingRight.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/PaddingTop.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/Width.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/_Declaration.js
+#	modified:   client/node_modules/renderkid/lib/renderKid/styles/rule/declarationBlock/_Length.js
+#	modified:   client/node_modules/renderkid/lib/tools.js
+#	modified:   client/node_modules/renderkid/package.json
+#	modified:   client/package-lock.json
+#
