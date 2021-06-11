@@ -1,15 +1,16 @@
 import React, { useContext } from "react";
 import Card from "../Card";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../../styles/base.css";
 import "../../styles/blogCard.css";
 import { UsersContext } from '../../context/usersContext'
 import { BlogIdContext } from '../../context/blogIdContext'
+import { BlogPostsContext } from '../../context/blogPostsContext'
 
-const BlogCard = ({ post, auth, getBlogPosts }) => {
-  //const { setBlogPosts } = useContext(BlogPostsContext);
+const BlogCard = ({ post, auth }) => {
+  const { setBlogPosts } = useContext(BlogPostsContext);
 
-  const { users, setUsers } = useContext(UsersContext);
+  const { users } = useContext(UsersContext);
   const { setBlogIdG } = useContext(BlogIdContext);
   const history = useHistory();
 
@@ -25,6 +26,14 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
   const handleEdit = () => {
     history.push(`/blog/edit/${post.doc_id}`)
   }
+
+  const getBlogPosts = async () => {
+    console.log("fetching blog posts ");
+    const url = new URL("http://localhost:8000/blog_posts/get");
+    let res = await fetch(url).then((resp) => resp.json());
+    console.log(res);
+    setBlogPosts(res);
+  };
 
   //this function deletes a blog post by using the doc_id
   const handleDelete = async () => {

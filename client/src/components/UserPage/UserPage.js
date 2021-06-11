@@ -1,16 +1,12 @@
 
 import {useContext} from "react";
 import {UsersContext} from '../../context/usersContext'
-import {Link} from "react-router-dom";
-import UserLikes from './UserLikes'
 import NavigateButton from '../NavigateButton';
-
-
 import "../../styles/base.css";
 
 export default function UserPage() {
 
-    const { users, setUsers } = useContext(UsersContext);
+    const { users } = useContext(UsersContext);
 
     return (
         <div>
@@ -20,7 +16,7 @@ export default function UserPage() {
                         <div className="card h-100">
                             <div className="container-fluid my-auto">
                                 <div className="row d-flex justify-content-center m-5">
-                                    <img src={users.photoURL} />
+                                    <img src={users.photoURL} alt='profile pic'/>
                                 </div>
                                 <div className="container my-4">
                                     <h2 className="d-flex justify-content-center">

@@ -1,22 +1,34 @@
-
 import { useContext, useState, useEffect } from "react";
 import { UsersContext } from '../../context/usersContext'
 import BlogCard from "../Blog/BlogCard";
-import { Link } from "react-router-dom";
-import axios from 'axios';
 import "../../styles/home.css";
 
 export default function UserLikes() {
 
-    const { users, setUsers } = useContext(UsersContext);
-    const [userLikedPosts,setUserLikedPosts] = useState([]);
+    const { users } = useContext(UsersContext);
+    const [userLikedPosts, setUserLikedPosts] = useState([]);
     
     useEffect(() => {
-        getBlogPosts()
-    }, []);
-
-
-
+        const getBlogPosts = async () => {
+            console.log("fetching blog posts ");
+            const url = new URL("http://localhost:8000/blog_posts/get");
+            let res = await fetch(url).then((resp) => resp.json());
+            console.log(res);
+            console.log(users.liked_posts)
+            var tempArr = [];
+            for (var i =0; i<users.liked_posts.length;i++){
+                for (var j=0; j<res.length; j++){
+                    if(users.liked_posts[i]===res[j].doc_id){
+                        tempArr.push(res[j]);
+                    }
+                }
+            }
+            setUserLikedPosts(tempArr);
+        }
+        
+        getBlogPosts();
+    }, [users.liked_posts]);
+/*
     const getBlogPosts = async () => {
         console.log("fetching blog posts ");
         const url = new URL("http://localhost:8000/blog_posts/get");
@@ -44,7 +56,7 @@ export default function UserLikes() {
         // })
 
     };
-
+*/
     return (
         <div className='container' style={{ height: "40rem" }}>
             <div className="row p-4">
