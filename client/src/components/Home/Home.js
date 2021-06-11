@@ -23,10 +23,10 @@ const Home = () => {
         <h1 class="display-1 text">Camille's Corner</h1>
       </div>
       <div className="container m-4">
-        <div className="row ml-1">
+        <div className="row ml-4">
           <h1>Recent Blog Posts</h1>
         </div>
-        <div className="row ml-1 mt-3 mb-1">
+        <div className="row ml-4 mt-3 mb-1">
           <NavigateButton buttonName="View All Articles >>" url="/blog" color="dark" />
         </div>
         <div className="row cards">
