@@ -40,7 +40,7 @@ const Blog = () => {
       <div className="row m-4" style={users && users.uid ===adminUID? {} : {display: 'none'}}>
         {users && users.uid===adminUID ? <NewPostCard></NewPostCard> : null}
       </div>
-      <div class="row mt-4 cards">
+      <div class="row mt-4 cards d-flex justify-content-center">
         {blogPosts.map((post) => {
           return (
             <div class="col-4-sm">

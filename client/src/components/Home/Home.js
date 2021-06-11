@@ -21,8 +21,13 @@ const Home = () => {
       <div className="jumbotron">
         <h1 class="display-1 text">Camille's Corner</h1>
       </div>
-      <div className="container">
-        <h1>Recent Blog Posts</h1>
+      <div className="container m-4">
+        <div className="row ml-1">
+          <h1>Recent Blog Posts</h1>
+        </div>
+        <div className="row ml-1 mt-3 mb-1">
+          <NavigateButton buttonName="View All Articles >>" url="/blog" color="dark" />
+        </div>
         <div className="row cards">
           {/* Conditional added to map to limit number of blog posts displayed on home page */}
           {

@@ -3,6 +3,7 @@ import Post from '../Post';
 
 import getBlogPosts from "../../utils/getBlogPosts";
 import CommentMaker from '../Comments/CommentMaker';
+import NavigateButton from '../NavigateButton';
 
 const BlogPost = ({ match: { params: { id } } }) => {
     const [post, setPost] = useState({});
@@ -12,7 +13,7 @@ const BlogPost = ({ match: { params: { id } } }) => {
         getBlogPosts()
             .then((posts) => {
                 posts.forEach(element => {
-                    if(element.doc_id === id){
+                    if (element.doc_id === id) {
                         setPost(element);
                         console.log(element);
                     }
@@ -21,9 +22,12 @@ const BlogPost = ({ match: { params: { id } } }) => {
     }, [id]);
 
     return (
-        <div>
+        <div className="container-fluid">
             <Post post={post} author="Camille Cooper" postType="blog" />
-            <CommentMaker isBlog={true} post_id={post.doc_id}/>
+            <CommentMaker isBlog={true} post_id={post.doc_id} />
+            <div className="row d-flex justify-content-center m-5">
+                <NavigateButton buttonName="Back To Blog" url="/blog" color="dark" />
+            </div>
         </div>
     )
 }

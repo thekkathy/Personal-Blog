@@ -10,7 +10,7 @@ import PostContentFormat from './PostContentFormat';
 const Post = ({ post, postType }) => {
     return (
         <div>
-            <div className="container py-5">
+            <div className="container pt-5">
                 <div className="card p-4">
                     <div className="container-fluid">
                         <div className="row">

@@ -65,8 +65,8 @@ const BlogCard = ({ post, auth }) => {
   );
 
   const cardBottom = (
-    <div>
-      <div className="row d-flex border-top">
+    <div className="w-100">
+      <div className="row d-flex border-top w-100 m-0 px-2 pt-2">
         <div className="container-fluid d-flex">
           <div className="mr-auto" style={users && users.uid === process.env.REACT_APP_ADMIN_UID ? null : { display: 'none' }}>
             <button
@@ -96,7 +96,7 @@ const BlogCard = ({ post, auth }) => {
     <Card
       cardContent={cardContent}
       cardBottom={cardBottom}
-      outerCardClassName="my-4 mx-1 d-flex"
+      outerCardClassName="my-4 mx-lg-3 mx-sm-1 d-flex"
       bottomRowClassName="justify-content-center align-items-end blog-card-bottom"
       noInnerCard={!post.pic_url && true}
       innerCardClassName="h-75"

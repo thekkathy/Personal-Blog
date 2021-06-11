@@ -33,7 +33,7 @@ const CommentMaker = ({ post_id, isBlog }) => {
     <div>
       {users && (
         <div>
-          <div class="container">
+          <div class="container mt-5">
             <h1 style={{ color: "#094B5C", marginBottom: 20 }}>Comments</h1>
             <h5 style={{ color: "#094B5C" }}>Create New Comment</h5>
             <div class="row">
