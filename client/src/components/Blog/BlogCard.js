@@ -48,7 +48,7 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
       <div className="container-fluid white-text blog-card">
         <div className="row mx-auto d-flex justify-content-center my-4">
           <h2 className="h4 font-weight-normal text-center">
-            <button style={{all: 'unset',color:'white'}} onClick={handleClick}>{post.title}</button>
+            <button className="card-link" onClick={handleClick}>{post.title}</button>
           </h2>
         </div>
       </div>
