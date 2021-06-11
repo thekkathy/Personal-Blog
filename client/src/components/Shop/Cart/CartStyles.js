@@ -21,10 +21,14 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up("xs")]: {
       marginRight: "20px",
     },
+    color: "white",
+    backgroundColor: "red",
   },
   checkoutButton: {
     minWidth: "150px",
     textDecoration: "none",
+    backgroundColor: "#094B5C",
+    color: "white",
   },
   shopLink: {
     color: "#094B5C",
