@@ -117,7 +117,7 @@ a.thumbnail-img:hover {
 }
 
 .cards {
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin:auto;
 }
 

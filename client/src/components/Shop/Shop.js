@@ -104,7 +104,7 @@ const Shop = () => {
     fetchCart();
   }, []);
   return (
-    <div>
+    <div className="container p-4">
       <Router>
         <Nav totalItems={cart.total_items} />
         <div />

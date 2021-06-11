@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-//import Card from "../Card";
+import NavigateButton from "../NavigateButton";
 import { useHistory, useParams } from "react-router-dom";
 import getBlogPosts from "../../utils/getBlogPosts";
 import "../../styles/base.css";
@@ -73,8 +73,8 @@ function PostInput({ isEdit }) {
   };
 
   return (
-    <div class="container form">
-      <h1>{isEdit===true ? "Edit Blog Post": "New Blog Post"}</h1>
+    <div class="container form p-4">
+      <h1>{isEdit ? "Edit Blog Post": "New Blog Post"}</h1>
       <form onSubmit={submitForm}>
         <div class="form-group">
           <label>Title</label>
@@ -110,10 +110,16 @@ function PostInput({ isEdit }) {
             onChange={(e) => setPic(e.target.value)}
           />
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-dark">
+        <div class="form-group d-flex">
+          <button type="submit" class="btn btn-dark mr-2">
             {isEdit === true ? "Save" : "Create Post"}
           </button>
+          {isEdit ? 
+            <NavigateButton buttonName="Cancel" url="/blog" color="danger" />
+            :
+            <NavigateButton buttonName="Back To Blog" url="/blog" color="dark" />
+          }
+          
         </div>
       </form>
     </div>

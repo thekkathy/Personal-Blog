@@ -12,3 +12,7 @@
 .blog-card-bottom {
     padding:3%;
 }
+
+.icon-light:hover {
+    color: var(--dark-teal);
+  }
