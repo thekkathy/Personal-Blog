@@ -42,15 +42,12 @@ const CartItem = ({ item, updateCartQty, removeFromCart }) => {
             +
           </Button>
         </div>
-        <div style={{ paddingLeft: "120px" }}>
-          <Button
-            type="button"
-            variant="contained"
-            color="secondary"
+        <div style={{ paddingLeft: "200px" }}>
+          <i
+            class="fas fa-trash"
+            style={{ cursor: "pointer", height: "25px" }}
             onClick={() => removeFromCart(item.id)}
-          >
-            Remove
-          </Button>
+          />
         </div>
       </CardActions>
     </Card>

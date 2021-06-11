@@ -11,9 +11,18 @@ import {
 import { ShoppingCart } from "@material-ui/icons";
 import useStyles from "./NavStyles";
 import { Link, useLocation } from "react-router-dom";
+
+/**
+ * This is the navigation page that returns a nav bar
+ * In the nav bar there are options to go to cart and back to shop
+ * The nav takes in totalitems passed as a prop in order to display
+ * the # of items in cart for the badge
+ * @param {obj/prop} totalItems
+ * @returns the navigation bar
+ */
 const Nav = ({ totalItems }) => {
   const classes = useStyles();
-  const location = useLocation();
+  const location = useLocation(); // use location is used for nav
 
   return (
     <div>
@@ -36,10 +45,10 @@ const Nav = ({ totalItems }) => {
                 component={Link}
                 to="/cart"
                 aria-label="show items in the cart"
-                color="inherit"
+                color="#094B5C"
               >
                 <Badge badgeContent={totalItems} color="secondary">
-                  <ShoppingCart />
+                  <ShoppingCart style={{ color: "#094B5C" }} />
                 </Badge>
               </IconButton>
             </div>

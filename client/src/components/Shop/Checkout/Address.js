@@ -30,6 +30,9 @@ const Address = ({ checkoutToken, next }) => {
   const methods = useForm();
 
   // states
+  // there are a lot, but they were created out of neccessity
+  // to make mapping through the products easier. all of them
+  // are fields in the form and called from commerce api
   const [shippingCountries, setShippingCountries] = useState([]);
   const [shippingCountry, setShippingCountry] = useState("");
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
@@ -69,7 +72,7 @@ const Address = ({ checkoutToken, next }) => {
     setShippingOptions(options);
     setShippingOption(options[0].id); // gets first option
   };
-
+  // a use effect to fetch the countries once we have the checkout token
   useEffect(() => {
     fetchShippingCountries(checkoutToken.id);
   }, []);

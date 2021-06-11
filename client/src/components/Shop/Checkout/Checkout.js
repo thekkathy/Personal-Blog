@@ -9,16 +9,32 @@ import {
   CircularProgress,
   Divider,
   Button,
+  CssBaseline,
 } from "@material-ui/core";
 import useStyles from "./CheckoutStyles";
 import Address from "./Address";
 import Payment from "./Payment";
+import { Checkmark } from "react-checkmark";
+import { useHistory } from "react-router-dom";
+
+// the defined steps the user sees at the top of the form
 const steps = ["Shipping Address", "Payment Details"];
-const Checkout = ({ cart }) => {
+/**
+ * The props passed in are to display the cart and get the items from it,
+ * have the order to pass to the payment and checkout functions to complete
+ * the checkout process
+ * @param {objs} cart, order, onCaptureCheckout, error
+ * @returns
+ */
+const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const classes = useStyles();
+
+  // states
   const [activeStep, setActiveStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [shippingData, setShippingData] = useState({});
+  const [isFinished, setIsFinished] = useState(false);
+  const history = useHistory();
 
   // checkout token
   // once someone enters the checkout process we generate a new token
@@ -31,10 +47,19 @@ const Checkout = ({ cart }) => {
           type: "cart",
         });
         setCheckoutToken(token);
-      } catch (error) {}
+      } catch (error) {
+        history.pushState("/");
+      }
     };
     generateToken();
   }, [cart]);
+
+  // timeout function, 3 seconds
+  const timeout = () => {
+    setTimeout(() => {
+      setIsFinished(true);
+    }, 3000);
+  };
 
   // this function is moving to the next step of the checkout
   // we gather all of the shipping data from the react hook and
@@ -49,7 +74,38 @@ const Checkout = ({ cart }) => {
   const prevStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
   // this is rendered as a confirmation of completion
-  const Confirmation = () => <div>Confirmation</div>;
+  // we have a ternary that displays a spinner while the order is being completed,
+  // and then displays a confirmation message when it is finished
+  let Confirmation = () =>
+    order.customer ? (
+      <div>
+        <Typography variant="h5">Thank you for your order!</Typography>
+        <Divider className={classes.divider} />
+        <Typography variant="subtitle2">Order ref: #{Math.random()}</Typography>
+        <br /> <br />
+        <Checkmark size="xxLarge" color="#094B5C" />
+      </div>
+    ) : isFinished ? (
+      <div>
+        <Typography variant="h5">Thank you for your order!</Typography>
+        <Divider className={classes.divider} />
+        <Typography variant="subtitle2">Order ref: #{Math.random()}</Typography>
+        <br /> <br />
+        <Checkmark size="xxLarge" color="#74BAC4" />
+      </div>
+    ) : (
+      <div className={classes.spinner}>
+        <CircularProgress />
+      </div>
+    );
+
+  if (error) {
+    <div>
+      <Typography variant="h5">
+        Sorry, we had trouble processing your order!
+      </Typography>
+    </div>;
+  }
 
   // this determines the form that is shown based on the current step (activeStep)
   // the user is on. The address form as well as payment both use the same checkout token
@@ -61,11 +117,15 @@ const Checkout = ({ cart }) => {
         shippingData={shippingData}
         checkoutToken={checkoutToken}
         prevStep={prevStep}
+        nextStep={nextStep}
+        onCaptureCheckout={onCaptureCheckout}
+        timeout={timeout}
       />
     );
 
   return (
     <div>
+      <CssBaseline />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography variant="h4" align="center">

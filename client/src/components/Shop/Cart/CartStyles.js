@@ -1,3 +1,5 @@
+// styling file for the cart
+
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
@@ -7,9 +9,12 @@ export default makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   title: {
     marginTop: "10%",
+    color: "#094B5C",
   },
   emptyButton: {
     minWidth: "150px",
+    // breakpoints added for smaller devices
+    // https://material-ui.com/customization/breakpoints/
     [theme.breakpoints.down("xs")]: {
       marginBottom: "5px",
     },
@@ -23,6 +28,7 @@ export default makeStyles((theme) => ({
   },
   shopLink: {
     color: "#094B5C",
+    textDecoration: "underline",
   },
   cardDetails: {
     display: "flex",
@@ -30,6 +36,7 @@ export default makeStyles((theme) => ({
     marginTop: "100px",
     marginBottom: "50px",
     justifyContent: "space-between",
+    color: "#094B5C",
   },
   returnButton: {
     marginTop: "50px",

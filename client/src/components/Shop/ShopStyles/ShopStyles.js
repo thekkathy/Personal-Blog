@@ -4,6 +4,7 @@ export default makeStyles(() => ({
   root: {
     maxWidth: "100%",
     height: "400px",
+    color: "#094B5C",
   },
   media: {
     height: "50%",

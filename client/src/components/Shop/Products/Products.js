@@ -4,6 +4,14 @@ import { Grid, Card } from "@material-ui/core";
 import ShopCard from "./ShopCard";
 import useStyles from "./ProductStyles";
 
+/**
+ * the products class returns a grid of the shop cards
+ * it displays a "loading shop" until the products are fetched
+ * the onHandleAdd prop is fetched and then passed into the shopcard
+ * prop in order to have add to cart functionality.
+ * @param {obj/probs} ( products onHandleAdd )
+ * @returns
+ */
 const Products = ({ products, onHandleAdd }) => {
   const classes = useStyles();
   return (

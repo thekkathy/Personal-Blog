@@ -4,6 +4,11 @@ import useStyles from "./CartStyles";
 import CartItem from "./CartItem/CartItem";
 import { commerce } from "../Inventory/inventory";
 import { Link } from "react-router-dom";
+
+/**
+ *
+ * @returns The items and subtotal of what we added to our cart
+ */
 const Cart = () => {
   // creating the cart as empty object
   const [cart, setCart] = useState([]);
@@ -17,24 +22,28 @@ const Cart = () => {
     setCart(await commerce.cart.retrieve());
   };
 
+  // the same function as the shop page
   const handleUpdateCartQty = async (productId, quantity) => {
     const response = await commerce.cart.update(productId, { quantity });
 
     setCart(response.cart);
   };
 
+  // the same function as the shop page
   const handleRemoveFromCart = async (productId, quantity) => {
     const response = await commerce.cart.remove(productId);
 
     setCart(response.cart);
   };
 
+  // the same function as the shop page
   const handleEmptyCart = async () => {
     const response = await commerce.cart.empty();
 
     setCart(response.cart);
   };
 
+  // the same function as the shop page
   useEffect(() => {
     fetchCart();
   }, []);
@@ -43,6 +52,11 @@ const Cart = () => {
   // determining if cart is empty, display content based on bool
   if (!cart.line_items) return "Loading Cart...";
 
+  /**
+   * We toggle b/w empty cart - the user is prompted to add items
+   * and a filled cart - which returns what is inside of their cart, the items they added
+   * @returns Either the empty cart component or the filled
+   */
   const EmptyCart = () => (
     <Typography variant="subtitle1">
       No items in cart,{" "}

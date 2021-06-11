@@ -10,12 +10,25 @@ import Review from "./Review";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
+/**
+ * The payment form takes in the payment through stripe and has information 
+ * passed to it from the checkout token where it can make a complete order 
+ * with all of the order information
+ * @param {objs} checkoutToken,
+  nextStep,
+  prevStep,
+  shippingData,
+  onCaptureCheckout,
+  timeout 
+ * @returns 
+ */
 const PaymentForm = ({
   checkoutToken,
   nextStep,
-  backStep,
+  prevStep,
   shippingData,
   onCaptureCheckout,
+  timeout,
 }) => {
   // all stripe dependencies
   const handleSubmit = async (event, elements, stripe) => {
@@ -61,9 +74,10 @@ const PaymentForm = ({
           },
         },
       };
-
+      // to fulfill order we need the checkout id, and the full order data
       onCaptureCheckout(checkoutToken.id, orderData);
-
+      timeout();
+      // once we have it move to the next step
       nextStep();
     }
   };
@@ -82,7 +96,7 @@ const PaymentForm = ({
               <CardElement />
               <br /> <br />
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <Button variant="outlined" onClick={backStep}>
+                <Button variant="outlined" onClick={prevStep}>
                   Back
                 </Button>
                 <Button

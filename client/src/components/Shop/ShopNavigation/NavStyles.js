@@ -7,6 +7,9 @@ export default makeStyles((theme) => ({
     boxShadow: "none",
     borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
     // using styling from another called component
+    // using breakpoints for smaller devices
+    // https://material-ui.com/customization/breakpoints/
+
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
