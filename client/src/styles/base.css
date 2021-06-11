@@ -11,6 +11,7 @@ body {
   color: var(--dark-teal);
   font-family: "Poppins", sans-serif;
   height: 100%;
+  line-height: 2.1rem;
 }
 
 h1,
@@ -22,9 +23,10 @@ h6 {
   font-weight: 200;
 }
 
+
 /*NAVBAR*/
 .navbar-dark {
-  background: var(--teal) !important;
+  background: var(--dark-teal) !important;
   color: white !important;
 }
 
@@ -55,21 +57,25 @@ h6 {
 .btn-light {
   background: var(--teal);
   color: white;
+  border-width: 0px;
 }
 
 .btn-light:hover {
   background: var(--dark-teal);
   color: white;
+  border-width: 0px;
 }
 
 .btn-dark {
   background: var(--dark-teal);
   color: white;
+  border-width: 0px;
 }
 
 .btn-dark:hover {
   background: var(--teal);
   color: white;
+  border-width: 0px;
 }
 
 .btn-icon {
@@ -88,7 +94,7 @@ a.link-light:hover {
 }
 
 .icon-light:hover {
-  color: var(--dark-teal);
+  color: var(--teal);
 }
 
 .icon-dark {
@@ -104,9 +110,7 @@ a.thumbnail-img:hover {
   opacity: 0.6;
 }
 
-.card-body {
-  overflow: auto;
-}
+
 
 .card-img-top {
     max-height: 12rem;
@@ -115,4 +119,10 @@ a.thumbnail-img:hover {
 .cards {
     justify-content: space-between;
     margin:auto;
+}
+
+.icon-text-bottom{
+  line-height: normal;
+  font-size: medium;
+  margin-top: 0.2rem;
 }

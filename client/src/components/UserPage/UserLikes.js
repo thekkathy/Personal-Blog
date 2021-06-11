@@ -1,12 +1,12 @@
 
-import {useContext, useState, useEffect} from "react";
-import {UsersContext} from '../../context/usersContext'
+import { useContext, useState, useEffect } from "react";
+import { UsersContext } from '../../context/usersContext'
 import BlogCard from "../Blog/BlogCard";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import "../../styles/home.css";
 
-export default function UserLikes(){
+export default function UserLikes() {
 
     const { users, setUsers } = useContext(UsersContext);
     const [userLikedPosts,setUserLikedPosts] = useState([]);
@@ -42,13 +42,21 @@ export default function UserLikes(){
         //         console.log(resp.data)
         //     })
         // })
+
     };
 
-    return(
-        <div className='container'>
-            <br></br>
-            <h1>Liked Posts</h1>
-            <div class="row cards">{userLikedPosts.map((post) => {return <BlogCard post={post}/>})}</div>
+    return (
+        <div className='container' style={{ height: "40rem" }}>
+            <div className="row p-4">
+                <h1>Liked Posts</h1>
+            </div>
+            <div class="row cards">
+                {userLikedPosts.length > 0 ?
+                    userLikedPosts.map((post) => { return <BlogCard post={post} /> })
+                    :
+                    <div className="ml-2 h5 font-weight-light">No liked posts yet</div>
+                }
+            </div>
         </div>
     )
 }

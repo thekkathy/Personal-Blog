@@ -111,8 +111,8 @@ function PostInput({ isEdit }) {
           />
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary">
-            {isEdit === true ? "Edit Post" : "Create Post"}
+          <button type="submit" class="btn btn-dark">
+            {isEdit === true ? "Save" : "Create Post"}
           </button>
         </div>
       </form>

@@ -7,30 +7,37 @@ import '../../styles/comments.css';
 import { addCommentLike } from '../../utils/updateLike';
 import LikeButton from './LikeButton';
 
-const Comments = ({isBlog, post_id, comments, changed}) => {
+const Comments = ({ isBlog, post_id, comments, changed }) => {
 
     const { user } = useContext(UsersContext);
 
     return (
         <div>
-           {comments && comments.map(e => {
-                    return <div>
-                        <Card 
+            {comments && comments.map(e => {
+                return <div>
+                    <Card
                         sideCol={true}
-                        noSetWidthHeight={true} 
+                        noSetWidthHeight={true}
                         sideColClassName='commentSideCol'
-                        outerCardClassName="comment"
-                        cardSide = {
-                            <div>
-                                <LikeButton isBlog={isBlog} post_id={post_id} comment_id={e.doc_id} liked_by={e?.liked_by} num_likes={e.num_likes}/>
+                        outerCardClassName="border-bottom"
+                        noOuterCard={true}
+                        cardSide={
+                            <div className="my-auto">
+                                <LikeButton
+                                    isBlog={isBlog}
+                                    post_id={post_id}
+                                    comment_id={e.doc_id}
+                                    liked_by={e?.liked_by}
+                                    num_likes={e.num_likes}
+                                />
                             </div>
                         }
                         cardContent={
                             <div>
-                            <p><b>{e.author_name}</b></p>
-                            <div>{e.text}</div>
+                                <p><b>{e.author_name}</b></p>
+                                <div>{e.text}</div>
                             </div>
-                    }>  </Card>
+                        } />
                 </div>
             })}
         </div>

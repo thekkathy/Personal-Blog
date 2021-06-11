@@ -1,4 +1,8 @@
 footer{
-    background: var(--teal);
+    background: var(--dark-teal);
     color: white;
+}
+
+.bottom-copyright{
+    background: var(--dark-teal);
 }

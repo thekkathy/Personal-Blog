@@ -9,6 +9,7 @@ import { UsersContext } from '../context/usersContext'
 import { BlogIdContext } from '../context/blogIdContext'
 import { BlogPostsContext } from "../context/blogPostsContext";
 import "../styles/base.css";
+import "../styles/postContent.css";
 import NavigateButton from './NavigateButton';
 import axios from "axios";
 import Button from '@material-ui/core/Button';
@@ -36,8 +37,8 @@ const PostContentFormat = ({
   const { users, setUsers } = useContext(UsersContext);
   const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
   const { blogIdG, setBlogIdG } = useContext(BlogIdContext);
-  const [likeNum,setLikeNum] = useState(0);
-  const [isLiked,setIsLiked] = useState(false)
+  const [likeNum, setLikeNum] = useState(0);
+  const [isLiked, setIsLiked] = useState(false)
 
   const [open, setOpen] = React.useState(false);
 
@@ -79,22 +80,44 @@ const PostContentFormat = ({
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Please Sign In to Like Posts"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Please sign in to like posts"}</DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <button className="btn-dark" onClick={handleClose} color="primary" autoFocus>
             Okay
-          </Button>
+          </button>
         </DialogActions>
       </Dialog>
     </div>
       <div className="row mx-auto">
         <div className="container mx-auto">
-          <div className="row">
-            <button onClick={()=>handleLike()}class="btn mt-3 mx-auto">
-              {isLiked 
-              ? <i class="fas fa-heart mx-auto" aria-hidden="true"></i>
-              : <i class="far fa-heart mx-auto" aria-hidden="true"></i>}<br></br>
-              {numLikes+likeNum}
+          <div className="row d-flex justify-content-center">
+            <button
+              onClick={() => handleLike()}
+              class="btn btn-icon icon-dark mt-3 mx-auto"
+            >
+              {isLiked
+                ? 
+                <div className="container mx-auto">
+                  <div className="row">
+                    <i class="fas fa-heart mt-2 mx-auto fa-lg"></i>
+                  </div>
+                  <div className="row">
+                    <div className="icon-text-bottom small-text text-center mx-auto">
+                      {likeNum}
+                    </div>
+                  </div>
+                </div>
+                :
+                <div className="container mx-auto">
+                  <div className="row">
+                    <i class="far fa-heart mt-2 mx-auto fa-lg"></i>
+                  </div>
+                  <div className="row">
+                    <div className="icon-text-bottom small-text text-center mx-auto">
+                      {likeNum}
+                    </div>
+                  </div>
+                </div>}
             </button>
           </div>
         </div>
@@ -102,28 +125,28 @@ const PostContentFormat = ({
       <div className="row mx-auto">
         <div className="container mx-auto">
           <div className="row">
-            <i class="far fa-comment mt-3 mx-auto"></i>
+            <i class="far fa-comment mt-3 mx-auto fa-lg"></i>
           </div>
           <div className="row">
-            <div className="small-text text-center mx-auto">
-              {numComments} Comments
+            <div className="icon-text-bottom small-text text-center mx-auto">
+              {numComments}
             </div>
           </div>
         </div>
       </div>
       <div className="row mx-auto">
-        <div className="container mx-auto">
+        <div className="container d-flex justify-content-center">
           <div className="row">
             <a target="_blank" href={'https://twitter.com/intent/tweet?url=' + window.location.href.toString()}>
               <button class="btn btn-icon icon-dark">
                 <div className="container mx-auto">
                   <div className="row">
-                    <i class="fas fa-share mt-2 mx-auto"></i>
+                    <i class="fas fa-share mt-2 mx-auto fa-lg"></i>
                   </div>
                   <div className="row">
-                    <div className="small-text text-center mx-auto">
+                    <div className="icon-text-bottom small-text text-center mx-auto">
                       Share
-            </div>
+                  </div>
                   </div>
                 </div>
               </button>
@@ -138,15 +161,15 @@ const PostContentFormat = ({
 
   const cardContent = (
     <div>
-      <div className="row p-4" style={{whiteSpace: 'pre-line'}}>
-      {text}
+      <div className="row p-4 post-content" style={{ whiteSpace: 'pre-line' }}>
+        {text}
       </div>
     </div>
   );
 
   return (
     <div className="container">
-      <img src={imageLink} alt="whoops nothing to see here" style={{maxHeight: '40rem', display:'flex', margin:'auto'}}></img>
+      <img className="img-fluid" src={imageLink} alt="whoops nothing to see here" style={{maxHeight: '40rem', display:'flex', margin:'auto'}}></img>
       <Card
         sideCol={true}
         cardSide={cardSide}

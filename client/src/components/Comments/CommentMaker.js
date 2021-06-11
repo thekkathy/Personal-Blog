@@ -47,7 +47,7 @@ const CommentMaker = ({ post_id, isBlog }) => {
                       <input
                         type="submit"
                         value="Post Comment"
-                        class="btn btn-primary btn-sm rounded-0"
+                        className="btn btn-dark btn-sm"
                         id="inputGroupPrepend2"
                         onClick={(e) => {
                           e.preventDefault();

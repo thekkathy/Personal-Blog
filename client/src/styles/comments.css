@@ -10,13 +10,6 @@
     padding-right: 123px;
     color: #094B5C;
 }
-.commentForm input[type=submit] {
-    border: none;
-    width: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: #094B5C;
-}
 .commentForm .input-group-prepend {
     position: absolute;
     right: 4px;

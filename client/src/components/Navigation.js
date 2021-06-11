@@ -16,25 +16,25 @@ import Post from "./Post";
 import { UsersContext } from "../context/usersContext";
 import { useContext } from "react";
 import PostInput from "./Blog/PostInput";
-import { signInWithGoogle,auth} from "../firebase";
+import { signInWithGoogle, auth } from "../firebase";
 import { useHistory } from "react-router-dom";
 
 const Navigation = () => {
   const { users, setUsers } = useContext(UsersContext);
   const history = useHistory();
-  function handleSignIn(){
+  function handleSignIn() {
     console.log('sign in')
-    signInWithGoogle(users,setUsers);
+    signInWithGoogle(users, setUsers);
   }
 
-  function handleSignOut(){
+  function handleSignOut() {
     auth.signOut().then(() => {
       console.log('logout success')
       setUsers(null).then(window.location.replace("http://localhost:3000/"));
     }).catch((error) => {
       setUsers(null);
     })
-}
+  }
 
   return (
     <div>
@@ -56,7 +56,7 @@ const Navigation = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <Link className="nav-link" to="/">
                   Home
@@ -77,17 +77,41 @@ const Navigation = () => {
                   Shop
                 </Link>
               </li>
+            </ul>
+            <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                {users === null
-                  ? <Link className="nav-link" to="/ProfilePage"><button style={{all: 'unset',color:'white'}} onClick={()=>handleSignIn()}>Sign In</button></Link>
-                  : <Link className="nav-link" to="/ProfilePage">Profile</Link>
+                {users && <Link className="nav-link" to="/ProfilePage">Profile</Link>}
+              </li>
+              <li className="nav-item">
+                {users &&
+                  <Link
+                    className="nav-link"
+                    to="/user-likes">
+                    Liked Posts
+                    </Link>
                 }
               </li>
               <li className="nav-item">
-                {users === null
-                  ? <div></div>
-                  : <Link className="nav-link" to="/"><button style={{all: 'unset',color:'white'}} onClick={()=>handleSignOut()}>Sign Out</button></Link>
-                }
+                {users ?
+                  <Link
+                    className="nav-link"
+                    to="/">
+                    <button
+                      style={{ all: 'unset', color: 'white' }}
+                      onClick={() => handleSignOut()}>
+                      Sign Out
+                    </button>
+                  </Link>
+                  :
+                  <Link
+                    className="nav-link"
+                    to="/">
+                    <button
+                      style={{ all: 'unset', color: 'white' }}
+                      onClick={() => handleSignIn()}>
+                      Sign In
+                    </button>
+                  </Link>}
               </li>
             </ul>
           </div>
