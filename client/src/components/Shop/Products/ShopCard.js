@@ -24,37 +24,45 @@ const ShopCard = ({ product, onHandleAdd }) => {
   const sanitizer = dompurify.sanitize;
 
   return (
-    <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image={product.media.source}
-        title={product.name}
-      />
-      <CardContent>
-        <div className={classes.cardContent}>
-          <Typography variant="h5" gutterBottom>
-            {product.name}
-          </Typography>
-          <Typography variant="h5">
-            {product.price.formatted_with_symbol}
-          </Typography>
-        </div>
-        {/* using InnerHTML here to remove the html tags from prod. description, sanitzing
-        to ensure no XSS attacks because of this  */}
-        <Typography
-          dangerouslySetInnerHTML={{ __html: sanitizer(product.description) }}
-          variant="body2"
+    <div height="100%" className={classes.outterCard}>
+      <Card className={classes.root}>
+        <CardMedia
+          className={classes.media}
+          image={product.media.source}
+          title={product.name}
         />
-      </CardContent>
-      <CardActions disableSpacing className={classes.cardActions}>
-        <IconButton
-          aria-label="add to cart"
-          onClick={() => onHandleAdd(product.id, 1)}
-        >
-          <AddShoppingCart />
-        </IconButton>
-      </CardActions>
-    </Card>
+        <div>
+          <CardContent>
+            <div className={classes.cardContent}>
+              <Typography variant="h5" gutterBottom>
+                {product.name}
+              </Typography>
+              <Typography variant="h5">
+                {product.price.formatted_with_symbol}
+              </Typography>
+            </div>
+            {/* using InnerHTML here to remove the html tags from prod. description, sanitzing
+        to ensure no XSS attacks because of this  */}
+            <div>
+              <Typography
+                dangerouslySetInnerHTML={{
+                  __html: sanitizer(product.description),
+                }}
+                variant="body2"
+              />
+            </div>
+          </CardContent>
+        </div>
+        <CardActions disableSpacing className={classes.cardActions}>
+          <IconButton
+            aria-label="add to cart"
+            onClick={() => onHandleAdd(product.id, 1)}
+          >
+            <AddShoppingCart />
+          </IconButton>
+        </CardActions>
+      </Card>
+    </div>
   );
 };
 
