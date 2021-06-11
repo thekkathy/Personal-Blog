@@ -32,6 +32,7 @@ export default makeStyles((theme) => ({
   },
   stepper: {
     padding: theme.spacing(3, 0, 5),
+    color: "#094B5C",
   },
   buttons: {
     display: "flex",
@@ -48,5 +49,6 @@ export default makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    color: "#094B5C",
   },
 }));
