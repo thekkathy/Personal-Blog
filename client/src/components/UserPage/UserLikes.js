@@ -10,15 +10,29 @@ export default function UserLikes(){
 
     const { users, setUsers } = useContext(UsersContext);
     const [userLikedPosts,setUserLikedPosts] = useState([]);
-    useEffect(() => {getBlogPosts()}, []);
+    
+    useEffect(() => {
+        getBlogPosts()
+    }, []);
+
+
 
     const getBlogPosts = async () => {
         console.log("fetching blog posts ");
         const url = new URL("http://localhost:8000/blog_posts/get");
         let res = await fetch(url).then((resp) => resp.json());
         console.log(res);
-        setUserLikedPosts(res.filter(el => !!users.liked_posts.toString().match(new RegExp(`(?=.*${el.doc_id})`))))
-        // users.liked_posts.map((post)=> {
+        console.log(users.liked_posts)
+        var tempArr = [];
+        for (var i =0; i<users.liked_posts.length;i++){
+            for (var j=0; j<res.length; j++){
+                if(users.liked_posts[i]===res[j].doc_id){
+                    tempArr.push(res[j]);
+                }
+            }
+        }
+        setUserLikedPosts(tempArr);
+        // users.liked_posts.map((post)=> { 
         //     axios.get('http://localhost:8000/blog_posts/retrieve',{
         //         params:{
         //             doc_id:post

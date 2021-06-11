@@ -15,9 +15,9 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
 
   //This function redirects to the corresponding blog page when a blog card is clicked
   const handleClick = () => {
-    //history.push(`/blog/${post.doc_id}`);
     setBlogIdG(post.doc_id);
-    console.log('hi')
+    console.log('post id updated to '+post.doc_id)
+    history.push(`/blog/${post.doc_id}`);
   };
 
 
@@ -46,16 +46,9 @@ const BlogCard = ({ post, auth, getBlogPosts }) => {
   const cardContent = (
     <div>
       <div className="container-fluid white-text blog-card">
-        <div className="row mx-auto d-flex justify-content-center my-4" onClick={handleClick()}>
+        <div className="row mx-auto d-flex justify-content-center my-4">
           <h2 className="h4 font-weight-normal text-center">
-            {/* <a href={`/blog/${post.doc_id}`} className="white-text link-light">
-              {post.title}
-            </a> */}
-            <button className="card-link">
-              <Link to={`/blog/${post.doc_id}`} className="card-link">
-                {post.title}
-              </Link>
-            </button>
+            <button style={{all: 'unset',color:'white'}} onClick={handleClick}>{post.title}</button>
           </h2>
         </div>
       </div>
