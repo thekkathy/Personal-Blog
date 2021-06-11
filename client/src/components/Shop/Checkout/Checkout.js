@@ -95,7 +95,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
       </div>
     ) : (
       <div className={classes.spinner}>
-        <CircularProgress />
+        <CircularProgress style={{ color: "#094B5C" }}/>
       </div>
     );
 
