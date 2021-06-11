@@ -89,5 +89,11 @@ app.post("/blog_posts/like", async (req, res) => {
   }
 })
 
+app.get("blog_posts/user-likes", async (req, res) => {
+  const person = await db.collection("users").doc(req.body.user.uid).get();
+  const personlikes= await person.data().liked_posts;
+  req.send(personlikes);
+})
+
 module.exports = app;
 
