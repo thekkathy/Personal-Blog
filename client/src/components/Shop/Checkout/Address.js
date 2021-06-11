@@ -75,7 +75,7 @@ const Address = ({ checkoutToken, next }) => {
   // a use effect to fetch the countries once we have the checkout token
   useEffect(() => {
     fetchShippingCountries(checkoutToken.id);
-  }, []);
+  }, [checkoutToken.id]);
 
   // creating a second use effect to wait until countries are loaded, or when country changes
   // only fetch the subdivisions if the country exists
@@ -91,7 +91,7 @@ const Address = ({ checkoutToken, next }) => {
         shippingCountry,
         shippingSubdivision
       );
-  }, [shippingSubdivision]);
+  }, [shippingSubdivision, shippingCountry, checkoutToken.id]);
 
   /**
    * This is a lot

@@ -8,14 +8,13 @@ import {
   Typography,
   CircularProgress,
   Divider,
-  Button,
   CssBaseline,
 } from "@material-ui/core";
 import useStyles from "./CheckoutStyles";
 import Address from "./Address";
 import Payment from "./Payment";
 import { Checkmark } from "react-checkmark";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 
 // the defined steps the user sees at the top of the form
 const steps = ["Shipping Address", "Payment Details"];
@@ -34,7 +33,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [shippingData, setShippingData] = useState({});
   const [isFinished, setIsFinished] = useState(false);
-  const history = useHistory();
+  //const history = useHistory();
 
   // checkout token
   // once someone enters the checkout process we generate a new token
@@ -48,7 +47,8 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         });
         setCheckoutToken(token);
       } catch (error) {
-        history.pushState("/");
+        //history.pushState("/");
+        alert('err');
       }
     };
     generateToken();
