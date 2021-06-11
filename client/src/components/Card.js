@@ -38,7 +38,7 @@ const Card = ({
                 className={`${noOuterCard ? "" : "card outer-card"} ${!noCardTop ? "" : "p-4"} ${outerCardClassName && outerCardClassName}`}
                 style={noSetWidthHeight ? { width: "auto" } : { width: "20rem", height: "24rem" }}
             >
-                {console.log(cardTopImage)}
+                {/* {console.log(cardTopImage)} */}
                 {!noCardTop && cardTopImage
                     &&
                     <div className="d-flex justify-content-center">

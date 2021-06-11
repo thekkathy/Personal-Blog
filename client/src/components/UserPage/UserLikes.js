@@ -1,74 +1,88 @@
 import { useContext, useState, useEffect } from "react";
-import { UsersContext } from '../../context/usersContext'
+import { UsersContext } from "../../context/usersContext";
 import BlogCard from "../Blog/BlogCard";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import "../../styles/home.css";
 
 export default function UserLikes() {
+  const { users, setUsers } = useContext(UsersContext);
+  const [userLikedPosts, setUserLikedPosts] = useState([]);
+  const [userLikes, setUserLikes] = useState([]);
+  const [display, setDisplay] = useState(false);
 
-    const { users } = useContext(UsersContext);
-    const [userLikedPosts, setUserLikedPosts] = useState([]);
+  useEffect(() => {
+    // axios.get('http://localhost:8000/blog_posts/user-likes',{
+    //     params:{
+    //         userid: users.uid
+    //     }
+    // })
+    // .then(function (response) {
+    //     console.log(response);
+    // })
+    getBlogPosts()
     
-    useEffect(() => {
-        const getBlogPosts = async () => {
-            console.log("fetching blog posts ");
-            const url = new URL("http://localhost:8000/blog_posts/get");
-            let res = await fetch(url).then((resp) => resp.json());
-            console.log(res);
-            console.log(users.liked_posts)
-            var tempArr = [];
-            for (var i =0; i<users.liked_posts.length;i++){
-                for (var j=0; j<res.length; j++){
-                    if(users.liked_posts[i]===res[j].doc_id){
-                        tempArr.push(res[j]);
-                    }
-                }
-            }
-            setUserLikedPosts(tempArr);
-        }
-        
-        getBlogPosts();
-    }, [users.liked_posts]);
-/*
-    const getBlogPosts = async () => {
-        console.log("fetching blog posts ");
-        const url = new URL("http://localhost:8000/blog_posts/get");
-        let res = await fetch(url).then((resp) => resp.json());
-        console.log(res);
-        console.log(users.liked_posts)
-        var tempArr = [];
-        for (var i =0; i<users.liked_posts.length;i++){
-            for (var j=0; j<res.length; j++){
-                if(users.liked_posts[i]===res[j].doc_id){
-                    tempArr.push(res[j]);
-                }
-            }
-        }
-        setUserLikedPosts(tempArr);
-        // users.liked_posts.map((post)=> { 
-        //     axios.get('http://localhost:8000/blog_posts/retrieve',{
-        //         params:{
-        //             doc_id:post
-        //         }
-        //     })
-        //     .then(function(resp){
-        //         console.log(resp.data)
-        //     })
-        // })
+  }, []);
 
-    };
-*/
-    return (
-        <div className='container' style={{ height: "40rem" }}>
-            <div className="row p-4">
-                <h1>Liked Posts</h1>
-            </div>
-            <div class="row cards">
-                {userLikedPosts.length > 0 ?
-                    userLikedPosts.map((post) => { return <BlogCard post={post} /> })
-                    :
-                    <div className="ml-2 h5 font-weight-light">No liked posts yet</div>
-                }
-            </div>
-        </div>
-    )
+  const getUserLikes = async () => {
+    //const url = new URL("http://localhost:8000/blog_posts/user-likes");
+    console.log(users.uid);
+    let res = await fetch(
+      "http://localhost:8000/blog_posts/user-likes?" +
+        new URLSearchParams({
+          userid: users.uid,
+        })
+    ).then((resp) => resp.json());
+    setUserLikes(res);
+    return res;
+
+  };
+
+  const getBlogPosts = async () => {
+    console.log("fetching blog posts ");
+    const url = new URL("http://localhost:8000/blog_posts/get");
+    let res = await fetch(url).then((resp) => resp.json());
+    console.log(res);
+    let likes = await getUserLikes();
+    console.log(userLikes);
+    //console.log(users.liked_posts);
+    var tempArr = [];
+    for (var i = 0; i < likes.length; i++) {
+      for (var j = 0; j < res.length; j++) {
+        if (likes[i] === res[j].doc_id) {
+          console.log('match found')
+            tempArr.push(res[j]);
+        }
+      }
+    }
+    console.log(tempArr);
+     setUserLikedPosts(tempArr);
+    // users.liked_posts.map((post)=> {
+    //     axios.get('http://localhost:8000/blog_posts/retrieve',{
+    //         params:{
+    //             doc_id:post
+    //         }
+    //     })
+    //     .then(function(resp){
+    //         console.log(resp.data)
+    //     })
+    // })
+  };
+
+  return (
+    <div className="container" style={{ height: "40rem" }}>
+      <div className="row p-4">
+        <h1>Liked Posts</h1>
+      </div>
+      <div class="row cards">
+        {userLikedPosts.length > 0 ? (
+          userLikedPosts.map((post) => {
+            return <BlogCard post={post} />;
+          })
+        ) : (
+          <div className="ml-2 h5 font-weight-light">No liked posts yet</div>
+        )}
+      </div>
+    </div>
+  );
 }

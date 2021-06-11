@@ -3,6 +3,7 @@ import "../../styles/home.css";
 import BlogCard from "../../components/Blog/BlogCard";
 import getBlogPosts from "../../utils/getBlogPosts";
 import { BlogPostsContext } from "../../context/blogPostsContext";
+import NavigateButton from "../NavigateButton";
 
 const Home = () => {
   const { blogPosts, setBlogPosts } = React.useContext(BlogPostsContext);

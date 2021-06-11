@@ -31,7 +31,6 @@ app.post("/blog_posts/add", async (req, res) => {
   });
   console.log("Created new blog post with ID: ", resp.id);
 
-
   //this is the code for adding a comment to a post, reuse this when getting to comments
 
   // const resp2 = await db
@@ -66,34 +65,52 @@ app.delete("/blog_posts/delete", async (req, res) => {
 });
 
 app.post("/blog_posts/like", async (req, res) => {
+  console.log(req.body);
   //increase number of liked posts for specific blog post
   const blogLike = await db.collection("blog_posts").doc(req.body.blogid).get();
-  const love= await blogLike.data().num_likes;
+  const love = await blogLike.data().num_likes;
 
   //add liked blog post to user profilePage
   const person = await db.collection("users").doc(req.body.user.uid).get();
-  const personlikes= await person.data().liked_posts;
- 
-  if (personlikes.includes(req.body.blogid)){//unlike
-    const removeLike = await db.collection("blog_posts").doc(req.body.blogid).update({num_likes:love-1});
-    for( var i = 0; i < personlikes.length; i++){ 
-      if ( personlikes[i] === req.body.blogid) { 
+  const personlikes = await person.data().liked_posts;
+
+  if (personlikes.includes(req.body.blogid)) {
+    //unlike
+    const removeLike = await db
+      .collection("blog_posts")
+      .doc(req.body.blogid)
+      .update({ num_likes: love - 1 });
+    for (var i = 0; i < personlikes.length; i++) {
+      if (personlikes[i] === req.body.blogid) {
         personlikes.splice(i, 1);
-        break; 
+        break;
       }
     }
-    const LikeUser = await db.collection("users").doc(req.body.user.uid).update({liked_posts:[...personlikes]});
-  }else{//like
-    const addLike = await db.collection("blog_posts").doc(req.body.blogid).update({num_likes:love+1});
-    const addLikeUser = await db.collection("users").doc(req.body.user.uid).update({liked_posts:[...personlikes,req.body.blogid]});
+    const LikeUser = await db
+      .collection("users")
+      .doc(req.body.user.uid)
+      .update({ liked_posts: [...personlikes] });
+  } else {
+    //like
+    const addLike = await db
+      .collection("blog_posts")
+      .doc(req.body.blogid)
+      .update({ num_likes: love + 1 });
+    const addLikeUser = await db
+      .collection("users")
+      .doc(req.body.user.uid)
+      .update({ liked_posts: [...personlikes, req.body.blogid] });
   }
-})
 
-app.get("blog_posts/user-likes", async (req, res) => {
-  const person = await db.collection("users").doc(req.body.user.uid).get();
-  const personlikes= await person.data().liked_posts;
-  req.send(personlikes);
-})
+  res.send("Got a Like/Unlike Request");
+});
+
+app.get("/blog_posts/user-likes", async (req, res) => {
+  console.log(req.query);
+  const person = await db.collection("users").doc(req.query.userid).get();
+  const personlikes = await person.data().liked_posts;
+  console.log(personlikes);
+  res.send(personlikes);
+});
 
 module.exports = app;
-
