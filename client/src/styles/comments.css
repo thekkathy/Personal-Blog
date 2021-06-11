@@ -24,9 +24,11 @@
 }
 
 .commentHeart {
-    background-color: #74BAC4;
     justify-content: center;
     display:table;
+    outline: none;
+    border: none;
+    background-color: transparent;
 }
 
 .commentHeart:focus {
@@ -34,7 +36,8 @@
 }
 
 .commentHeart:hover {
-    background-color: #74BAC4;
+    cursor: pointer;
+    color: #74bac4;
 }
 
 .comment {
