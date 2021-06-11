@@ -61,7 +61,12 @@ app.post("/comments/blog/add", async (req, res) => {
     const unionRes = await uRef.update({
         commented_posts: admin.firestore.FieldValue.arrayUnion(req.body.post_id)
     })
-    }   
+    } 
+    const pRef = db.collection('blog_posts').doc(req.body.post_id);
+    const p = await pRef.get();
+    const postUnion = await pRef.update({
+        num_comments: admin.firestore.FieldValue.increment(1)
+    });  
     res.sendStatus(200);
 })
 
