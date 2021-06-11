@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import NavigateButton from "../NavigateButton";
+import React, { useEffect } from "react";
 import "../../styles/home.css";
 import BlogCard from "../../components/Blog/BlogCard";
 import getBlogPosts from "../../utils/getBlogPosts";
@@ -13,7 +12,9 @@ const Home = () => {
       setBlogPosts(posts);
       console.log(posts);
     });
-  }, []);
+  }, [setBlogPosts]); //this might be weird
+
+  const arr = [];
 
   return (
     <div>
@@ -29,12 +30,18 @@ const Home = () => {
         </div>
         <div className="row cards">
           {/* Conditional added to map to limit number of blog posts displayed on home page */}
+          {
+            blogPosts ? 
+              blogPosts.forEach((post, index) => {
+                if(index <= 2 ){
+                  arr.push(post);
+                }
+              }) : ""
+          }
           {blogPosts
-            ? blogPosts.map((post, index) => {
-              if (index <= 2) {
-                return <BlogCard post={post} />;
-              }
-            })
+            ? arr.map((post) => {
+                  return <BlogCard post={post} />;
+              })
             : ""}
         </div>
       </div>

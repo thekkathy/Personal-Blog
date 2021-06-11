@@ -7,16 +7,11 @@ import Card from "./Card";
 import { useContext, useState } from "react";
 import { UsersContext } from '../context/usersContext'
 import { BlogIdContext } from '../context/blogIdContext'
-import { BlogPostsContext } from "../context/blogPostsContext";
 import "../styles/base.css";
 import "../styles/postContent.css";
-import NavigateButton from './NavigateButton';
 import axios from "axios";
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 //numLikes = the number of likes the post has
@@ -24,7 +19,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 //text = the main text that should be displayed in the post
 // outerBlueWrap = boolean, if true there will be an outer blue card wrapping the post
 
-let numLines = 0;
 
 const PostContentFormat = ({
   numLikes,
@@ -34,9 +28,9 @@ const PostContentFormat = ({
   outerBlueWrap,
 }) => {
 
-  const { users, setUsers } = useContext(UsersContext);
-  const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
-  const { blogIdG, setBlogIdG } = useContext(BlogIdContext);
+  const { users } = useContext(UsersContext);
+  //const { blogPosts, setBlogPosts } = useContext(BlogPostsContext);
+  const { blogIdG } = useContext(BlogIdContext);
   const [likeNum, setLikeNum] = useState(0);
   const [isLiked, setIsLiked] = useState(false)
 
@@ -137,7 +131,7 @@ const PostContentFormat = ({
       <div className="row mx-auto">
         <div className="container d-flex justify-content-center">
           <div className="row">
-            <a target="_blank" href={'https://twitter.com/intent/tweet?url=' + window.location.href.toString()}>
+            <a target="_blank" rel="noreferrer" href={'https://twitter.com/intent/tweet?url=' + window.location.href.toString()}>
               <button class="btn btn-icon icon-dark">
                 <div className="container mx-auto">
                   <div className="row">

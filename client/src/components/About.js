@@ -36,7 +36,7 @@ const About = () => {
                 <div className="col-4">
                     <img
                         src={camille}
-                        alt="A photo of Camille with a ski mask on a snow mobile"
+                        alt= "Camille with a ski mask on a snow mobile"
                         className="img-fluid about-img"
                     />
                 </div>

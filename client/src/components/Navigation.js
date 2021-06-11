@@ -17,11 +17,11 @@ import { UsersContext } from "../context/usersContext";
 import { useContext } from "react";
 import PostInput from "./Blog/PostInput";
 import { signInWithGoogle, auth } from "../firebase";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 
 const Navigation = () => {
   const { users, setUsers } = useContext(UsersContext);
-  const history = useHistory();
+  //const history = useHistory();
   function handleSignIn() {
     console.log('sign in')
     signInWithGoogle(users, setUsers);

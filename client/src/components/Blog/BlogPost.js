@@ -19,7 +19,7 @@ const BlogPost = ({ match: { params: { id } } }) => {
                     }
                 });
             });
-    }, []);
+    }, [id]);
 
     return (
         <div className="container-fluid">

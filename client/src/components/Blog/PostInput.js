@@ -9,16 +9,16 @@ function PostInput({ isEdit }) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [pic, setPic] = useState("");
-  const [formatted, setFormatted] = useState("");
+  const [/*formatted*/, setFormatted] = useState("");
 
   const history = useHistory();
     const {id} = useParams();
 
-
+/*
     const formatText = (text) => {
         setFormatted()
     }
-
+*/
 
   useEffect(() => {
     if (isEdit === true) {
@@ -34,7 +34,7 @@ function PostInput({ isEdit }) {
       });
     }
 
-  }, []);
+  }, [id, isEdit]);
 
   const submitForm = async (e) => {
     e.preventDefault();

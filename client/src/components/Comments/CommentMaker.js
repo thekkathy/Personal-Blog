@@ -19,8 +19,15 @@ const CommentMaker = ({ post_id, isBlog }) => {
   }
 
   useEffect(() => {
-    fetchComments();
-  }, [post_id, changed]);
+
+    async function fetchCommentsUE() {
+      const c = await getComments(isBlog, post_id);
+      console.log(c);
+      setComments(c);
+    }
+
+    fetchCommentsUE();
+  }, [post_id, changed, isBlog]);
 
   return (
     <div>
