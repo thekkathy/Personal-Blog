@@ -12,6 +12,17 @@ export default function UserLikes() {
     const [userLikedPosts,setUserLikedPosts] = useState([]);
     
     useEffect(() => {
+        axios.get('http://localhost:8000/blog_posts/user-likes',{
+            params:{
+                userid: users.uid
+            }
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (response) {
+            console.log('error');
+        })
         getBlogPosts()
     }, []);
 
