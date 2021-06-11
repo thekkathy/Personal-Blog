@@ -5,6 +5,7 @@ import Cart from "./Cart/Cart";
 import Checkout from "./Checkout/Checkout";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { commerce } from "./Inventory/inventory";
+import { CssBaseline } from "@material-ui/core";
 
 /**
  * This is the shop file. The shop file gets products from the commerce api
@@ -105,6 +106,7 @@ const Shop = () => {
   }, []);
   return (
     <div>
+      <CssBaseline />
       <Router>
         <Nav totalItems={cart.total_items} />
         <div />

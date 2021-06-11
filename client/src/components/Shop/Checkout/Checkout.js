@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { commerce } from "../Inventory/inventory";
+import { createMuiTheme } from "@material-ui/core/styles";
+
 import {
   Paper,
   Stepper,
@@ -16,9 +18,22 @@ import Address from "./Address";
 import Payment from "./Payment";
 import { Checkmark } from "react-checkmark";
 import { useHistory } from "react-router-dom";
+import { ThemeProvider } from "react-bootstrap";
 
 // the defined steps the user sees at the top of the form
 const steps = ["Shipping Address", "Payment Details"];
+
+// at theme for the stepper
+const muiTheme = createMuiTheme({
+  stepper: {
+    color: "#094B5C", // or logic to change color
+  },
+  palette: {
+    primary: {
+      main: "#094B5C",
+    },
+  },
+});
 /**
  * The props passed in are to display the cart and get the items from it,
  * have the order to pass to the payment and checkout functions to complete
@@ -26,6 +41,7 @@ const steps = ["Shipping Address", "Payment Details"];
  * @param {objs} cart, order, onCaptureCheckout, error
  * @returns
  */
+
 const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const classes = useStyles();
 
@@ -95,7 +111,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
       </div>
     ) : (
       <div className={classes.spinner}>
-        <CircularProgress />
+        <CircularProgress style={{ color: "#094B5C" }} />
       </div>
     );
 
@@ -131,13 +147,16 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
           <Typography variant="h4" align="center">
             Checkout
           </Typography>
-          <Stepper activeStep={activeStep} className={classes.stepper}>
-            {steps.map((step) => (
-              <Step key={step}>
-                <StepLabel>{step}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
+          <ThemeProvider theme={muiTheme}>
+            <Stepper activeStep={activeStep} className={classes.stepper}>
+              {steps.map((step) => (
+                <Step key={step}>
+                  <StepLabel>{step}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+          </ThemeProvider>
+
           {activeStep === steps.length ? (
             <Confirmation />
           ) : (

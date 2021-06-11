@@ -4,7 +4,7 @@ import "../../styles/home.css";
 import BlogCard from "../../components/Blog/BlogCard";
 import getBlogPosts from "../../utils/getBlogPosts";
 import { BlogPostsContext } from "../../context/blogPostsContext";
-
+import FeaturedItems from "./FeaturedItems";
 const Home = () => {
   const { blogPosts, setBlogPosts } = React.useContext(BlogPostsContext);
 

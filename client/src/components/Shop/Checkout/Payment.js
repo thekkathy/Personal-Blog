@@ -8,7 +8,9 @@ import {
 import { loadStripe } from "@stripe/stripe-js";
 import Review from "./Review";
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
+const stripePromise = loadStripe(
+  "pk_test_51J0tqXFP707iDUqVc3z1dXQ9u1xDcUTykuxEooh2zYbaN1MqNwnbYLen7rng5RVYb0w80dqdPoLHSS6WC6EXzHI900Tyzb4Mlg"
+);
 
 /**
  * The payment form takes in the payment through stripe and has information 
