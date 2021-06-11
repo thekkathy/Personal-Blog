@@ -34,8 +34,14 @@ export default function UserPage() {
                                     </h3>
                                 </div>
                                 <div className="row d-flex justify-content-center m-5">
+                                    <div className="mx-2">
                                     <NavigateButton buttonName="View Liked Posts" url="/user-likes" color="dark" />
+                                    </div>
+                                    <div className="mx-2">
+                                    <NavigateButton buttonName="View Commented Posts" url="/user-commented" color="dark" />
+                                    </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
