@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   AppBar,
   Toolbar,
@@ -9,6 +9,7 @@ import {
 import { ShoppingCart } from "@material-ui/icons";
 import useStyles from "./NavStyles";
 import { Link, useLocation } from "react-router-dom";
+import { UsersContext } from "../../../context/usersContext";
 
 /**
  * This is the navigation page that returns a nav bar
@@ -21,6 +22,8 @@ import { Link, useLocation } from "react-router-dom";
 const Nav = ({ totalItems }) => {
   const classes = useStyles();
   const location = useLocation(); // use location is used for nav
+  const { users } = useContext(UsersContext); // user id for showing dashboard
+  const adminUID = process.env.REACT_APP_ADMIN_UID; // key to user
 
   return (
     <div>
@@ -35,6 +38,18 @@ const Nav = ({ totalItems }) => {
             Shop
           </Typography>
           <div className={classes.grow} />
+          {users && users.uid === adminUID ? (
+            <a
+              style={{ fontSize: "20px" }}
+              href="https://dashboard.chec.io/"
+              target="_blank"
+              className={classes.title}
+            >
+              Dashboard
+            </a>
+          ) : null}
+          <div className={classes.grow} />
+
           {/* not displaying the cart icon inside of the cart */}
           {(location.pathname === "/shop" ||
             location.pathname === "/checkout") && (
