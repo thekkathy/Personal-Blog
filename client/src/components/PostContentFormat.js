@@ -57,7 +57,6 @@ const PostContentFormat = ({
         blogid: blogIdG,
         isLiked: isLiked
       })
-      .catch(console.log('error'))
       if(!isLiked){
 
         setLikeNum(likeNum+1);
